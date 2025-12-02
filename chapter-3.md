@@ -1,30 +1,4 @@
-  
-**Preventing Double Spending on the Bitcoin Platform, Part 1**  
-
-**[Introduction 1](#introduction)**
-
-[**Preventing double spending	1**](#preventing-double-spending)
-
-[A possible method: Assigning serial numbers to satoshis and keeping track of them	1](#a-possible-method:-assigning-serial-numbers-to-satoshis-and-keeping-track-of-them)
-
-[A distributed architecture to the rescue	2](#a-distributed-architecture-to-the-rescue)
-
-[Absence of totals	4](#absence-of-totals)
-
-[Verification and updating issues	5](#verification-and-updating-issues)
-
-[Introducing proof of work	7](#introducing-proof-of-work)
-
-[Updating after showing proof of work	13](#updating-after-showing-proof-of-work)
-
-[Managing the presence of different blockchains	15](#managing-the-presence-of-different-blockchains)
-
-[Are we able to prevent double spending?	17](#are-we-able-to-prevent-double-spending?)
-
-Chatbot for the notes  
-[https://chatgpt.com/g/g-68e6fe832c7881919d5a3408e440ee86-chatbot-for-preventing-double-spending-part-1](https://chatgpt.com/g/g-68e6fe832c7881919d5a3408e440ee86-chatbot-for-preventing-double-spending-part-1) 
-
-
+**03. Preventing Double Spending on the Bitcoin Platform, Part 1**  
 
 ## Introduction {#introduction}
 
