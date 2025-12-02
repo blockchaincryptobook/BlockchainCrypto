@@ -1,4 +1,4 @@
-**03. Preventing Double Spending on the Bitcoin Platform, Part 1**  
+# 03. Preventing Double Spending on the Bitcoin Platform, Part 1
 
 ## Introduction {#introduction}
 
