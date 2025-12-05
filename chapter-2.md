@@ -16,7 +16,7 @@ In Bitcoin, ownership is conveyed by transferring bitcoins to Alice’s public k
 
 Once her ownership is confirmed, Alice can repay Bob by transferring the corresponding amount to Bob’s public key. The transfer implicitly states that whoever can produce a digital signature verifiable by Bob’s public key is allowed to operate those bitcoins. The idea is summarized in the diagram shown above.
 
-![][image1]
+<figure><img src=".gitbook/assets/ch2-image1.png" alt="" width="188"><figcaption></figcaption></figure>
 
 In summary, Alice’s ownership of bitcoins is verified by examining how they were transferred and ensuring they were sent to a public key that corresponds to the digital signature she can produce. Through this mechanism, the system confirms rightful ownership while preventing others from spending the same funds.
 
