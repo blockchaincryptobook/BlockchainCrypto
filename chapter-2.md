@@ -1,4 +1,4 @@
-Chapter 2:
+# 02. Bitcoin Ownership & Use
 
 ## Introduction {#introduction}
 
