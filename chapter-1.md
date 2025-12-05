@@ -32,7 +32,16 @@ Money has taken various forms throughout human history, evolving to meet the nee
 
 Commodity money refers to a form of payment in which the item used has intrinsic value and is widely valued by many. In such cases, the terms of payment essentially amount to offering something that is inherently useful and desirable. Examples include cattle, grain, precious metals such as gold and silver, and even Rai stones—large stone discs, some human-sized or larger, used on the Micronesian island of Yap.[3](https://www.bbc.com/travel/article/20180502-the-tiny-island-with-human-sized-money)&#x20;
 
-<figure><img src=".gitbook/assets/Rai_stone.jpg" alt="" width="188"><figcaption></figcaption></figure>
+[
+i
+ns
+er
+t
+
+f
+i
+g
+]
 
 The intrinsic value of these commodities arises from their usefulness outside their role as a medium of exchange. Cattle provide milk, meat, and labor for agricultural work. Grains are edible and essential for sustenance. Precious metals serve as raw materials for jewelry and various manufacturing processes. Rai stones, although debated as to whether they represent commodity money or fiat money, have long been recognized as possessing symbolic value apart from their use in transactions. Rounder Rai stones, for example, hold religious significance and are used in ceremonial contexts. Their value also historically increased when their extraction and transportation from Palau to Yap involved difficulty or carried an interesting narrative. When a European explorer later discovered a more efficient extraction method, the perceived value of these stones declined, illustrating how their worth was partially tied to the cultural meaning surrounding their origin.
 
@@ -86,7 +95,14 @@ Bitcoin meets some of these characteristics to varying degrees. It functions rea
 
 Bitcoin functions as a reasonably good medium of exchange, as illustrated in the linked video [49](https://www.youtube.com/watch?v=n9MXX6dXKPM). Several factors contribute to its appeal in this role. One major factor is the absence of an intermediary or third party in transactions. This has two important consequences. First, because no central authority controls the fees, transaction costs are determined by the supply and demand for processing space on the network. In principle, this market-driven mechanism should help keep fees competitive. In practice, while the fees may be low relative to the value transacted, their dollar amounts have sometimes been high. For example, in April 2024, average transaction fees exceeded $128, though at present they are mostly under $1 (see chart [20](https://ycharts.com/indicators/bitcoin_average_transaction_fee)). Fees can also be reduced by using the Lightning Network, an additional layer built on top of Bitcoin that aggregates smaller transactions between two parties and records only the final settlement on the blockchain. Video [50](https://www.youtube.com/watch?v=rrr_zPmEiME) provides an introductory overview of how this system works.
 
-![](<.gitbook/assets/unknown (4).png>)
+[
+i
+m
+a
+g
+e
+2
+]
 
 The second consequence of eliminating intermediaries is a significantly lower potential for censorship. When a third party controls transactions, it can approve, reject, or restrict them. As the referenced video notes, for example, transfers of money out of China are tightly regulated and require official approval. A traditional intermediary can also impose restrictions on the types of transactions allowed, the individuals one may transact with, or the amount one is permitted to move or hold. Such censorship risks do not exist on the Bitcoin network, which increases its attractiveness as a medium of exchange.
 
@@ -144,13 +160,27 @@ As noted earlier, relying on intermediaries introduces censorship risk. When Wik
 
 Governments and rulers have historically devalued their fiat currencies. Rulers using commodity money, such as gold- or silver-based coins, often reduced the amount of precious metal in coins while trying to preserve their nominal value. This encouraged people to hoard older coins and triggered black markets. Modern governments expand money supplies to deal with economic crises, such as the U.S. actions during the 2008 financial crisis and the 2020 pandemic. These actions often stem from efforts to save large financial institutions whose risky behavior contributed to the crisis in the first place. Although these institutions were made whole, ordinary citizens suffered the consequences. When governments increase the supply of fiat money, its value decreases and purchasing power declines. Governments also occasionally demonetize currencies, as India did in 2016 when it abruptly invalidated 500- and 1000-rupee notes. This caused significant economic hardship and even deaths, as people waited in long lines to exchange bills or were denied medical care for attempting to use demonetized currency.[28](https://cointelegraph.com/news/bitcoin-emerges-winner-as-indian-demonetisation-declared-a-total-failure-by-rbi) Bitcoin was created to shield individuals from such harmful government actions. It enables people to take control of their financial destinies without being subject to government policies seen as arbitrary or unfair. This protective function was a major motivation behind its creation. Videos documenting how Venezuelans used bitcoin to cope with economic collapse further illustrate this point.[30](https://www.reuters.com/technology/venezuelas-economy-regresses-crypto-fills-gaps-2021-06-22/)
 
-![](<.gitbook/assets/unknown (1) (1).png>)
+[
+i
+m
+a
+g
+e
+3
+]
 
 ## Unknown identity of Satoshi Nakamoto and disappearance <a href="#unknown-identity-of-satoshi-nakamoto-and-disappearance" id="unknown-identity-of-satoshi-nakamoto-and-disappearance"></a>
 
 Satoshi Nakamoto’s identity remains unknown. The individual—or group—behind the name communicated fluently in English, as evidenced by early forum discussions. Numerous attempts and speculations have been made to identify Satoshi. In 2014, Newsweek published a cover story[31](https://www.newsweek.com/2014/03/14/face-behind-bitcoin-247957.html) naming a man they claimed was Satoshi Nakamoto, which caused widespread attention. However, that individual publicly denied being the creator of Bitcoin.
 
-![](.gitbook/assets/unknown.jpeg)
+[
+i
+m
+a
+h
+e
+4
+]
 
 Some people have even claimed to be Satoshi themselves, but the true identity remains a mystery. Instead of coming forward to receive recognition for the invention, Satoshi chose to remain anonymous and eventually disappeared. A linked video explores possible motivations, though additional reasons may exist. The following list is more complete, though not necessarily exhaustive.
 
