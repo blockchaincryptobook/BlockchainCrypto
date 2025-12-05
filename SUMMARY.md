@@ -10,3 +10,4 @@
 * [Chapter 9](chapter-9.md)
 * [Chapter 10](chapter-10.md)
 * [Appendix A](appendix-a.md)
+* [Chapter 1](chapter-1.md)
