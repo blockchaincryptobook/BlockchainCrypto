@@ -1,318 +1,318 @@
-**Solidity variables and functions, Part 1**  
-**Blockchain Technology & Applications**  
+# Chapter 7
+
+**Solidity variables and functions, Part 1**\
+**Blockchain Technology & Applications**\
 **Class notes, Fall 2025**
 
-[Why should you care about learning Solidity?	1](#why-should-you-care-about-learning-solidity?)
+[Why should you care about learning Solidity? 1](chapter-7.md#why-should-you-care-about-learning-solidity?)
 
-[Variables in Solidity	2](#variables-in-solidity)
+[Variables in Solidity 2](chapter-7.md#variables-in-solidity)
 
-[Integers in Solidity	2](#integers-in-solidity)
+[Integers in Solidity 2](chapter-7.md#integers-in-solidity)
 
-[Assigning values to variables	5](#assigning-values-to-variables)
+[Assigning values to variables 5](chapter-7.md#assigning-values-to-variables)
 
-[Assigning value during declaration of type	5](#assigning-value-during-declaration-of-type)
+[Assigning value during declaration of type 5](chapter-7.md#assigning-value-during-declaration-of-type)
 
-[Assigning value via calculation when we declare the type	6](#assigning-value-via-calculation-when-we-declare-the-type)
+[Assigning value via calculation when we declare the type 6](chapter-7.md#assigning-value-via-calculation-when-we-declare-the-type)
 
-[Creating a function for greater flexibility	8](#creating-a-function-for-greater-flexibility)
+[Creating a function for greater flexibility 8](chapter-7.md#creating-a-function-for-greater-flexibility)
 
-[State versus local variables	13](#state-versus-local-variables)
+[State versus local variables 13](chapter-7.md#state-versus-local-variables)
 
-[Boolean variables	14](#boolean-variables)
+[Boolean variables 14](chapter-7.md#boolean-variables)
 
-[String variables	15](#string-variables)
+[String variables 15](chapter-7.md#string-variables)
 
-[Arrays	18](#arrays)
+[Arrays 18](chapter-7.md#arrays)
 
-[Defining an array in Solidity	19](#defining-an-array-in-solidity)
+[Defining an array in Solidity 19](chapter-7.md#defining-an-array-in-solidity)
 
-[We have so far set values of variables “inline”. This method sets values of variables when they are declared. But that is not the only method. We can also set values using a function. The following exercises illustrate that method. We first use that method to set values for variables that are integer, boolean, and string. We then use that method to set values for an array.	23](#we-have-so-far-set-values-of-variables-“inline”.-this-method-sets-values-of-variables-when-they-are-declared.-but-that-is-not-the-only-method.-we-can-also-set-values-using-a-function.-the-following-exercises-illustrate-that-method.-we-first-use-that-method-to-set-values-for-variables-that-are-integer,-boolean,-and-string.-we-then-use-that-method-to-set-values-for-an-array.)
+[We have so far set values of variables “inline”. This method sets values of variables when they are declared. But that is not the only method. We can also set values using a function. The following exercises illustrate that method. We first use that method to set values for variables that are integer, boolean, and string. We then use that method to set values for an array. 23](chapter-7.md#we-have-so-far-set-values-of-variables-“inline”.-this-method-sets-values-of-variables-when-they-are-declared.-but-that-is-not-the-only-method.-we-can-also-set-values-using-a-function.-the-following-exercises-illustrate-that-method.-we-first-use-that-method-to-set-values-for-variables-that-are-integer,-boolean,-and-string.-we-then-use-that-method-to-set-values-for-an-array.)
 
-[Use of arrays in a smart contract	26](#use-of-arrays-in-a-smart-contract)
+[Use of arrays in a smart contract 26](chapter-7.md#use-of-arrays-in-a-smart-contract)
 
-[Specification of array values within the function	28](#specification-of-array-values-within-the-function)
+[Specification of array values within the function 28](chapter-7.md#specification-of-array-values-within-the-function)
 
-[Passing an array via a function	30](#passing-an-array-via-a-function)
+[Passing an array via a function 30](chapter-7.md#passing-an-array-via-a-function)
 
-[Processing array values in a more sophisticated way	32](#processing-array-values-in-a-more-sophisticated-way)
+[Processing array values in a more sophisticated way 32](chapter-7.md#processing-array-values-in-a-more-sophisticated-way)
 
-[Making sense of the for loop	36](#making-sense-of-the-for-loop)
+[Making sense of the for loop 36](chapter-7.md#making-sense-of-the-for-loop)
 
-[Adding an element in an array	38](#adding-an-element-in-an-array)
+[Adding an element in an array 38](chapter-7.md#adding-an-element-in-an-array)
 
-[Finding the length of an array in Solidity	42](#finding-the-length-of-an-array-in-solidity)
+[Finding the length of an array in Solidity 42](chapter-7.md#finding-the-length-of-an-array-in-solidity)
 
-[More on arrays	43](#more-on-arrays)
+[More on arrays 43](chapter-7.md#more-on-arrays)
 
-**ChatGPT assistant for these notes**: [https://chatgpt.com/g/g-691fd06086b48191bb6879485f0707b0-chatbot-for-solidity-variables-functions-part-1](https://chatgpt.com/g/g-691fd06086b48191bb6879485f0707b0-chatbot-for-solidity-variables-functions-part-1) 
+**ChatGPT assistant for these notes**: [https://chatgpt.com/g/g-691fd06086b48191bb6879485f0707b0-chatbot-for-solidity-variables-functions-part-1](https://chatgpt.com/g/g-691fd06086b48191bb6879485f0707b0-chatbot-for-solidity-variables-functions-part-1)
 
-## Why should you care about learning Solidity? {#why-should-you-care-about-learning-solidity?}
+### Why should you care about learning Solidity? <a href="#why-should-you-care-about-learning-solidity" id="why-should-you-care-about-learning-solidity"></a>
 
-You already understand how blockchain works through Bitcoin and Ethereum. Solidity takes you a step further – from understanding blockchain to creating with it. There are other benefits too, which are described below. 
+You already understand how blockchain works through Bitcoin and Ethereum. Solidity takes you a step further – from understanding blockchain to creating with it. There are other benefits too, which are described below.
 
-* You shift from understanding “how blockchain works” to “shaping what it can do.” Bitcoin taught you trustless value transfer. Solidity lets you design trustless systems – automated payments, supply-chain tracking, tokenized assets, and decentralized marketplaces.  
-    
-* You shift from being a consumer to becoming a creator. Instead of describing how blockchain could improve business processes, you will build and test your own logic for how it does – through smart contracts that enforce agreements automatically.  
-    
-* You are able to understand the real engines of DeFi and tokenized economies. DeFi platforms, NFTs, and novel governance mechanisms that run on code (these are called DAOs or decentralized autonomous organizations) all run on Solidity. Learning it helps you understand how these systems operate.  
-    
-* You build skills for digital leadership. Even if you never become a developer, knowing Solidity helps you:  
-    
-  * Communicate effectively with technical teams.  
-  * Assess the cost and feasibility of blockchain projects.  
+* You shift from understanding “how blockchain works” to “shaping what it can do.” Bitcoin taught you trustless value transfer. Solidity lets you design trustless systems – automated payments, supply-chain tracking, tokenized assets, and decentralized marketplaces.
+* You shift from being a consumer to becoming a creator. Instead of describing how blockchain could improve business processes, you will build and test your own logic for how it does – through smart contracts that enforce agreements automatically.
+* You are able to understand the real engines of DeFi and tokenized economies. DeFi platforms, NFTs, and novel governance mechanisms that run on code (these are called DAOs or decentralized autonomous organizations) all run on Solidity. Learning it helps you understand how these systems operate.
+* You build skills for digital leadership. Even if you never become a developer, knowing Solidity helps you:
+  * Communicate effectively with technical teams.
+  * Assess the cost and feasibility of blockchain projects.
   * Contribute credibly to innovation, fintech, and product-management roles.
-
-
 * You will prepare yourself to meet a growing market demand. Solidity developers are among the most sought-after professionals in the blockchain space, with salaries that often exceed those of general software engineers. By understanding Solidity – even at a conceptual level – you can evaluate and lead projects that rely on smart contracts. The combination of your business knowledge and technical fluency positions you to bridge the gap between strategic vision and technical execution.
 
 In short, Solidity turns your knowledge of blockchain from conceptual to actionable. It is how business ideas become programmable realities.
 
-We will begin our journey into Solidity by first focusing on variables in Solidity and then move on to creating functions. 
+We will begin our journey into Solidity by first focusing on variables in Solidity and then move on to creating functions.
 
-## Variables in Solidity {#variables-in-solidity}
+### Variables in Solidity <a href="#variables-in-solidity" id="variables-in-solidity"></a>
 
-Solidity allows one to use different types of variables \-- integers, strings, booleans, arrays, structs, mapping, etc. Rather than providing you with an exhaustive list of the types of variables and providing definitions or descriptions that may prove to be abstract, we will begin by writing programs and introduce the different types of variables to you as and when they are needed. This way, their introduction will be contextualized within the reason for introducing them and, therefore, more meaningful to you.
+Solidity allows one to use different types of variables -- integers, strings, booleans, arrays, structs, mapping, etc. Rather than providing you with an exhaustive list of the types of variables and providing definitions or descriptions that may prove to be abstract, we will begin by writing programs and introduce the different types of variables to you as and when they are needed. This way, their introduction will be contextualized within the reason for introducing them and, therefore, more meaningful to you.
 
-There is one thing that you should know though. Unlike in something like Excel where we simply type away values for variables such as ‘Sales’ or ‘Student Name’ without having to specify them as a number or a string, we have to declare the type of the variable in Solidity. 
+There is one thing that you should know though. Unlike in something like Excel where we simply type away values for variables such as ‘Sales’ or ‘Student Name’ without having to specify them as a number or a string, we have to declare the type of the variable in Solidity.
 
 Let us first introduce variables that are of the ‘integer’ type. We will shift out of the introduction of this type of variables to introduce other notions about Solidity and then introduce new types as and when needed.
 
-## Integers in Solidity {#integers-in-solidity}
+### Integers in Solidity <a href="#integers-in-solidity" id="integers-in-solidity"></a>
 
 Typically, we tend to employ the following ways to declare integers.
 
-* By using 'int' for integers that can be positive, negative, or zero. 
+* By using 'int' for integers that can be positive, negative, or zero.
+* By using 'uint' for integers that can be positive or zero.
 
-* By using 'uint' for integers that can be positive or zero. 
+Type the following and compile.
 
-Type the following and compile. 
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
 
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables  
-   
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-         
-   //Integers  
-     
-    uint sales; //sales in wei  
-     
-    uint expenses; //expenses in wei  
-     
-    int profits; //profits in wei; it is in int because it can be negative  
-   
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+//Integers
+
+```
+uint sales; //sales in wei  
+ 
+uint expenses; //expenses in wei  
+ 
+int profits; //profits in wei; it is in int because it can be negative  
+```
+
 }
 
 You will see that the compilation is successful. Which means that our specification of the type for different variables is fine.
 
 Go ahead and deploy the contract. To deploy, carry out the following steps.
 
-* Click on the deploy icon on the left. Use Remix VM (Prague) under Environment (this is the default setting – just accept it). This simulates an Ethereum virtual machine on your computer (actually, within your browser). 
-
+* Click on the deploy icon on the left. Use Remix VM (Prague) under Environment (this is the default setting – just accept it). This simulates an Ethereum virtual machine on your computer (actually, within your browser).
 * Click on the orange ‘Deploy’ button in the middle of the window on the left.
-
-* You will see the contract under 'Deployed Contracts'. Click on the arrow to the left of the name of the contract. 
-
+* You will see the contract under 'Deployed Contracts'. Click on the arrow to the left of the name of the contract.
 * You will see the interface to the contract. At this point, you see nothing except that the balance for this contract is 0 ETH.
+* We don’t see anything about profits, which is what we are trying to compute. That is not surprising. We have not entered any values for sales or expenses. Nor have we entered any formula for computing profits. Let us first assign values to sales and expenses.
+* Delete the deployed contract. Click on x to the right of the deployed contract. Or click on the icon for trash. This clears everything for us to let us start again on a clean slate.
 
-  ![][image1]
-
-* We don’t see anything about profits, which is what we are trying to compute. That is not surprising. We have not entered any values for sales or expenses. Nor have we entered any formula for computing profits. Let us first assign values to sales and expenses. 
-
-* Delete the deployed contract. Click on x to the right of the deployed contract. Or click on the icon for trash. This clears everything for us to let us start again on a clean slate. 
-
-Incidentally, when we use int and uint, we are actually saying int256 – or an integer represented by 256 bits – and uint256 – or an unsigned integer represented by 256 bits. 
+Incidentally, when we use int and uint, we are actually saying int256 – or an integer represented by 256 bits – and uint256 – or an unsigned integer represented by 256 bits.
 
 * If this indirectly suggests to you that there are the following types of variables, then you are right:
-
   * int8, int16, int24, int32, and so on
-
-    * int8 takes values from (-2^7) to (2^7 \- 1\) or \-128 to 127  
-    * int16 takes values from (-2^15) to (2^15 \- 1\) or \-256 to 255  
-    * int32 takes values from (-2^31) to (2^31 \- 1\) or \-2147483648 to 2147483647  
+    * int8 takes values from (-2^7) to (2^7 - 1) or -128 to 127
+    * int16 takes values from (-2^15) to (2^15 - 1) or -256 to 255
+    * int32 takes values from (-2^31) to (2^31 - 1) or -2147483648 to 2147483647
     * and so on
-
   * uint8, uint16, uint24, uint32, and so on
-
-    * uint8 takes values from 0 to (2^8 \- 1\) or 0 to 255  
-    * uint16 takes values from 0 to (2^16 \- 1\) or 0 to 65535  
-    * uint32 takes values from 0 to (2^32 \- 1\) or 0 to 4294967295  
+    * uint8 takes values from 0 to (2^8 - 1) or 0 to 255
+    * uint16 takes values from 0 to (2^16 - 1) or 0 to 65535
+    * uint32 takes values from 0 to (2^32 - 1) or 0 to 4294967295
     * and so on
 
-If we don’t put a number at the end of int or uint, then it means int256 or uint256 (which ranges from 0 to 1.1579209e+77). That is the default. 
+If we don’t put a number at the end of int or uint, then it means int256 or uint256 (which ranges from 0 to 1.1579209e+77). That is the default.
 
-* int256 ranges from \-2^255 to 2^255 \- 1 or \-5.7896045e+76 to 5.7896045e+76 – the latter two are not very precise but give you an indication of the size   
-* uint256 ranges from 0 to 2^256 \- 1 or 0  to 1.1579209e+77 – the latter is not very precise but gives you an indication of the size 
+* int256 ranges from -2^255 to 2^255 - 1 or -5.7896045e+76 to 5.7896045e+76 – the latter two are not very precise but give you an indication of the size
+* uint256 ranges from 0 to 2^256 - 1 or 0 to 1.1579209e+77 – the latter is not very precise but gives you an indication of the size
 
-While the differences are minimal, using larger numbers will generally cost more gas. 
+While the differences are minimal, using larger numbers will generally cost more gas.
 
-## Assigning values to variables {#assigning-values-to-variables}
+### Assigning values to variables <a href="#assigning-values-to-variables" id="assigning-values-to-variables"></a>
 
 There are various ways for assigning values to variables.
 
-### Assigning value during declaration of type {#assigning-value-during-declaration-of-type}
+#### Assigning value during declaration of type <a href="#assigning-value-during-declaration-of-type" id="assigning-value-during-declaration-of-type"></a>
 
-One way to assign values to variables is to do so when declaring the type of variable. 
-
-Type the following and compile. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-         
-   //Integers  
-     
-    uint sales \= 12 \* 10\*\*18; //sales in wei  
-     
-    uint expenses \= 10 \* 10\*\*18; //expenses in wei  
-     
-    int profits; //profits in wei; it is in int because it can be negative  
-     
-}
-
-Compile and deploy the contract and view the contract via the interface. 
-
-![][image1]
-
-Still, we see no mention of profits. Well, that is not surprising because we have not specified the calculation of profits from sales and expenses. 
-
-Delete the deployed contract before proceeding. 
-
-### Assigning value via calculation when we declare the type {#assigning-value-via-calculation-when-we-declare-the-type}
-
-Profits are determined via a calculation: you deduct expenses from sales to get profits. We can specify this in the line where we specify the type for profits. 
-
-Type the following and compile. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-pragma solidity \>=0.8.2 \<0.9.0;
-
-contract Types {  
-         
-   //Integers  
-     
-    uint sales \= 12 \* 10\*\*18; //sales in wei  
-     
-    uint expenses \= 10 \* 10\*\*18; //expenses in wei  
-     
-    int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
-     
-}
-
-This does not compile because there is an issue with the types of variables involved in computing profits. Profits are of the int type. Sales and expenses are of the uint type. By specifying profits as equal to sales \- expenses we are implicitly asking Solidity to convert sales and expenses to int. It tells us that such a conversion can produce wrong results. You can also click on “RemixAI” for greater clarification. At this point, just accept that converting from int to uint or vice versa is fraught with unexpected results. It is best to keep it clean by using one type consistently. Since profits cannot be uint (when they are negative, they cannot be uint), we should make sales and expenses as int.
-
-| Note about converting from one integer type to another We don’t need to get into why a conversion that seems so simple can produce unexpected results. However, if you are interested, go to chatGPT and ask the following question. You don’t have to restrict yourself to just one question but the following is a good start:  Why does solidity have problems doing implicit integer conversion? Explain with an example.   |
-| :---- |
+One way to assign values to variables is to do so when declaring the type of variable.
 
 Type the following and compile.
 
-// SPDX-License-Identifier: UNLICENSED  
+// SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
-pragma solidity \>=0.8.2 \<0.9.0;
+pragma solidity >=0.8.2 <0.9.0;
 
-contract Types {  
-         
-   //Integers  
-     
-    int sales \= 12 \* 10\*\*18; //sales in wei  
-     
-    int expenses \= 10 \* 10\*\*18; //expenses in wei  
-     
-    int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
-     
+contract Types {
+
+//Integers
+
+```
+uint sales \= 12 \* 10\*\*18; //sales in wei  
+ 
+uint expenses \= 10 \* 10\*\*18; //expenses in wei  
+ 
+int profits; //profits in wei; it is in int because it can be negative  
+ 
+```
+
 }
 
-You will see that it compiles now. 
+Compile and deploy the contract and view the contract via the interface.
+
+Still, we see no mention of profits. Well, that is not surprising because we have not specified the calculation of profits from sales and expenses.
+
+Delete the deployed contract before proceeding.
+
+#### Assigning value via calculation when we declare the type <a href="#assigning-value-via-calculation-when-we-declare-the-type" id="assigning-value-via-calculation-when-we-declare-the-type"></a>
+
+Profits are determined via a calculation: you deduct expenses from sales to get profits. We can specify this in the line where we specify the type for profits.
+
+Type the following and compile.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+//Integers
+
+```
+uint sales \= 12 \* 10\*\*18; //sales in wei  
+ 
+uint expenses \= 10 \* 10\*\*18; //expenses in wei  
+ 
+int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
+ 
+```
+
+}
+
+This does not compile because there is an issue with the types of variables involved in computing profits. Profits are of the int type. Sales and expenses are of the uint type. By specifying profits as equal to sales - expenses we are implicitly asking Solidity to convert sales and expenses to int. It tells us that such a conversion can produce wrong results. You can also click on “RemixAI” for greater clarification. At this point, just accept that converting from int to uint or vice versa is fraught with unexpected results. It is best to keep it clean by using one type consistently. Since profits cannot be uint (when they are negative, they cannot be uint), we should make sales and expenses as int.
+
+| Note about converting from one integer type to another We don’t need to get into why a conversion that seems so simple can produce unexpected results. However, if you are interested, go to chatGPT and ask the following question. You don’t have to restrict yourself to just one question but the following is a good start: Why does solidity have problems doing implicit integer conversion? Explain with an example. |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+Type the following and compile.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+//Integers
+
+```
+int sales \= 12 \* 10\*\*18; //sales in wei  
+ 
+int expenses \= 10 \* 10\*\*18; //expenses in wei  
+ 
+int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
+ 
+```
+
+}
+
+You will see that it compiles now.
 
 Deploy the contract and interface with it via Remix.
 
-![][image2]
+We cannot see the profits. We know what the sales and expenses are but we are unable to see the result for profits.
 
-We cannot see the profits. We know what the sales and expenses are but we are unable to see the result for profits. 
+Delete the deployed contract before proceeding.
 
-Delete the deployed contract before proceeding. 
+To address the problem of not being able to view profits, we make profits as public. In other words, we now say that the variable profits is accessible (i.e., usable and, therefore, viewable) from outside. What does outside mean? It means that it is accessible from addresses other than that of the contract.
 
-To address the problem of not being able to view profits, we make profits as public. In other words, we now say that the variable profits is accessible (i.e., usable and, therefore, viewable) from outside. What does outside mean? It means that it is accessible from addresses other than that of the contract. 
-
-// SPDX-License-Identifier: UNLICENSED  
+// SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
-pragma solidity \>=0.8.2 \<0.9.0;
+pragma solidity >=0.8.2 <0.9.0;
 
-contract Types {  
-         
-   //Integers  
-     
-    int sales \= 12 \* 10\*\*18; //sales in wei  
-     
-    int expenses \= 10 \* 10\*\*18; //expenses in wei  
-     
-    int public profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
-     
+contract Types {
+
+//Integers
+
+```
+int sales \= 12 \* 10\*\*18; //sales in wei  
+ 
+int expenses \= 10 \* 10\*\*18; //expenses in wei  
+ 
+int public profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
+ 
+```
+
 }
 
 Compile and deploy the contract. View it in the Remix interface. Click on profits to see the value.
 
-Delete the deployed contract before proceeding. 
+Delete the deployed contract before proceeding.
 
-### Creating a function for greater flexibility {#creating-a-function-for-greater-flexibility}
+#### Creating a function for greater flexibility <a href="#creating-a-function-for-greater-flexibility" id="creating-a-function-for-greater-flexibility"></a>
 
-What if someone wants to enter different figures for sales and expenses? With the above code, we have hardwired the values for sales and expenses. Therefore, when we want to enter different figures for sales and expenses, we have no choice but to type a new contract with the new figures, recompile it, and then redeploy it. That is expensive. 
+What if someone wants to enter different figures for sales and expenses? With the above code, we have hardwired the values for sales and expenses. Therefore, when we want to enter different figures for sales and expenses, we have no choice but to type a new contract with the new figures, recompile it, and then redeploy it. That is expensive.
 
-Also, what if someone types the sales as a negative number or the expenses as a negative number? 
+Also, what if someone types the sales as a negative number or the expenses as a negative number?
 
-We can address the above two issues by setting up a function to calculate profits. That function will have sales and expenses as arguments. We can also set up a requirement in the function that sales and expenses should be positive. 
+We can address the above two issues by setting up a function to calculate profits. That function will have sales and expenses as arguments. We can also set up a requirement in the function that sales and expenses should be positive.
 
-We will first create a function that provides us with the flexibility to enter sales and expenses as arguments. We will worry about requiring sales and expenses as positive later. Note that we have removed the statements in which we were specifying the types for sales and expenses and also specifying their values. 
+We will first create a function that provides us with the flexibility to enter sales and expenses as arguments. We will worry about requiring sales and expenses as positive later. Note that we have removed the statements in which we were specifying the types for sales and expenses and also specifying their values.
 
-// SPDX-License-Identifier: UNLICENSED  
+// SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
-pragma solidity \>=0.8.2 \<0.9.0;
+pragma solidity >=0.8.2 <0.9.0;
 
-contract Types {  
+contract Types {
+
+```
+//Integers  
      
-    //Integers  
-         
-    int public profits; //profits in wei; it is in int because it can be negative  
-     
-    function determineProfits(int sales, int expenses) {  
-        profits \= sales \- expenses;  
-    }  
-  }
+int public profits; //profits in wei; it is in int because it can be negative  
+ 
+function determineProfits(int sales, int expenses) {  
+    profits \= sales \- expenses;  
+}  
+```
 
-The above code gave us an error. That error pertained to the visibility of the function determineProfits. Essentially, the compiler wants to know if the function is private or public. 
+}
 
-Add the word ‘private’ in your code as shown below. You add it in the line where you declare the function. 
+The above code gave us an error. That error pertained to the visibility of the function determineProfits. Essentially, the compiler wants to know if the function is private or public.
 
-// SPDX-License-Identifier: UNLICENSED  
+Add the word ‘private’ in your code as shown below. You add it in the line where you declare the function.
+
+// SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
-pragma solidity \>=0.8.2 \<0.9.0;
+pragma solidity >=0.8.2 <0.9.0;
 
-contract Types {  
-     
-    //Integers  
-         
-    int public profits; //profits in wei; it is in int because it can be negative  
-     
-    function determineProfits(int sales, int expenses) private {  
-        profits \= sales \- expenses;  
-    }  
-  }
+contract Types {
 
-The program runs fine. 
+```
+//Integers  
+     
+int public profits; //profits in wei; it is in int because it can be negative  
+ 
+function determineProfits(int sales, int expenses) private {  
+    profits \= sales \- expenses;  
+}  
+```
+
+}
+
+The program runs fine.
 
 Deploy it. Then click on the down arrow to the left of the deployed contract. We see a button for profits but find that there is no way for us to enter sales or expenses. ‘Private’ made the function private and it is now accessible only to code within the contract and not to outsiders like us who are trying to access it from the outside after it is placed on the Ethereum network. Understand we are trying to run it using our EOA. We are outsiders. If we were part of the code within the contract (i.e., contract Types) that is trying to run the function, it would be accessible to us
 
-Before we do any changes to the function, go back to the deployed contract. You see a button for profits. Click on it. What do you see? You see 0\. That is because the contract is using the default value for profits. The default value is 0\. That is the default value for any variable of type int. 
+Before we do any changes to the function, go back to the deployed contract. You see a button for profits. Click on it. What do you see? You see 0. That is because the contract is using the default value for profits. The default value is 0. That is the default value for any variable of type int.
 
 So, for us to be able to access it, we make the function ‘public’. Change the word ‘private’ in the function to ‘public’.
 
@@ -320,598 +320,589 @@ Delete the old deployed contract.
 
 We compile the new contract and deploy it. We click on the down arrow to the right of the contract to be able to interface with it. We go ahead and enter figures for sales and expenses as below. We will keep the numbers small and enter 12 weis and 10 weis respectively.
 
-![][image3]
+At this point, we have entered the figures for sales and expenses. But we have not run the function determineProfits yet. To confirm that to be the case, click on profits. We will see profits as 0.
 
-At this point, we have entered the figures for sales and expenses. But we have not run the function determineProfits yet. To confirm that to be the case, click on profits. We will see profits as 0\. 
+Since we have not invoked the function yet, profit remains uncalculated and has the default value, which is 0.
 
-![][image4]
+Click on determineProfits. Then click on profits. You will see the following.
 
-Since we have not invoked the function yet, profit remains uncalculated and has the default value, which is 0\. 
+Change the expenses to -10. Click on determineProfits. Then click on profits. You see 22 as profits, which is not correct because the expenses cannot be -10.
 
-Click on determineProfits. Then click on profits. You will see the following. 
-
-![][image5]
-
-Change the expenses to \-10. Click on determineProfits. Then click on profits. You see 22 as profits, which is not correct because the expenses cannot be \-10. 
-
-We can guard against that by using the following code. The ‘require’ statement will protect us against someone entering any of those numbers as a negative number. 
+We can guard against that by using the following code. The ‘require’ statement will protect us against someone entering any of those numbers as a negative number.
 
 Delete the old deployed contract.
 
-Add the ‘require’ statement as below to your contract. Compile it. 
+Add the ‘require’ statement as below to your contract. Compile it.
 
-// SPDX-License-Identifier: UNLICENSED  
+// SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
-pragma solidity \>=0.8.2 \<0.9.0;
+pragma solidity >=0.8.2 <0.9.0;
 
-contract Types {  
+contract Types {
+
+```
+//Integers  
      
-    //Integers  
-         
-    int public profits; //profits in wei; it is in int because it can be negative  
-     
-    function determineProfits(int sales, int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-    }  
-  }
+int public profits; //profits in wei; it is in int because it can be negative  
+ 
+function determineProfits(int sales, int expenses) public {  
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+}  
+```
 
-We are able to compile the above code. Deploy it and interface with it via Remix. 
+}
 
-Enter 12 and \-10 as sales and expenses. Then click on determineProfits.
+We are able to compile the above code. Deploy it and interface with it via Remix.
 
-![][image6]
+Enter 12 and -10 as sales and expenses. Then click on determineProfits.
 
 What do you see?
 
-Since the requirement of positive value for expenses is not met, the function execution terminates. You will see an error message in the window in the bottom right portion of the Remix interface. 
+Since the requirement of positive value for expenses is not met, the function execution terminates. You will see an error message in the window in the bottom right portion of the Remix interface.
 
-Enter 12, 10 for sales and expenses. Then click on determineProfits. Then click on profits. You will see the value 2 for profits. 
+Enter 12, 10 for sales and expenses. Then click on determineProfits. Then click on profits. You will see the value 2 for profits.
 
-Enter 10 and 12 for sales and expenses. See the results. 
+Enter 10 and 12 for sales and expenses. See the results.
 
-We are all set at this point. 
-
-Delete the deployed contract before proceeding. 
-
-## State versus local variables  {#state-versus-local-variables}
-
-When you consider sales and expenses in the following code, you notice that they have utility inside the function statement. They don't exist outside the function. In other words, they are local to the function. Consequently, they are known as local variables. Profit exists outside the function. It exists outside the function within the contract. It is a state variable. It is going to exist in the state database. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-pragma solidity \>=0.8.2 \<0.9.0;
-
-contract Types {  
-     
-    //Integers  
-         
-    int public profits; //profits in wei; it is in int because it can be negative  
-     
-    function determineProfits(int sales, int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-    }  
-  }
-
-Why should we be concerned about state versus local variables? 
-
-* State variables cost more gas on the Ethereum platform.  They are going to be stored on the state database and that costs gas. 
-
-* The local variables are not stored in the state database and their value is discarded after they are used. There is no cost to store them. There is a cost to process them in the calculation but there is no cost to store them. 
-
-At this point, we can define state and local variables as follows: 
-
-* State variables are those that are defined at the contract level, outside of any function, and their values are stored on the blockchain.
-
-* Local variables are those that are defined inside a function, and their values are temporary, existing only during the execution of that function.
-
-## Boolean variables {#boolean-variables}
-
-Boolean variables can take two values, true or false. Let us use this in our function. We will create a new variable called isProfitable which will indicate with true or false whether the company is profitable.
-
-Add the if statement as shown below. It specifies when isProfitable will be true or false. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-     
-    //Integers & booleans  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-        
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits(int sales,int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
-    }  
-}
-
-Compile the code. It does not compile. Why? That is because we have not declared the type of isProfitable. Its type is bool, which is short for boolean.  Let us also assume that isProfitable is to be visible to anyone outside the contract. Therefore, we will also need to make it public. 
-
-Make changes as shown below. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables  
-   
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-     
-    //Integers & booleans  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-     
-    bool public isProfitable; // boolean variable that is true when profits \> 0      
-                              // and false otherwise  
-     
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits(int sales,int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
-    }  
-}
-
-Now compile the contract. Then deploy it and interface with it via Remix. Enter some values for sales and expenses and execute the determineProfits function (by clicking on it). Then view values for isProfitable and profits. 
-
-Delete the deployed contract. 
-
-## String variables  {#string-variables}
-
-What if we wish to communicate a message (e.g., Well done\! or Got to do better next time) depending on whether or not we make profits? For that, we first define a string variable called message. We make it public so that it is accessible from outside the contract (for us that means that it is accessible via the Remix interface; if we don’t make it public, we will not be able to see it in our Remix interface). Then we use it in our function for determining profits. See below.
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables  
-   
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-     
-    //Integers, booleans, & strings  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-   
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-     
-    string public message; //message about performance  
-     
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits(int sales,int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
-}
-
-Compile the code. Deploy it and access it via the Remix interface. Enter some values for sales and expenses. Execute the determineProfits function and observe the results. 
-
-Delete the deployed contract before proceeding. 
-
-| Exercise: Putting your knowledge to work This exercise gives you a chance to apply what you have learned about variables, data types, conditional logic, function visibility, and the use of “require” statements in Solidity. The contract you see below is meant to evaluate whether a project stayed within its budget. It compares the project’s budget and actual cost, calculates the resulting savings, and provides a message that indicates whether the project was under or over budget. Your task is to complete the missing parts of the code by filling in the blanks. Use the correct Solidity keywords, logical expressions, and values where appropriate. Once you have filled in all blanks, compile and deploy your contract in Remix to test whether it behaves as expected. Then answer the questions provided after the following code.  // SPDX-License-Identifier: UNLICENSED // Purpose: To evaluate whether a project stayed within its budget pragma solidity \>=0.8.2 \<0.9.0; contract BudgetEvaluator {     // Step 1: Declare variables     \_\_\_\_\_ \_\_\_\_\_ savings;          // can be positive or negative     \_\_\_\_\_ \_\_\_\_\_ isUnderBudget;    // true if project cost \<= budget     \_\_\_\_\_ \_\_\_\_\_ message;          // conveys result message     // Step 2: Create the function     function evaluateProject(\_\_\_\_\_ budget, \_\_\_\_\_ actualCost) \_\_\_\_\_ {                  // Step 3: Statement to guard against negative inputs         require(\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_, "Inputs must be non-negative");         // Step 4: Compute savings         savings \= \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_;         // Step 5: Determine message and boolean result         if (savings \>= 0\) {             isUnderBudget \= \_\_\_\_\_;             message \= "\_\_\_\_\_";         } else {             isUnderBudget \= \_\_\_\_\_;             message \= "\_\_\_\_\_";         }     } }  Questions  Which variables are state variables, and which are local? What happens if you switch the visibility of the function private? If a project exceeds its budget, what values do you expect for savings, isUnderBudget, and message? How would you modify the code to prevent future updates once the evaluation is done? (hint: create a boolean variable called "evaluationDone" and make it “true” once the function is executed) |
-| :---- |
-
-## Arrays {#arrays}
-
-An array is a data structure that stores a sequential collection of elements of the same type. 
-
-* For instance, a collection of sales over four quarters can be considered as an array. 
-
-* Likewise, a collection of expenses over four quarters can also be considered as an array. 
-
-See the following illustration. Make a note of the language that is used. Pay attention to the ideas of array length, array element, and index. 
-
-![][image7]
-
-The arrays that we see in the above figure are fixed length arrays because their length can be specified a priori. 
-
-But we often have situations in which it is not possible to specify the length of the array. The length of the array may vary depending on the situation. An array used in such a case is called a dynamic array.  
-
-### Defining an array in Solidity {#defining-an-array-in-solidity}
-
-|  Definition in Solidity | What does it refer to? |
-| :---- | :---- |
-| int\[4\] profits | An array called profits consisting of 4 integers, one for each quarter’s profits |
-| uint\[3\] examGrades | An array called examGrades consisting of 3 unsigned integers for the three exams in a class |
-| bool\[3\] healthy | An array called healthy indicating whether someone is healthy or not for members of a 3-person family |
-| string\[5\] gender | An array called gender indicating gender of individuals in a 5-person group |
-| int\[\] manyInt | An array called manyInt consisting of unspecified number of integers     |
-| uint\[\] severalUint | An array called severalUint consisting of unspecified number of unsigned integers |
-| bool\[\] tooManyBool | An array called tooManyBool consisting of unspecified number of boolean values  |
-| string\[\] severalStrings | An array called severalStrings consisting of unspecified number of strings |
-
-#### 
-
-| Exercise: Declaring arrays  Type the following into Remix. // SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   contract arrayDetour {         int\[3\] public aNumericArray \= \[3,5,7\];     string\[2\] public aStringArray;     bool\[4\] public aBooleanArray;     }  Try to compile the code. It will give you a compilation error. That is because 3, 5, 7 for aNumericArray can be both int and uint. That is confusing the compiler, even though you define the array as consisting of int values. We have to take one more explicit step as shown below. // SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   contract arrayDetour {         int\[3\] public aNumericArray \= \[int(3),int(5),int(7)\];     string\[2\] public aStringArray;     bool\[4\] public aBooleanArray;     }  We have to be explicit when specifying the elements even though we have declared the array as int\[3\] because the Solidity compiler builds the array literal \[3, 5, 7\] first, and only then tries to match it to int\[3\]. At the moment it constructs \[3, 5, 7\], it does not yet know that you intend those numbers to be signed integers — each literal 3, 5, and 7 is “typeless” for it. And, therefore, we have to specify its type explicitly.  We can also do the following for greater efficiency. // SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   contract arrayDetour {         int\[3\] public aNumericArray \= \[int(3),5,7\];     string\[2\] public aStringArray;     bool\[4\] public aBooleanArray;     }  Compile, deploy, and access via the Remix interface. Then do the following: Click on the \> sign to the left of the newly deployed contract in the contract panel.  Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why do you see what you see?  Hint: when you are entering a value, you are entering an index and Ethereum shows you the element at that index position. If nothing has been entered into an array, you see default values. For boolean arrays, the default is false. For string arrays, the default is blank. For numeric arrays, the default is 0 Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience.  Delete the deployed contract before proceeding.  |
-| :---- |
-
-#### 
-
-| Exercise: Entering values into arrays when declaring them One way to add values for the arrays (as in the case of booleans, strings, and integers) is when we declare them. When we do this, we say that the values are provided “inline.”  The following code illustrates this possibility. Type it into Remix.  // SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;   contract arrayDetour {         int\[3\] public aNumericArray \= \[int(3\),5,7\];     string\[2\] public aStringArray \= \['I am', 'I do'\];     bool\[4\] public aBooleanArray \= \[true, false, true, false\];     }  Compile, deploy, and access via the Remix interface. Then do the following: Click on the \> sign to the left of the newly deployed contract in the contract panel.  Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 3 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 4 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Look at the feedback for the transaction in the terminal at the bottom right. You will see that there was an error. That is because you are using an undefined index for aBooleanArray which has elements whose indexes are 0, 1, 2, and 3\. There are no additional elements and, therefore, the element at index \= 4 is undefined.  Why do you see what you see?  Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience.  Delete the deployed contract before proceeding.  |
-| :---- |
-
-#### We have so far set values of variables “inline”. This method sets values of variables when they are declared. But that is not the only method. We can also set values using a function. The following exercises illustrate that method. We first use that method to set values for variables that are integer, boolean, and string. We then use that method to set values for an array.  {#we-have-so-far-set-values-of-variables-“inline”.-this-method-sets-values-of-variables-when-they-are-declared.-but-that-is-not-the-only-method.-we-can-also-set-values-using-a-function.-the-following-exercises-illustrate-that-method.-we-first-use-that-method-to-set-values-for-variables-that-are-integer,-boolean,-and-string.-we-then-use-that-method-to-set-values-for-an-array.}
-
-#### 
-
-| Exercise: Entering using a function (part 1\) The following code illustrates setting values of integers, strings, and booleans using a function.  // SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   contract assignValues {         int public anInteger;     string public aString;     bool public aBoolean;         function setValues() public {                 anInteger\=3;         aString\='I am';         aBoolean\=true;     } }  Compile, deploy, and access via the Remix interface.  Check the values of the variables by clicking on the buttons representing them.  What do you observe for anInteger?  What do you observe for aString? What do you observe for aBoolean? Be sure to explain your answers. Click on setValues. Check the values that have been assigned to the variables.  How does this method of setting values compare to the “inline”method in terms of the usage of gas? Who pays for the execution of the setValues function?  If using a function to enter values is more expensive, why use it? The answer is implied in the exercise after the next one below (answer: it gives you the flexibility to keep the values variable – in other words, you can write a function to accept values from a user and set or change them to whatever a user wants) Delete the deployed contract before proceeding. |
-| :---- |
-
-| Exercise: Entering values into arrays using a function We will now see how to add values for arrays using a function.   Copy the following code into Remix.  // SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   contract arrayDetour {         int\[3\] public aNumericArray;     string\[2\] public aStringArray;     bool\[4\] public aBooleanArray;         function setValues() public {                 aNumericArray\=\[int(3),5,7\];         aStringArray\=\['I am', 'I do'\];         aBooleanArray \= \[true, false, true, false\];     }   }  Compile, deploy, and access it via the Remix interface. Then do the following: Click on the \> sign to the left of the newly deployed contract in the contract panel.  Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aStringArray and press the aStringArray button. What do you see? Why? Click on setValues. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Repeat the process to check if the remaining elements of aBooleanArray and the elements of aNumericArray and aStringArray have been set properly.  Delete the deployed contract before proceeding. |
-| :---- |
-
-#### 
-
-| Exercise  What does the following contract accomplish? Try to understand its logic and compare its method of entering values into an array with the previous two methods you have learned so far. Compile, deploy, and access it via the Remix interface to learn more about it.   // SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   contract arrayDetour {         int\[3\] public aNumericArray;         function setValues(int x, int y, int z) public {                 aNumericArray\=\[x,y,z\];             }   }  Delete the deployed contract before proceeding. |
-| :---- |
-
-### Use of arrays in a smart contract {#use-of-arrays-in-a-smart-contract}
-
-To illustrate the use of arrays, we will use arrays for sales and expenses in our contract.
-
-| Exercise  Type the following contract into Remix.   // SPDX-License-Identifier: UNLICENSED // Practicing types of variables  pragma solidity \>=0.8.2 \<0.9.0;   contract Types {         //Integers         int public profits; //profits in wei; it is in int because it can be negative         bool public isProfitable; // boolean variable that is true when profits \> 0                               // and false otherwise         string public message; //message about performance         int\[4\] quarterSales \= \[int(4),3,2,5\];         int\[4\] quarterExpenses \= \[int(2),3,3,4\];       //in the following sales and expenses are in weis     function determineProfits() public {                 int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+                     quarterSales\[3\];           int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+                        quarterExpenses\[2\] \+ quarterExpenses\[3\];                 require(sales\>=0 && expenses\>=0);         profits \= sales \- expenses;                 if (profits \> 0) {             isProfitable \= true;             message \= "Well done\!";}             else {                 isProfitable \= false;                 message \= "Got to do better next time";}     } }  A few things to note.  Since any of the arrays is to contain integers and its length is 4, we declared it as int\[4\].  The values of the elements of the array have been entered inline, i.e., along with the declaration of the array. We can also set the values by asking the user to provide input for a function. We will see that method later. There is no real need to declare the two arrays (i.e., quarterSales and quarterExpenses) as public. Their use is for computing the total sales and expenses. We will achieve nothing by making them public. We are able to achieve our purpose (i.e., computing the total sales and expenses) without having to make them public.  The function no longer has inputs or arguments. That is because it makes use of array elements that are defined in the state database by the current contract. We are not calling this function from another contract. Were we to call it from another contract, we would have had to include inputs or arguments to pass from the other contract.  Compile and deploy. Then interface with it via Remix. Click on determineProfits and see the results.  Delete the deployed contract before proceeding.  |
-| :---- |
-
-### Specification of array values within the function {#specification-of-array-values-within-the-function}
-
-There is another way in which one can specify values for the array. Since there is no use of the values of the elements of the array outside the function, you could specify the values within the function. Type the following and try to compile it.
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-     
-    //Integers  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-   
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-    string public message; //message about performance  
-   
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits() public {  
-         
-        int\[4\] quarterSales \= \[int(4),3,2,5\];  
-   
-        int\[4\] quarterExpenses \= \[int(2),3,3,4\];  
-         
-         
-        int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
-                    quarterSales\[3\];  
-   
-        int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
-                       quarterExpenses\[2\] \+ quarterExpenses\[3\];  
-         
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
-}
-
-The compilation fails. Why? 
-
-One of the reasons has to do with the fact that Solidity is not clear about where quarterSales and quarterExpenses should be placed. 
-
-Note that the arrays ‘quarterSales’ and ‘quarterExpenses’ are local variables. The arrays are useful only within the function to calculate profits. We are not interested in saving them (let us assume that for the time being) over the long term.  We have dealt with local variables before when we included sales and expenses within a function. We are doing the same here but Solidity is facing an issue. The issue arises because arrays are a complex variable type and whenever we are dealing with complex variable types as local variables, we have to make it clear to Solidity that we will store them in a special way. That special way is referred to as memory. We use the keyword ‘memory’ to specify that special way. 
-
-See the code below to understand where we include the keyword. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-     
-    //Integers  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-   
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-    string public message; //message about performance  
-   
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits() public {  
-         
-        int\[4\] memory quarterSales \= \[int(4),3,2,5\];  
-   
-        int\[4\] memory quarterExpenses \= \[int(2),3,3,4\];  
-         
-         
-        int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
-                    quarterSales\[3\];  
-   
-        int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
-                       quarterExpenses\[2\] \+ quarterExpenses\[3\];  
-         
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
-}
-
-Try to compile it. The error goes away. 
-
-Deploy it and interact with it via the Remix interface. Observe the results.
-
-Play around with the numbers for quarterSales and quarterExpenses. Use figures that will result in negative profits. Recompile every time. And deploy the newly compiled smart contract every time to be able to see the results of your changes. 
-
-You are sharp. You observe a disparity between what you see in the code and the explanation I gave about memory. Specifically, you observe that we don't really need 'sales' and 'expenses' outside the function. Yet, they do not have the 'memory' keyword in the lines where we declare them. Well, Solidity is fussy about using the memory keyword for only certain types of local variables. Specifically, it is fussy about using it only for variables that are considered as complex types. These include strings and arrays. There are additional types that are considered to be complex (e.g., structs). We have not dealt with them yet. For simpler or primitive types such as boolean and integer (and address, which we have not dealt with yet), it knows where to put them depending on whether we use them entirely within a function or outside it. 
-
-Delete the deployed contract before proceeding. 
-
-### Passing an array via a function {#passing-an-array-via-a-function}
-
-We can also provide an array to a function from outside it by making it an input or an argument for the function. See below where we pass the arrays representing quarterSales and quarterExpenses via arguments of the function 'determineProfits'. You will notice that since we are passing arrays to a function and we are not referring to those arrays elsewhere within the contract (i.e., nowhere else except the single function within the contract), we store them in memory using the 'memory' keyword. 
-
-Type the following and compile it. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-pragma solidity \>=0.8.2 \<0.9.0;
-
-contract Types {  
-     
-    //Integers  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-   
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-    string public message; //message about performance  
-   
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits(int\[4\] memory quarterSales, int\[4\] memory quarterExpenses) public {  
-         
-        int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
-                    quarterSales\[3\];  
-   
-        int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
-                       quarterExpenses\[2\] \+ quarterExpenses\[3\];  
-         
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
-}
-
-Deploy it after compilation. 
-
-To interact with it, click on the arrow to the left of the name of the contract under 'Deployed Contracts'. Then click on the down arrow to the right of the input space for determineProfits. You will see something like the following:
-
-![][image8]
-
-In the spaces that show up for quarterSales and quarterExpenses, type in \[4,3,2,5\] as the input for quarterSales and \[2,3,3,4\] as the input for quarterExpenses. Click on transact. Then click on isProfitable, message, and profits. Observe the results.
-
-Change the values for quarterSales and quarterExpenses. After typing in your input, repeat the rest of the process and observe the results.
-
-Delete the deployed contract before proceeding. 
-
-### Processing array values in a more sophisticated way {#processing-array-values-in-a-more-sophisticated-way}
-
-Type the code in the following box. 
-
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables
-
-   
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
-     
-    //Integers  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-   
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-    string public message; //message about performance  
-   
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits(int\[4\] memory quarterSales, int\[4\]  
-        memory quarterExpenses) public {  
-         
-        int sales; //this is the same as int sales \= 0;  
-         
-        for (uint i \= 0; i \< 4; i\++)  
-        {  
-            sales \+= quarterSales\[i\]; // this is the same as sales \=  
-                                      // sales \+ quarterSales\[i\];  
-        }  
-         
-        int expenses; //this is the same as int expenses=0;  
-         
-        for (uint i \= 0; i \< 4; i\++)  
-        {  
-            expenses \+= quarterExpenses\[i\]; // this is the same as expenses \=  
-                                            // expenses \+ quarterExpenses\[i\];  
-        }  
-         
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
-}
-
-You will notice that we have done away with 
-
-int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+ quarterSales\[3\];   
-int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+ quarterExpenses\[2\] \+ quarterExpenses\[3\];
-
-Instead, we have two 'for' loops. Try to understand them before compiling your code. Try to formulate in your own words what those loops are trying to achieve. 
-
-Compile the contract. Deploy and carry out the same steps as for the previous contract (e.g., enter inputs for quarterSales and quarterExpenses). Observe the results. 
+We are all set at this point.
 
 Delete the deployed contract before proceeding.
 
-We can make the above program more flexible by making changes in the for loop as shown below.  Specifically, we use quarterSales.length instead of 4 when specifying i \< 4 in the first for loop. Likewise, we use quarterExpenses.length instead of 4 when specifying i \< 4 in the second for loop.. Adding .length at the end of quarterSales gives us the length of the array which is 4\. Likewise quarterExpenses.length gives us 4\. 
+### State versus local variables <a href="#state-versus-local-variables" id="state-versus-local-variables"></a>
 
-// SPDX-License-Identifier: UNLICENSED  
-// Practicing types of variables  
-   
-pragma solidity \>=0.8.2 \<0.9.0;  
-   
-contract Types {  
+When you consider sales and expenses in the following code, you notice that they have utility inside the function statement. They don't exist outside the function. In other words, they are local to the function. Consequently, they are known as local variables. Profit exists outside the function. It exists outside the function within the contract. It is a state variable. It is going to exist in the state database.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers  
      
-    //Integers  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-   
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-    string public message; //message about performance  
-   
-    //in the following sales and expenses are in weis  
-   
-    function determineProfits(int\[4\] memory quarterSales, int\[4\]  
-        memory quarterExpenses) public {  
-         
-        int sales; //this is the same as int sales \= 0;  
-         
-        for (uint i \= 0; i \< quarterSales.length; i\++)  
-        {  
-            sales \+= quarterSales\[i\]; // this is the same as sales \=  
-                                      // sales \+ quarterSales\[i\];  
-        }  
-         
-        int expenses; //this is the same as int expenses=0;  
-         
-        for (uint i \= 0; i \< quarterExpenses.length; i\++)  
-        {  
-            expenses \+= quarterExpenses\[i\]; // this is the same as expenses \=  
-                                            // expenses \+ quarterExpenses\[i\];  
-        }  
-         
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
+int public profits; //profits in wei; it is in int because it can be negative  
+ 
+function determineProfits(int sales, int expenses) public {  
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+}  
+```
+
 }
 
-Compile the contract. Deploy and carry out the same steps as for the previous contract (e.g., enter inputs for quarterSales and quarterExpenses). Observe the results. 
+Why should we be concerned about state versus local variables?
 
-Note that in the line where we begin to define the function (i.e., function determineProfits(int\[4\] memory quarterSales, int\[4\]  memory quarterExpenses)), both quarterSales and quarterExpenses are defined as int\[4\]. That is still hardwiring. While the code will work if we have 4 integers for sales and 4 integers for expenses, it will not work if we have, say, 52 integers for sales (i.e., we may be considering weekly sales) or 52 integers for expenses (i.e., we may be considering weekly expenses). For our code to work then, we would need to change the initial part of the function to the following: function determineProfits(int\[\] memory quarterSales, int\[\]  memory quarterExpenses). We have made both quarterSales and quarterExpenses as dynamic arrays. Now our code affords the flexibility to change the length of the arrays for quarterSales and quarterExpenses. 
+* State variables cost more gas on the Ethereum platform. They are going to be stored on the state database and that costs gas.
+* The local variables are not stored in the state database and their value is discarded after they are used. There is no cost to store them. There is a cost to process them in the calculation but there is no cost to store them.
 
-Delete the deployed contract before proceeding. 
+At this point, we can define state and local variables as follows:
 
-### Making sense of the for loop {#making-sense-of-the-for-loop}
+* State variables are those that are defined at the contract level, outside of any function, and their values are stored on the blockchain.
+* Local variables are those that are defined inside a function, and their values are temporary, existing only during the execution of that function.
 
-How do we make sense of the for loop? The following table takes us through the steps for the loop for sales. We start with the step where we define sales as an integer. 
+### Boolean variables <a href="#boolean-variables" id="boolean-variables"></a>
 
-|   Step |  Meaning |
-| :---- | :---- |
-| int sales | This creates a new variable called sales. It is of the type 'int'. Its value is 0 (default value). |
-| for (uint i \= 0; i \< quarterSales.length; i++) | This begins a loop. The first time around, it set i (of the type uint) to 0\. It checks if 0 is less than the length of the array quarterSales, which is 4\. 0 is less than 4\. It continues to execute the processes within the {} of the for loop.  |
-| sales \+= quarterSales\[i\] | The first thing within {} is this operation. It means that previous sales should be incremented by quarterSales\[0\] (because i \= 0\]. Previous value of sales is equal to zero (first step above). To 0 it adds quarterSales\[0\], which are first quarter sales.  |
-|   | At this point, since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1\. Previously it was 0\. It is incremented to 1\. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 1 is compared to 4 to see if it is less. It is. The program then proceeds to the operation within {} of the for loop.  |
-| sales \+= quarterSales\[i\] | This is asking the program to increment sales by quarterSales\[1\] (remember that i is 1 at this point). The previous sales is quarterSales\[0\]. This operation ends up adding quarterSales\[0\] and quarterSales\[1\]. So far, so good.  |
-|   | Since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1\. Previously it was 1\. It is incremented to 2\. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 2 is compared to 4 to see if it is less. It is. The program then proceeds to the operation within {} of the for loop.  |
-| sales \+= quarterSales\[i\] | This is asking the program to increment sales by quarterSales\[2\] (remember that i is 2 at this point). The previous sales is quarterSales\[0\] \+ quarterSales\[1\]. This operation ends up adding quarterSales\[2\] to quarterSales\[0\] \+ quarterSales\[1\]. Again, this is good up to now. 9 |
-|   | Since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1\. Previously it was 2\. It is incremented to 3\. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 3 is compared to 4 to see if it is less. It is. The program then proceeds to the operation within {} of the for loop.  |
-| sales \+= quarterSales\[i\] | This is asking the program to increment sales by quarterSales\[3\] (remember that i is 3 at this point). The previous sales is quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\]. This operation ends up adding quarterSales\[3\] to quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\].   |
-|   | Since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1\. Previously it was 3\. It is incremented to 4\. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 4 is compared to 4 to see if it is less. It is not\! The program then exits the for loop and goes to the statement after {} of the loop. At this point we have sales equal to quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+ quarterSales\[3\]. This is the total sales for the year. We are good.  |
+Boolean variables can take two values, true or false. Let us use this in our function. We will create a new variable called isProfitable which will indicate with true or false whether the company is profitable.
 
-One can understand the 'for loop' for calculating total expenses in the same way. 
+Add the if statement as shown below. It specifies when isProfitable will be true or false.
 
-### Adding an element in an array {#adding-an-element-in-an-array}
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
 
-How does one add a new element to an array? See the following exercises which illustrate how to add an element in static and dynamic arrays. Try out the exercises on your own. 
+pragma solidity >=0.8.2 <0.9.0;
 
-| Exercise: Adding elements in static arrays  The following code helps you to fill the elements of a static array of length 4 and consisting of integers without having to hardwire it. You can also use this process of filling an element in a particular position to change the value at that position. We make the array public so that we can see values in it at any time.  // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays   pragma solidity \>=0.8.2 \<0.9.0;   contract moreWithArrays {         int\[4\] public aStaticArray;         function addValues(uint index, int value) public {         aStaticArray\[index\] \= value;     } } Compile the contract and deploy it. Interact with the above code via Remix.   ![][image9] Type 3,5 to the right of addValues and click on addValues. Type 0 to the right of aStaticArray. Click on aStaticArray. What do you observe? Type 1 where you had typed 0 and follow the same process. What do you observe? Type 2 where you had typed 1 and follow the same process. What do you observe? Type 3 where you had typed 1 and follow the same process. What do you observe? Do you know how you will fill the other values in the array? What if you wish to change the value in any index position? Let us say that we wish to change the value for index \= 3 to 10\. Do the following: Type 3,10 to the right of addValues and click on addValues. Then type 3 to the right of aStaticArray and click on aStaticArray. You will see that the new value for index \= 3 is 10\.  Delete the deployed contract before proceeding.   |
-| :---- |
+contract Types {
 
-| Exercise: Adding elements in a dynamic array The following code helps you add a new book to the dynamic array allBooks (which may be the collection of your books).  // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays   pragma solidity \>=0.8.2 \<0.9.0;   contract moreWithArrays {         string\[\] public allBooks;      function addValues(string memory value) public {         allBooks.push(value);     } }  Any idea why we had to use ‘memory’ in the function ‘addValues’ when we specified that our input is a string called value?  Compile the code. Deploy it. Interact with the contract via Remix.  ![][image10] In the space to the right of addValues, enter your first book (e.g., Learn Solidity). Click on addValues. Then enter your second book (e.g., Learn Java). Click on addValues. Then enter 0 to the right of allBooks. Click on allBooks. What do you observe? Enter 1 to the right of allBooks. Click on allBooks. What do you observe? Add more books and see the results for yourself.  Can you change the title of an existing book? How would you do it? It is not possible to change the title of an existing book with the current code. Add a new function to your code as shown below to enable changing of a title. // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays   pragma solidity \>=0.8.2 \<0.9.0;   contract moreWithArrays {         string\[\] public allBooks;      function addValues(string memory value) public {         allBooks.push(value);     }     function changeValues(uint index, string memory newValue) public {         allBooks\[index\] \= newValue;     } }  Add a few books and then try to change the title of an existing book. Please note that when you change the value of an existing book, the index that you provide should be an existing one. In other words, if you have 2 books in the allBooks array, you should not try to change the value for index \= 2, 3, or higher because those indexes do not exist yet.  Delete the deployed contract before proceeding.  |
-| :---- |
+```
+//Integers & booleans  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+    
+//in the following sales and expenses are in weis  
 
-### Finding the length of an array in Solidity {#finding-the-length-of-an-array-in-solidity}
+function determineProfits(int sales,int expenses) public {  
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
+}  
+```
+
+}
+
+Compile the code. It does not compile. Why? That is because we have not declared the type of isProfitable. Its type is bool, which is short for boolean. Let us also assume that isProfitable is to be visible to anyone outside the contract. Therefore, we will also need to make it public.
+
+Make changes as shown below.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers & booleans  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+ 
+bool public isProfitable; // boolean variable that is true when profits \> 0      
+                          // and false otherwise  
+ 
+//in the following sales and expenses are in weis  
+
+function determineProfits(int sales,int expenses) public {  
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
+}  
+```
+
+}
+
+Now compile the contract. Then deploy it and interface with it via Remix. Enter some values for sales and expenses and execute the determineProfits function (by clicking on it). Then view values for isProfitable and profits.
+
+Delete the deployed contract.
+
+### String variables <a href="#string-variables" id="string-variables"></a>
+
+What if we wish to communicate a message (e.g., Well done! or Got to do better next time) depending on whether or not we make profits? For that, we first define a string variable called message. We make it public so that it is accessible from outside the contract (for us that means that it is accessible via the Remix interface; if we don’t make it public, we will not be able to see it in our Remix interface). Then we use it in our function for determining profits. See below.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers, booleans, & strings  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+
+bool public isProfitable; // boolean variable that is true when profits \> 0  
+                          // and false otherwise  
+ 
+string public message; //message about performance  
+ 
+//in the following sales and expenses are in weis  
+
+function determineProfits(int sales,int expenses) public {  
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {  
+        isProfitable \= true;  
+        message \= "Well done\!";}  
+        else {  
+            isProfitable \= false;  
+            message \= "Got to do better next time";}  
+}  
+```
+
+}
+
+Compile the code. Deploy it and access it via the Remix interface. Enter some values for sales and expenses. Execute the determineProfits function and observe the results.
+
+Delete the deployed contract before proceeding.
+
+| Exercise: Putting your knowledge to work This exercise gives you a chance to apply what you have learned about variables, data types, conditional logic, function visibility, and the use of “require” statements in Solidity. The contract you see below is meant to evaluate whether a project stayed within its budget. It compares the project’s budget and actual cost, calculates the resulting savings, and provides a message that indicates whether the project was under or over budget. Your task is to complete the missing parts of the code by filling in the blanks. Use the correct Solidity keywords, logical expressions, and values where appropriate. Once you have filled in all blanks, compile and deploy your contract in Remix to test whether it behaves as expected. Then answer the questions provided after the following code. // SPDX-License-Identifier: UNLICENSED // Purpose: To evaluate whether a project stayed within its budget pragma solidity >=0.8.2 <0.9.0; contract BudgetEvaluator { // Step 1: Declare variables \_\_\_\_\_ \_\_\_\_\_ savings; // can be positive or negative \_\_\_\_\_ \_\_\_\_\_ isUnderBudget; // true if project cost <= budget \_\_\_\_\_ \_\_\_\_\_ message; // conveys result message // Step 2: Create the function function evaluateProject(\_\_\_\_\_ budget, \_\_\_\_\_ actualCost) \_\_\_\_\_ { // Step 3: Statement to guard against negative inputs require(\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_, "Inputs must be non-negative"); // Step 4: Compute savings savings = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_; // Step 5: Determine message and boolean result if (savings >= 0) { isUnderBudget = \_\_\_\_\_; message = "\_\_\_\_\_"; } else { isUnderBudget = \_\_\_\_\_; message = "\_\_\_\_\_"; } } } Questions Which variables are state variables, and which are local? What happens if you switch the visibility of the function private? If a project exceeds its budget, what values do you expect for savings, isUnderBudget, and message? How would you modify the code to prevent future updates once the evaluation is done? (hint: create a boolean variable called "evaluationDone" and make it “true” once the function is executed) |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+### Arrays <a href="#arrays" id="arrays"></a>
+
+An array is a data structure that stores a sequential collection of elements of the same type.
+
+* For instance, a collection of sales over four quarters can be considered as an array.
+* Likewise, a collection of expenses over four quarters can also be considered as an array.
+
+See the following illustration. Make a note of the language that is used. Pay attention to the ideas of array length, array element, and index.
+
+The arrays that we see in the above figure are fixed length arrays because their length can be specified a priori.
+
+But we often have situations in which it is not possible to specify the length of the array. The length of the array may vary depending on the situation. An array used in such a case is called a dynamic array.
+
+#### Defining an array in Solidity <a href="#defining-an-array-in-solidity" id="defining-an-array-in-solidity"></a>
+
+| Definition in Solidity   | What does it refer to?                                                                                |
+| ------------------------ | ----------------------------------------------------------------------------------------------------- |
+| int\[4] profits          | An array called profits consisting of 4 integers, one for each quarter’s profits                      |
+| uint\[3] examGrades      | An array called examGrades consisting of 3 unsigned integers for the three exams in a class           |
+| bool\[3] healthy         | An array called healthy indicating whether someone is healthy or not for members of a 3-person family |
+| string\[5] gender        | An array called gender indicating gender of individuals in a 5-person group                           |
+| int\[] manyInt           | An array called manyInt consisting of unspecified number of integers                                  |
+| uint\[] severalUint      | An array called severalUint consisting of unspecified number of unsigned integers                     |
+| bool\[] tooManyBool      | An array called tooManyBool consisting of unspecified number of boolean values                        |
+| string\[] severalStrings | An array called severalStrings consisting of unspecified number of strings                            |
+
+
+
+| Exercise: Declaring arrays Type the following into Remix. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[3,5,7]; string\[2] public aStringArray; bool\[4] public aBooleanArray; } Try to compile the code. It will give you a compilation error. That is because 3, 5, 7 for aNumericArray can be both int and uint. That is confusing the compiler, even though you define the array as consisting of int values. We have to take one more explicit step as shown below. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[int(3),int(5),int(7)]; string\[2] public aStringArray; bool\[4] public aBooleanArray; } We have to be explicit when specifying the elements even though we have declared the array as int\[3] because the Solidity compiler builds the array literal \[3, 5, 7] first, and only then tries to match it to int\[3]. At the moment it constructs \[3, 5, 7], it does not yet know that you intend those numbers to be signed integers — each literal 3, 5, and 7 is “typeless” for it. And, therefore, we have to specify its type explicitly. We can also do the following for greater efficiency. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[int(3),5,7]; string\[2] public aStringArray; bool\[4] public aBooleanArray; } Compile, deploy, and access via the Remix interface. Then do the following: Click on the > sign to the left of the newly deployed contract in the contract panel. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why do you see what you see? Hint: when you are entering a value, you are entering an index and Ethereum shows you the element at that index position. If nothing has been entered into an array, you see default values. For boolean arrays, the default is false. For string arrays, the default is blank. For numeric arrays, the default is 0 Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience. Delete the deployed contract before proceeding. |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+
+
+| Exercise: Entering values into arrays when declaring them One way to add values for the arrays (as in the case of booleans, strings, and integers) is when we declare them. When we do this, we say that the values are provided “inline.” The following code illustrates this possibility. Type it into Remix. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[int(3),5,7]; string\[2] public aStringArray = \['I am', 'I do']; bool\[4] public aBooleanArray = \[true, false, true, false]; } Compile, deploy, and access via the Remix interface. Then do the following: Click on the > sign to the left of the newly deployed contract in the contract panel. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 3 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 4 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Look at the feedback for the transaction in the terminal at the bottom right. You will see that there was an error. That is because you are using an undefined index for aBooleanArray which has elements whose indexes are 0, 1, 2, and 3. There are no additional elements and, therefore, the element at index = 4 is undefined. Why do you see what you see? Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience. Delete the deployed contract before proceeding. |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+**We have so far set values of variables “inline”. This method sets values of variables when they are declared. But that is not the only method. We can also set values using a function. The following exercises illustrate that method. We first use that method to set values for variables that are integer, boolean, and string. We then use that method to set values for an array.**
+
+
+
+| Exercise: Entering using a function (part 1) The following code illustrates setting values of integers, strings, and booleans using a function. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract assignValues { int public anInteger; string public aString; bool public aBoolean; function setValues() public { anInteger=3; aString='I am'; aBoolean=true; } } Compile, deploy, and access via the Remix interface. Check the values of the variables by clicking on the buttons representing them. What do you observe for anInteger? What do you observe for aString? What do you observe for aBoolean? Be sure to explain your answers. Click on setValues. Check the values that have been assigned to the variables. How does this method of setting values compare to the “inline”method in terms of the usage of gas? Who pays for the execution of the setValues function? If using a function to enter values is more expensive, why use it? The answer is implied in the exercise after the next one below (answer: it gives you the flexibility to keep the values variable – in other words, you can write a function to accept values from a user and set or change them to whatever a user wants) Delete the deployed contract before proceeding. |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+| Exercise: Entering values into arrays using a function We will now see how to add values for arrays using a function. Copy the following code into Remix. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray; string\[2] public aStringArray; bool\[4] public aBooleanArray; function setValues() public { aNumericArray=\[int(3),5,7]; aStringArray=\['I am', 'I do']; aBooleanArray = \[true, false, true, false]; } } Compile, deploy, and access it via the Remix interface. Then do the following: Click on the > sign to the left of the newly deployed contract in the contract panel. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aStringArray and press the aStringArray button. What do you see? Why? Click on setValues. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Repeat the process to check if the remaining elements of aBooleanArray and the elements of aNumericArray and aStringArray have been set properly. Delete the deployed contract before proceeding. |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+
+
+| Exercise What does the following contract accomplish? Try to understand its logic and compare its method of entering values into an array with the previous two methods you have learned so far. Compile, deploy, and access it via the Remix interface to learn more about it. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray; function setValues(int x, int y, int z) public { aNumericArray=\[x,y,z]; } } Delete the deployed contract before proceeding. |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+#### Use of arrays in a smart contract <a href="#use-of-arrays-in-a-smart-contract" id="use-of-arrays-in-a-smart-contract"></a>
+
+To illustrate the use of arrays, we will use arrays for sales and expenses in our contract.
+
+| Exercise Type the following contract into Remix. // SPDX-License-Identifier: UNLICENSED // Practicing types of variables pragma solidity >=0.8.2 <0.9.0; contract Types { //Integers int public profits; //profits in wei; it is in int because it can be negative bool public isProfitable; // boolean variable that is true when profits > 0 // and false otherwise string public message; //message about performance int\[4] quarterSales = \[int(4),3,2,5]; int\[4] quarterExpenses = \[int(2),3,3,4]; //in the following sales and expenses are in weis function determineProfits() public { int sales = quarterSales\[0] + quarterSales\[1] + quarterSales\[2] + quarterSales\[3]; int expenses = quarterExpenses\[0] + quarterExpenses\[1] + quarterExpenses\[2] + quarterExpenses\[3]; require(sales>=0 && expenses>=0); profits = sales - expenses; if (profits > 0) { isProfitable = true; message = "Well done!";} else { isProfitable = false; message = "Got to do better next time";} } } A few things to note. Since any of the arrays is to contain integers and its length is 4, we declared it as int\[4]. The values of the elements of the array have been entered inline, i.e., along with the declaration of the array. We can also set the values by asking the user to provide input for a function. We will see that method later. There is no real need to declare the two arrays (i.e., quarterSales and quarterExpenses) as public. Their use is for computing the total sales and expenses. We will achieve nothing by making them public. We are able to achieve our purpose (i.e., computing the total sales and expenses) without having to make them public. The function no longer has inputs or arguments. That is because it makes use of array elements that are defined in the state database by the current contract. We are not calling this function from another contract. Were we to call it from another contract, we would have had to include inputs or arguments to pass from the other contract. Compile and deploy. Then interface with it via Remix. Click on determineProfits and see the results. Delete the deployed contract before proceeding. |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+#### Specification of array values within the function <a href="#specification-of-array-values-within-the-function" id="specification-of-array-values-within-the-function"></a>
+
+There is another way in which one can specify values for the array. Since there is no use of the values of the elements of the array outside the function, you could specify the values within the function. Type the following and try to compile it.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+
+bool public isProfitable; // boolean variable that is true when profits \> 0  
+                          // and false otherwise  
+string public message; //message about performance  
+
+//in the following sales and expenses are in weis  
+
+function determineProfits() public {  
+     
+    int\[4\] quarterSales \= \[int(4),3,2,5\];  
+
+    int\[4\] quarterExpenses \= \[int(2),3,3,4\];  
+     
+     
+    int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
+                quarterSales\[3\];  
+
+    int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
+                   quarterExpenses\[2\] \+ quarterExpenses\[3\];  
+     
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {  
+        isProfitable \= true;  
+        message \= "Well done\!";}  
+        else {  
+            isProfitable \= false;  
+            message \= "Got to do better next time";}  
+}  
+```
+
+}
+
+The compilation fails. Why?
+
+One of the reasons has to do with the fact that Solidity is not clear about where quarterSales and quarterExpenses should be placed.
+
+Note that the arrays ‘quarterSales’ and ‘quarterExpenses’ are local variables. The arrays are useful only within the function to calculate profits. We are not interested in saving them (let us assume that for the time being) over the long term. We have dealt with local variables before when we included sales and expenses within a function. We are doing the same here but Solidity is facing an issue. The issue arises because arrays are a complex variable type and whenever we are dealing with complex variable types as local variables, we have to make it clear to Solidity that we will store them in a special way. That special way is referred to as memory. We use the keyword ‘memory’ to specify that special way.
+
+See the code below to understand where we include the keyword.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+
+bool public isProfitable; // boolean variable that is true when profits \> 0  
+                          // and false otherwise  
+string public message; //message about performance  
+
+//in the following sales and expenses are in weis  
+
+function determineProfits() public {  
+     
+    int\[4\] memory quarterSales \= \[int(4),3,2,5\];  
+
+    int\[4\] memory quarterExpenses \= \[int(2),3,3,4\];  
+     
+     
+    int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
+                quarterSales\[3\];  
+
+    int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
+                   quarterExpenses\[2\] \+ quarterExpenses\[3\];  
+     
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {  
+        isProfitable \= true;  
+        message \= "Well done\!";}  
+        else {  
+            isProfitable \= false;  
+            message \= "Got to do better next time";}  
+}  
+```
+
+}
+
+Try to compile it. The error goes away.
+
+Deploy it and interact with it via the Remix interface. Observe the results.
+
+Play around with the numbers for quarterSales and quarterExpenses. Use figures that will result in negative profits. Recompile every time. And deploy the newly compiled smart contract every time to be able to see the results of your changes.
+
+You are sharp. You observe a disparity between what you see in the code and the explanation I gave about memory. Specifically, you observe that we don't really need 'sales' and 'expenses' outside the function. Yet, they do not have the 'memory' keyword in the lines where we declare them. Well, Solidity is fussy about using the memory keyword for only certain types of local variables. Specifically, it is fussy about using it only for variables that are considered as complex types. These include strings and arrays. There are additional types that are considered to be complex (e.g., structs). We have not dealt with them yet. For simpler or primitive types such as boolean and integer (and address, which we have not dealt with yet), it knows where to put them depending on whether we use them entirely within a function or outside it.
+
+Delete the deployed contract before proceeding.
+
+#### Passing an array via a function <a href="#passing-an-array-via-a-function" id="passing-an-array-via-a-function"></a>
+
+We can also provide an array to a function from outside it by making it an input or an argument for the function. See below where we pass the arrays representing quarterSales and quarterExpenses via arguments of the function 'determineProfits'. You will notice that since we are passing arrays to a function and we are not referring to those arrays elsewhere within the contract (i.e., nowhere else except the single function within the contract), we store them in memory using the 'memory' keyword.
+
+Type the following and compile it.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+
+bool public isProfitable; // boolean variable that is true when profits \> 0  
+                          // and false otherwise  
+string public message; //message about performance  
+
+//in the following sales and expenses are in weis  
+
+function determineProfits(int\[4\] memory quarterSales, int\[4\] memory quarterExpenses) public {  
+     
+    int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
+                quarterSales\[3\];  
+
+    int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
+                   quarterExpenses\[2\] \+ quarterExpenses\[3\];  
+     
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {  
+        isProfitable \= true;  
+        message \= "Well done\!";}  
+        else {  
+            isProfitable \= false;  
+            message \= "Got to do better next time";}  
+}  
+```
+
+}
+
+Deploy it after compilation.
+
+To interact with it, click on the arrow to the left of the name of the contract under 'Deployed Contracts'. Then click on the down arrow to the right of the input space for determineProfits. You will see something like the following:
+
+In the spaces that show up for quarterSales and quarterExpenses, type in \[4,3,2,5] as the input for quarterSales and \[2,3,3,4] as the input for quarterExpenses. Click on transact. Then click on isProfitable, message, and profits. Observe the results.
+
+Change the values for quarterSales and quarterExpenses. After typing in your input, repeat the rest of the process and observe the results.
+
+Delete the deployed contract before proceeding.
+
+#### Processing array values in a more sophisticated way <a href="#processing-array-values-in-a-more-sophisticated-way" id="processing-array-values-in-a-more-sophisticated-way"></a>
+
+Type the code in the following box.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+
+bool public isProfitable; // boolean variable that is true when profits \> 0  
+                          // and false otherwise  
+string public message; //message about performance  
+
+//in the following sales and expenses are in weis  
+
+function determineProfits(int\[4\] memory quarterSales, int\[4\]  
+    memory quarterExpenses) public {  
+     
+    int sales; //this is the same as int sales \= 0;  
+     
+    for (uint i \= 0; i \< 4; i\++)  
+    {  
+        sales \+= quarterSales\[i\]; // this is the same as sales \=  
+                                  // sales \+ quarterSales\[i\];  
+    }  
+     
+    int expenses; //this is the same as int expenses=0;  
+     
+    for (uint i \= 0; i \< 4; i\++)  
+    {  
+        expenses \+= quarterExpenses\[i\]; // this is the same as expenses \=  
+                                        // expenses \+ quarterExpenses\[i\];  
+    }  
+     
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {  
+        isProfitable \= true;  
+        message \= "Well done\!";}  
+        else {  
+            isProfitable \= false;  
+            message \= "Got to do better next time";}  
+}  
+```
+
+}
+
+You will notice that we have done away with
+
+int sales = quarterSales\[0] + quarterSales\[1] + quarterSales\[2] + quarterSales\[3];\
+int expenses = quarterExpenses\[0] + quarterExpenses\[1] + quarterExpenses\[2] + quarterExpenses\[3];
+
+Instead, we have two 'for' loops. Try to understand them before compiling your code. Try to formulate in your own words what those loops are trying to achieve.
+
+Compile the contract. Deploy and carry out the same steps as for the previous contract (e.g., enter inputs for quarterSales and quarterExpenses). Observe the results.
+
+Delete the deployed contract before proceeding.
+
+We can make the above program more flexible by making changes in the for loop as shown below. Specifically, we use quarterSales.length instead of 4 when specifying i < 4 in the first for loop. Likewise, we use quarterExpenses.length instead of 4 when specifying i < 4 in the second for loop.. Adding .length at the end of quarterSales gives us the length of the array which is 4. Likewise quarterExpenses.length gives us 4.
+
+// SPDX-License-Identifier: UNLICENSED\
+// Practicing types of variables
+
+pragma solidity >=0.8.2 <0.9.0;
+
+contract Types {
+
+```
+//Integers  
+ 
+int public profits; //profits in wei; it is in int because it can be negative  
+
+bool public isProfitable; // boolean variable that is true when profits \> 0  
+                          // and false otherwise  
+string public message; //message about performance  
+
+//in the following sales and expenses are in weis  
+
+function determineProfits(int\[4\] memory quarterSales, int\[4\]  
+    memory quarterExpenses) public {  
+     
+    int sales; //this is the same as int sales \= 0;  
+     
+    for (uint i \= 0; i \< quarterSales.length; i\++)  
+    {  
+        sales \+= quarterSales\[i\]; // this is the same as sales \=  
+                                  // sales \+ quarterSales\[i\];  
+    }  
+     
+    int expenses; //this is the same as int expenses=0;  
+     
+    for (uint i \= 0; i \< quarterExpenses.length; i\++)  
+    {  
+        expenses \+= quarterExpenses\[i\]; // this is the same as expenses \=  
+                                        // expenses \+ quarterExpenses\[i\];  
+    }  
+     
+    require(sales\>=0 && expenses\>=0);  
+    profits \= sales \- expenses;  
+     
+    if (profits \> 0) {  
+        isProfitable \= true;  
+        message \= "Well done\!";}  
+        else {  
+            isProfitable \= false;  
+            message \= "Got to do better next time";}  
+}  
+```
+
+}
+
+Compile the contract. Deploy and carry out the same steps as for the previous contract (e.g., enter inputs for quarterSales and quarterExpenses). Observe the results.
+
+Note that in the line where we begin to define the function (i.e., function determineProfits(int\[4] memory quarterSales, int\[4] memory quarterExpenses)), both quarterSales and quarterExpenses are defined as int\[4]. That is still hardwiring. While the code will work if we have 4 integers for sales and 4 integers for expenses, it will not work if we have, say, 52 integers for sales (i.e., we may be considering weekly sales) or 52 integers for expenses (i.e., we may be considering weekly expenses). For our code to work then, we would need to change the initial part of the function to the following: function determineProfits(int\[] memory quarterSales, int\[] memory quarterExpenses). We have made both quarterSales and quarterExpenses as dynamic arrays. Now our code affords the flexibility to change the length of the arrays for quarterSales and quarterExpenses.
+
+Delete the deployed contract before proceeding.
+
+#### Making sense of the for loop <a href="#making-sense-of-the-for-loop" id="making-sense-of-the-for-loop"></a>
+
+How do we make sense of the for loop? The following table takes us through the steps for the loop for sales. We start with the step where we define sales as an integer.
+
+| Step                                           | Meaning                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| int sales                                      | This creates a new variable called sales. It is of the type 'int'. Its value is 0 (default value).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| for (uint i = 0; i < quarterSales.length; i++) | This begins a loop. The first time around, it set i (of the type uint) to 0. It checks if 0 is less than the length of the array quarterSales, which is 4. 0 is less than 4. It continues to execute the processes within the {} of the for loop.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| sales += quarterSales\[i]                      | The first thing within {} is this operation. It means that previous sales should be incremented by quarterSales\[0] (because i = 0]. Previous value of sales is equal to zero (first step above). To 0 it adds quarterSales\[0], which are first quarter sales.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|                                                | At this point, since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1. Previously it was 0. It is incremented to 1. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 1 is compared to 4 to see if it is less. It is. The program then proceeds to the operation within {} of the for loop.                                                                                                                                                                       |
+| sales += quarterSales\[i]                      | This is asking the program to increment sales by quarterSales\[1] (remember that i is 1 at this point). The previous sales is quarterSales\[0]. This operation ends up adding quarterSales\[0] and quarterSales\[1]. So far, so good.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|                                                | Since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1. Previously it was 1. It is incremented to 2. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 2 is compared to 4 to see if it is less. It is. The program then proceeds to the operation within {} of the for loop.                                                                                                                                                                                      |
+| sales += quarterSales\[i]                      | This is asking the program to increment sales by quarterSales\[2] (remember that i is 2 at this point). The previous sales is quarterSales\[0] + quarterSales\[1]. This operation ends up adding quarterSales\[2] to quarterSales\[0] + quarterSales\[1]. Again, this is good up to now. 9                                                                                                                                                                                                                                                                                                                                                                                           |
+|                                                | Since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1. Previously it was 2. It is incremented to 3. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 3 is compared to 4 to see if it is less. It is. The program then proceeds to the operation within {} of the for loop.                                                                                                                                                                                      |
+| sales += quarterSales\[i]                      | This is asking the program to increment sales by quarterSales\[3] (remember that i is 3 at this point). The previous sales is quarterSales\[0] + quarterSales\[1] + quarterSales\[2]. This operation ends up adding quarterSales\[3] to quarterSales\[0] + quarterSales\[1] + quarterSales\[2].                                                                                                                                                                                                                                                                                                                                                                                      |
+|                                                | Since the steps within {} have been executed, the program loops back to the statement within () following for. In that statement it looks at i++. That part is asking the program to increment i by 1. Previously it was 3. It is incremented to 4. The program compares the new i to the length of quarterSales and checks if it is less than the length. In other words 4 is compared to 4 to see if it is less. It is not! The program then exits the for loop and goes to the statement after {} of the loop. At this point we have sales equal to quarterSales\[0] + quarterSales\[1] + quarterSales\[2] + quarterSales\[3]. This is the total sales for the year. We are good. |
+
+One can understand the 'for loop' for calculating total expenses in the same way.
+
+#### Adding an element in an array <a href="#adding-an-element-in-an-array" id="adding-an-element-in-an-array"></a>
+
+How does one add a new element to an array? See the following exercises which illustrate how to add an element in static and dynamic arrays. Try out the exercises on your own.
+
+| Exercise: Adding elements in static arrays The following code helps you to fill the elements of a static array of length 4 and consisting of integers without having to hardwire it. You can also use this process of filling an element in a particular position to change the value at that position. We make the array public so that we can see values in it at any time. // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays pragma solidity >=0.8.2 <0.9.0; contract moreWithArrays { int\[4] public aStaticArray; function addValues(uint index, int value) public { aStaticArray\[index] = value; } } Compile the contract and deploy it. Interact with the above code via Remix.  Type 3,5 to the right of addValues and click on addValues. Type 0 to the right of aStaticArray. Click on aStaticArray. What do you observe? Type 1 where you had typed 0 and follow the same process. What do you observe? Type 2 where you had typed 1 and follow the same process. What do you observe? Type 3 where you had typed 1 and follow the same process. What do you observe? Do you know how you will fill the other values in the array? What if you wish to change the value in any index position? Let us say that we wish to change the value for index = 3 to 10. Do the following: Type 3,10 to the right of addValues and click on addValues. Then type 3 to the right of aStaticArray and click on aStaticArray. You will see that the new value for index = 3 is 10. Delete the deployed contract before proceeding. |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+| Exercise: Adding elements in a dynamic array The following code helps you add a new book to the dynamic array allBooks (which may be the collection of your books). // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays pragma solidity >=0.8.2 <0.9.0; contract moreWithArrays { string\[] public allBooks; function addValues(string memory value) public { allBooks.push(value); } } Any idea why we had to use ‘memory’ in the function ‘addValues’ when we specified that our input is a string called value? Compile the code. Deploy it. Interact with the contract via Remix.  In the space to the right of addValues, enter your first book (e.g., Learn Solidity). Click on addValues. Then enter your second book (e.g., Learn Java). Click on addValues. Then enter 0 to the right of allBooks. Click on allBooks. What do you observe? Enter 1 to the right of allBooks. Click on allBooks. What do you observe? Add more books and see the results for yourself. Can you change the title of an existing book? How would you do it? It is not possible to change the title of an existing book with the current code. Add a new function to your code as shown below to enable changing of a title. // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays pragma solidity >=0.8.2 <0.9.0; contract moreWithArrays { string\[] public allBooks; function addValues(string memory value) public { allBooks.push(value); } function changeValues(uint index, string memory newValue) public { allBooks\[index] = newValue; } } Add a few books and then try to change the title of an existing book. Please note that when you change the value of an existing book, the index that you provide should be an existing one. In other words, if you have 2 books in the allBooks array, you should not try to change the value for index = 2, 3, or higher because those indexes do not exist yet. Delete the deployed contract before proceeding. |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+#### Finding the length of an array in Solidity <a href="#finding-the-length-of-an-array-in-solidity" id="finding-the-length-of-an-array-in-solidity"></a>
 
 If you are dealing with a static array, you know its length beforehand. There is little point in writing the code to find its length.
 
 But when you have a dynamic array, its length changes with the addition of new elements. What if you wish to find the length of the array at any point?
 
-| Exercise: Modify the contract from the previous exercise to find number of books  Make the highlighted changes to the code from the previous exercise. It will help you find the number of books by finding the length of allBooks, which is a dynamic array. // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays   pragma solidity \>=0.8.2 \<0.9.0;   contract moreWithArrays {         string\[\] public allBooks;     uint public numBooks;       function addValues(string memory value) public {         allBooks.push(value);         numBooks\= allBooks.length;     } }  Compile the code. Deploy it. Interact with the contract via Remix.  ![][image11] Click on numBooks. What do you observe? Why? In the space to the right of addValues, enter your first book (e.g., learn solidity). Click on addValues.  Click on numBooks. What do you observe? Why? Now enter your second book (e.g., learn java) in the space to the right of addValues. Click on addValues. Click on numBooks. What do you observe? Why?  |
-| :---- |
+| Exercise: Modify the contract from the previous exercise to find number of books Make the highlighted changes to the code from the previous exercise. It will help you find the number of books by finding the length of allBooks, which is a dynamic array. // SPDX-License-Identifier: UNLICENSED // Practicing a few things about arrays pragma solidity >=0.8.2 <0.9.0; contract moreWithArrays { string\[] public allBooks; uint public numBooks; function addValues(string memory value) public { allBooks.push(value); numBooks= allBooks.length; } } Compile the code. Deploy it. Interact with the contract via Remix.  Click on numBooks. What do you observe? Why? In the space to the right of addValues, enter your first book (e.g., learn solidity). Click on addValues. Click on numBooks. What do you observe? Why? Now enter your second book (e.g., learn java) in the space to the right of addValues. Click on addValues. Click on numBooks. What do you observe? Why? |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
-### More on arrays {#more-on-arrays}
+#### More on arrays <a href="#more-on-arrays" id="more-on-arrays"></a>
 
-For more on arrays, visit [https://www.geeksforgeeks.org/solidity-arrays/](https://www.geeksforgeeks.org/solidity-arrays/).   
-
-
-[image1]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUYAAADACAYAAAB4ScqBAAAaq0lEQVR4Xu2d+1MUV9rH92/JvrFeL/CGyMsSAouCYhQIoqAoBIQE31nFsJQsl5qMiMwOZNAxgwxh5C2tXWupYK1V+Q+fPef0Zbqfc7pnuAzKnO8Pn4rT59Knz3R/+jmXIX/47I9NBAAAoMQf+AEAALAdiBEAABh/aL80SAAAAEogYgQAAAbECAAADIgRAAAYECMAADAgRgAAYECMAADAgBgBAIABMQIAAANiBAAABsQIAAAMiBEAABgQIwAAMCBGAABgQIwAAMCAGAEAgAExAgAAA2IEAAAGxAgAAAyIEQAAGBAjAAAwIEYAAGBAjACAk8PnF+lcQy/9j0+XnucIgBgBACeCpqH/p5X875R9FWa4tUXLe1iORIzNiX9SYeeDmV/3KLe2RVOJWepsbNPKfhS+XhFt+ydNfm1IO6E4/b1BfYa0cpxum6LJmS1a2dijfNH93gq7lE1vUWLknpYfgGPnf1O0aJCiYu1navvcUOYQHK0Yn69QM08/e5Vau5OUWHbzFHfpr72XtTqOFYhRcapjhTJShMU9yswn6Ur7VTrt3mCn6nuptX+F5p87osytzFOjoY7qMk3z7gtWT/s0yKj21da99Clw7vKyeFn/QlMuK64EV54W/GMeSo7532jOP/YzXTuv17kfqi/GAKda5l05ihup7ejD34qBGEUfLDlSFOVuNcd9F22UFfmyD0cMadUGYrSVa38zRIb7IPX9La3O/XCsYpTMv3KHar+s0oUjDn8rBmKk0Yz7PYiXFE/jnOr4gS6c1Y9XH4jRVs5d+ztNzf2LVpXoftOiRCNu/rmZF9R/yHnHYxdj3d3X7kP8gZJDF7X0YwFipJz7HWQSg1rap8MBxHj6MjW03KPT/HiVgBirSMvfKaXEWNDTTLj5r/HjB+DYxSi58njPfZC3tLT5DTeSMVDH8vYl3bTkNNXd3NDyK9ZW6MJp1oYyYpxcM9TjUXwTzt+xqo5HSr5piVbcssE8dVdWacVb6GCs/HBHr0cMaXk+j9z8tPvvSsV4z8mfSVKDllYBp0ei+0j0z2QHX2QbpEl3rrLzUdRC3Z4xv5kNJ5/4Hj0xhfqyuEfdqp4WahzIGcp77NHSiP5iiPtuCs+z1F1fErYR/zm4HHO94nt++IN2T4MAXIwRn30R8s+H4KOIseHeG/fmYMO4evcBf56jO5f7nWMiAmjtz6obNZMIC8MX49oblX6j/TKdctNuzAduyOX58HlixTjolCnu0lIiQY1nW9TeqcbuFVpypR2eH+1127BkXJy48HDXSS/kqNubOmhzFz3E8b5Amzsntiinju/R/M3wAlWj12eib7zrPFU/Er7OSsX4udPP+ccJPa0CxrPu+UQfqf5RdTp95Bznc8gl0eUFmflZaq2X8myh023z/svwljZcLxMx+mLcVeecHblXao+L7LdsOkuj3SNU56bJfruz5L6c+YtO4H03hVevqc57qar7ULwEi1uhdsZFjKfFy1per6xrZWbKPS6u+YsR6nv4OvKeAS4RIuSfa0aMnwWiu9Lxi0J04mbNrlCrae5RyITflL4YJaJcuEwLtfrbiILRSFOsGB0B6WJSyEhBzpGKSCt4Qzvn2KVEh17fXwtO+0pD1pIkciLS5fll5KuGub+slo6fFeeV9Rj7JnidFYpRXf/Bh9Fen5r6yJ9DDvVR6Zr5y00hou6sSFu518vSKhUjf1kF+Nx9wXI+T/jfTTit12n/K9GX9Xq57u5wn8WJ8cZPbl8szRqH9t2XI9oMHCJEyD/XthjdIadJLg4tKn/w4SmJ0Sylz/44QolfnDyhGzNSjO4DHHEjS04PbWllvQcs/zc9AlPtCwq9N+dEEUzyJXppVA1TSzI/7c7Lmq9RMuL2w3GI0Y2oI/rI6R8ui8BQWhO75A5N5kwRbOVi1NLK0uKLK3Tcmxq5q0vfRJwYvcj6YP0MokTIP9eMGBt/8CKc0lD6wiN3yFmOQJTli/EnPfLyGXAe1JCEosTYuaqitck2Qz0+d1R9oYc4MI8YyqsesrC0by0brikCp0yvv4Kst6WEU6ZCMR5mKN0pr0kOlQ1pCkdy4fpLYtTzO6jvUougKxVj/Mp6Z3+SEvNyA/su5V5589u8nx3U/HchR1cM9ZiIE6M/wpB5irs0eitBrV9EzEUDnQgR8s81I8buee+mdCfR/8iGxXGYxKg9UAHc6DR040aJ0ZRXw42YQud0pwHE8dLwsYW6/7anzSPFLyqE8c5XTioSp0yFYjzM4ovqI0Pf+QQWTvw+Kn8N1RKjXEjh/coJ5lftqPA+lsSKUVL/A40m35R+USQp7ql5Ty0vCBMhQv65NsQYmNuRD6Z33IsYy5YP8MlEjBJ3nsyPDs/OUlI8DPM3wxGCHzFqEoiiChGjn/91xHA+hpMUMXr3mlyYmZiizpZefwHGPyerW92HRxUxhmijKyMrNJV8TdlfnfMa51tBiQgR8s81IcaofYzeSrWzzaIyfDFurNIFQ7rEE27oRo8S45dJNSRO3o0Z7px1fr2jLxQ4c4PePKN3Pbxd/lalbOUrkl4ZXlcQp08rF+OB9zGKPlLfXVQfif5JunWX+ugjibHPGQFMXTEtcpjnGJ3v7Q2Nfsnzm6lcjEHa6MID+cyI8zTxNOATIUL++cSLMf4ngZedaCpiNVBypT+87+vAq9Luw70yweV2sFVpHxGhqHqTGyp6lAssep57/oKQ3maX04PU1xeIJrzI56hWpSUV/ySwSW1TCi5GeH1q6qNyq9I8v4dZjIP+Aoaxv8uJ0R0B8Kg93Ge8TRed48XXdOdLvV86r4RfJLNuH5oW3hqvJKiZ76H1aFpSffjXbkMacOAiPPMXGpa/cPn+L6HPTSz/iRCj+mME3UmaSruLK3F/RMLbx/jqDU3dKv0291T9IHWOZEktZHTqQyHzPsbSYo6+LabXPc9rGu10HppTvnD2u48xjHfOqIdFEdjHONo96O+VU/vbEhvuH3Z4HSrjR9pHsY/RJe6PSHh//GMq4/ajiHBb3XKH2cfI2+BhFqOQy4QTeWceJajBk8xZdwtOOTF65y2+oUR3v39tTp/tUtZ9QfFy/uZucR3BfYzNl8WLvSD6ODD9oOaRVRv2KDnivMxO1fdTw1l3t4KoY17+ZakW755vo7r2WZqV0w2vxJBde9EBHy7GcnyyYqyAK4a3cJC4X74U1lapMxBNBhdfon/5smSIskpDSY/g0CnyVx0Sw4bgIN7qdKHM8Cr21xWC3E9sU7q7XcnE/n/5EuDLKa0+jtyQHYp8DvHLF+38LlFi/OzzOzTpiTiASisrRkGzO0phyPm9G/Kcpja1Jf2XoIb65Usgb3DlOcBsXxPd+il+p8V4zAsWNAXEWAz8YdoYrvxMTz8lMX4sKlqVPmbUEFoOkXpx0wNwWM5de0GL2d9opVKWK4wuywAxHiluVCf/cpCWBgA4KUCMR0lT9KIOAODkADEeIeoPRrDJeQDAyeNEixEAAKoBxAgAAAyIEQAAGBAjAAAwIEYAAGBAjAAAwIAYAQCAATECAAADYgQAAAbECAAADIgRAAAYmhj/69RXdOZcOwAAWIF0HvegJsb/PtOmFQQAgFpFOo97UBMjLwQAALUO9yDECACwHu5BiBEAYD3cgxAjAMB6uAchRgCA9XAPQowAAOvhHoQYAQDWwz0IMQIArId7EGIEAFgP9yDECACwHu5BiBEAYD3cgxAjAMB6uAchRgCA9XAPQowAWMYXfxqkpq/K0U9f1OtlaxXuQYgRAJuov0fZV79XRv4fevkahXsQYgTAIr6a+IcuwBgmOju1OmoR7kGIEQCL6JuXwvs3PVl8RT/OMp7uKRmupl/TwpoXNf7LCjlyD0KMAFiEI0Yhu4t62pnBX5UMn/zfiPM5OOz++Tl18vw1BPcgxAhATdJFrTfXKMGiwoWf9yFGwUTGG1a/ocEvDWVqBO5BiBGAmuMa9cw6w2Iz8WKUQ+mwSGPKHBf1/dT53XOa/O57Os/TfL6l9u/WqE47Xh7uQSvEOJD6QIWdMrx8Q6tF8d98Vivv0CvqeS/yvo+tM516Rj0tHRWfO9TOqU1Kb8pzeHVlaODSVUNbIqh/RI+3RNmtfPh4Z0Y7r4nFIUOdil7qGM9TWtYt8uWyebp9sauUfinj9N16xlCWpw9T4oV+7kLxPT0cn6DmiraIdIgy7yjRGTgmrnGV1+mzSQNaHeWpa71P6+41SzY238a0r4vab2VoQ16nez3T7HpM7dPrOQK+WqakJsPKxWgmoswx0Tf/b78tyzM/aulSil4emR4tTzPcg9UX45f91PSna/pxEw3fHs/eKfkQTQ3rx88N0PjaB3p4rSQ2RdMsLW6KG3lzk66fd445wtMfuLpvss4DsLxADTH5TOdNfBOQjUS8JXumdijn1qWXC3KV7q6UHrivtfQw5dtUYkPUtzo1VjrW8ICm87I/AgKuH6PEuriGS+G+65h6p9pTKu+K8YUu0ea+rCPQ4lsab9Pb4ZznPj2U544Qo/l73T9d0+8ot5Rkx3tJvhinvw0cc69bHk+Nh8/d3Jehp+K+SX3nvNyOsn2xXFyjJ57Q5udCabFzjILzbD/jUPLTEGOaiToov6A0HfZoskuvIw7uwaqL8UneaeyTv3wfH+I2zdGP679T+skytVdbjpFiFLQtqaixK9AGL1KcGyhFb9HC8wS1Tbfr4/IFcB9q7biig+oamKhNtD2jtBLyEo0ufwhLw0DZNvkMqAj0OvtOGr7b1iOezmcqKuwIRkkqUnxG7X6+aDGqegc2KSevY4VLSdJBHY+kaB2qKcYzDV3G+9V5SZTO8fXkW9UP6zP3tbyK9iFqdv99pO2L4xBi5Dj591emGrSPvzHLUQQPYSn+TjOD32rly8E9WFUxfnHjVajBUo48j8KVop83naZWnucoiRPjOSmN8I0uH9Tc4kwoaosTXtfMrv/gxuXzGdrUJbNPuqblOd/T45tCojfztD49oeUJUrZNHueTVEjNGo+nDG0ORYcimioU39FkSNLxYpRR2Wha9tlbPU0OyWX9j8aqL8YI+DlU9FrcprvuSCIOXrZq1KAYz5zrNMoxvc6jxX8bypaHe7CqYuya5o3+XX8Lcym6X8LYn/X6jowyYpTD2sLOrjOkFsPo4BDaI054TtqOelji8vn051Ukoh3fB2puUUa66vOEMcoLUrZNHteyEX0lhpAvPwQiQQfVd0KGiUtdahidnhxg5cqJUQxB3SiMl5uUQ9YXTkT6scQo2xW8JjVtIqLb8lMdEOPhMcsxKMWDRIsS7sGqilGy8II3PjCsFlLkaenZuX1PnO6bMmKUeEMkiemmd4S3TaMtA9QcYO6lPP6eFod6A/mieOfX1yiiPP/41jt6mnpBHecrGEIrBrSoJSWHsNlnkXONFYtRRLNRizLy2kx1NI7tONdR3NHSKhGjaWohXQxH8VFiXJ95EPo+JI0V92MZ5AtMRM/B+8GJkOPvJY9jW3ypWTG61A9q3lhNLh7KG9yDVRfjmc5lsxyn1gyR4u+HuriKqUCMXkQkIz89LUZ4IlqauzvE8r2l6eEFuq0xE6rz9vS2v/Lrsb6coatN+vlDfJOljYVHoWPXF+S8qIh6vzHkP3cUYuyg20smMXZQz5y3sr5rKHcQMQ6ohZ6eQAQcJUbt+9ipXFyxuAtwd9l3sZ/6ZftyqWehe4DnORJqWYz1/XRDW2xxOMhqtAf3YPXFKImQI0dGi1rZalCRGL1tJZuGtAjh9U9oUwUVDaU5Db3U3jNDq9vuwx1avOB0KAlqAhSyXBdluTA9Km5TpBid/ulhx73Fk9xynlJCJEGZBcvFipFNLcgI9HF/OOqLEiMXj+T6frY8mQisPPM09fJ6NKYdN4Gh9CGJkaKHeStPebgHj0eMHkKQ/EI8IR7U9AfiyMRYXi6V5ovkrrP6a5aTGPLfLw35o0jf5/N8+xDjvhZfepU8vGkE/bOknBjZ4ou7MBWH6psqzTF6241yi7PUaEjH4svxoAvRm0/s1OYcDxI5cg8erxjP6XOOxy5FyScnRhENaZGVQ4M7Xzc3oKf5beQbuj28Dd95fdN6+TZ5VL5dp1FInK/ez7n7Pwf8IWi8GBuH3O06y+4ws/W+FgFK5DB98b7z76ut7VUTo4p+U2YpSspu1wls+6lG+4zUoBjDUgxvyTEtyPx4Q68jDu7BYxcjH1YfuxQln5oYb+Yp98IgN39jeXh+zccdLsdtzfG28fDjZdsUQO3dCw4XvXYFhduUVAs+fPXeG1pvLHlyiRZjaYP3Do1GbfB2iRpKR3+vHdTQ7CzGqM/1V6lRLc440Wxdk2Gh5lJG25epEbPBu+7iAs293PWnAeLbd4TUoBjD4uNbcvhq9QnY4G3kz3P048oeJacPNh9waI5djFGLL05U1HxXyEMIYSO/Q4uzGRpVaUu0riTxjh5eM8+ROQssMb8Skbgbv/nxStru4WxwF5HTWp4S4wvO3KfakuNJxPnljknAwcWY1JiUkNuvG9uBfkhSYtaJQAsbOzTOfj1jYv9i9L5Pty/8xRrn+/UW0/zyrvznJvXvTC6adQRfAE0P6GHWKb84vaTyjE69cK5H9NPjgX6VzzQHqrfzCCgrRjHcfGL4s2MGvB9ofOw/IlESX9SWnJIczenxcA9+HDECAKpHjBjlb4qDQ86K+PlXGvxzbf9NRu5BiBGAWiNWjO3qbxJo/4+X3ue0LPMnU+HjTez3+zUK9yDECECtUU6MJrwyleavMbgHIUYAao2gGBcrFF3nmhMxQowQIwC1SelvE+6XEbn1Sauv9uEehBgBqEXq++nqxCtaWNuj9HplJH96rtdjCdyDECMAwHq4ByFGAID1cA9CjAAA6+EehBgBANbDPQgxAgCsh3sQYgQAWA/3IMQIALAe7kGIEQBgPdyDECMAwHq4ByFGAID1cA9CjAAA6+EehBgBANbDPQgxAgCsh3sQYgQAWA/3IMQIALAe7kGIEQBgPdyDECMAwHq4ByFGAID1cA9CjAAA6+EehBgBANbDPQgxAgCsh3sQYgQAWA/3IMQIALAe7kGIEQBgPdyDECMAwHq4ByFGAID1cA9CjAAA6+EehBgBANbDPQgxAgCsh3sQYgQAWA/3IMQIALAe7kGIEQBgPdyDRy7GgdQHKuwwtt9TOpWh6+0dWv44FmXZ1Kx2/OTQS+kttw+K7ymXzRvyBOjM0CrvuwCJwfj0IGfODVPihfj3iwy18/Ow82nHAbAM7sGqiHF6eIFu+yzRw9RbyhXFQ1p8p+WP42SLsVf0hZDhWp4S4ws0OpWn9MYHmhvqNeR1cUWVSz0L9F+JjpYxus6OTa9JEb7V8kKMAFQO92BVxDhgOH7mkngIhRyb+fEYTrIYG4Y2aYNLp+EBFTbz1FOv51e4olqdGtbTInAi9E3tOMQIQOVwDx6fGM9dpbsrUWlmTq4YB2hcRnJb+tBZDnNT313VjisgRgA+CtyDxyfG+kf0eItFjA3D9PTl+9Lc2NZbagykG8UoygyIYalfTpRZvP8gUM4RQnvTAxoXQ/gNOYQX+ebuDrH29FPP/U1Kbzr1bGQ3abyvv5TeEijPz+HPBW6ar/ValnIRgku8jJEVxAjAR4F7sCpiHG0ZoOYA7T1JmpMPafFtIO+YenDXM9v08P4C3R7P0Fz2Pa0mSlLQxeiUkSKT5bwy8nOpnCOE9OaH0PxeYec9Pe4vLf6Mpl0hrjvnT6l639P0tyL90jNKu3OiqeklSqTeqbw50RYlx3JiFMNomX9xSE9T7S9u0nVeJlDv+syDUP95aPnPVSDGl1nqMdSl6MvSOsQIwPGIka+QKja3abQzPIT8+qZcJAiUr79PhY0sdbmfdTE6ZXpaAqvboszD/AdVzjnmCGF1aixUToksUJeS6fQE1fl5uqhreFZFV0ooW0K8gfM03t2mjZ1deviNPOdValRy6Q2UDxAjRk9kRqGWWZXW8gfq48d9MRrq4ehlAbAL7sGqiNH40Nc70d7d84Y0yfl+FcUEpWESo6lMz4yM6Dw5uENpljc8rJylwtpS5EJQQQhwul+PsEaXP6hyPL9GjBgd6eaph5eRYCgNwEeBe/D4xChoGNuhuYHS57qLC/4cYIl4Mcoy05l3xnJOngrFGCNcHlGFEHXw/BqYYwTgRME9eKxilJGUH0WdX6CUkFt6MUOjgf13sWJ0yxSKu6qcV2Y8tbtPMc5QYf0Zfc3b5yIjxkU578n2BioGxrT8GueTlOJtd1HHF2e04wqIEYCPAvfgsYqxefJtKWJ0h5s8T6wY3TJPx8ObpK8vBuVQiRjFkL24HTmsl/sPF4f29yudMPHbdSLrhhgB+ChwD1ZFjOFfviQpMbutNnfLVV8/r5xzXBcSSDkR4/jsDq1vO3OFnhh75pyV41w6K/Is+WXkMVnOK7O4tN85RtlOd7vPC3dVel1+dhdXgqvSsyIyvZ+lxYyMSsV5H4yVX5VW8F++bNLq9gdKXIqQosStN/KXLwaRQ4wAHB7uwaqIUZuXK76n9Uw+vE9Q0jDszxVu5Lcp8W1vWDZChOPLu34er8ztRWd/oVemfWr/YpSr0O3DeX8fYy5iH2Nu22m/TE/cGnZWoSsSo3OO4G+l1zMvDHkClFmVTnTqZSBGAA4P9+CRixEAAE4a3IMQIwDAergHIUYAgPVwD0KMAADr4R6EGAEA1sM9CDECAKyHexBiBABYD/cgxAgAsB7uQYgRAGA93IMQIwDAergHIUYAgPVwD0KMAADr4R6EGAEA1sM9CDECAKyHexBiBABYD/cgxAgAsB7uQYgRAGA93IMQIwDAergHIUYAgPVwD0KMAADr4R6EGAEA1sM9CDECAKyHexBiBABYD/cgxAgAsB7uQYgRAGA93IMQIwDAergHIUYAgPVwD0KMAADr4R6EGAEA1sM9CDECAKyHexBiBABYD/cgxAgAsB7uQYgRAGA93IMQIwDAergHIUYAgPVwD0KMAADr4R6EGAEA1sM9CDECAKyHexBiBABYD/fgkYqx/dIgAAAcGu6WasM9eKRiBACAkwj3IMQIALAe7kGIEQBgPdyDECMAwHq4ByFGAID1cA9CjAAA6+EehBgBANbDPQgxAgCsh3sQYgQAWA/34H8ATTrrwdCTrvEAAAAASUVORK5CYII=>
-
-[image2]: <data:image/png;base64,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>
-
-[image3]: <data:image/png;base64,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>
-
-[image4]: <data:image/png;base64,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>
-
-[image5]: <data:image/png;base64,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>
-
-[image6]: <data:image/png;base64,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>
-
-[image7]: <data:image/png;base64,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URTbG0WxGooirWQUxXxGUcxrFMX2RlGshqJIKxlFMZ9RFPMaRbG9URSroSjSSkZRzGcUxbxGUWxvFMVqKIq0klEU8xlFMa9RFNsbRbEaiiKtZBTFfEZRzGsUxfZGUayGokgrGUUxn1EU8xpFsb1RFKuhKNJKRlHMZxTFvEZRbG8UxWooirSSURTzGUUxr1EU2xtFsRqKIq1kFMV8RlHMaxTF9kZRrIaiSCsZRTGfURTzGkWxvVEUq6Eo0kpGUcxnFMW8RlFsbxTFaiiKtJJRFPMZRTGvURTbG0WxGooirWQUxXxGUcxrFMX2RlGsZiJFcc899yyWLl1aLF++vNN2xRVXlLZ1wa688srigAMOKBYvXlza12XDQshuG7X97ne/Ky666KJir732Ki6//PLS/q7azTffXNrWBbvmmmuKQw89tFi0aFFpX5ft2muvLW0bld1yyy3FOeecQ1GMMHGiiFXQ/Pnzi2984xudt/3337+0rQv29a9/vZg3b15x1FFHlfZ12bo47ieccEK4sjnwwAOLY489trS/q3bwwQeXtnXBEJvo2+GHH17a12XDfLLbRmmIxeOOO86mT1JMoCg+88wz4YoBK7OuG65olyxZUtpOa25nnXVWEEW7ndafQcRxNWG305rbBRdcEG6f2+2jtltvvdWmT1JMoCiOC3fddVfxuc99rvjxj39sd5E+OPHEE4M///KXv9hdpCGrV68Ovjz11FPtLtIHZ599dvDnH/7wB7uLdBCK4og488wzix133LHYe++97S7SkKeeeiokne233774xS9+YXeThvzf//1fiE3YCy+8YHeThuy+++7Bl3hGT7oPRXFE7LLLLiGRw+644w67mzTgV7/6VbHddtsFX/7P//yP3U0asu+++87E5nXXXWd3kwb89re/nfHl3Llz7W7SQSiKI+DGG2+cmShYQZ5xxhm2CGkAXroQf8IefPBBW4QksmLFihk/fv7znw8vtpD+Ofnkk8MdDPEp3ncg3YaiOAIWLlw4c2UD22mnnYqXXnrJFiMJPProo7MEEYuM888/3xYjifzgBz8IPtQ+xXfbSHPw0h8WFuLHHXbYoTjllFNsMdIxKIpD5sknn5yVcMRuuOEGW5QkcOGFF5aSOL4TSPpj1113neVLJPKf/exnthhJ4KqrrpolijBcNT733HO2KOkQFMUhc9lll826nQLD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>
-
-[image8]: <data:image/png;base64,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>
-
-[image9]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAD9CAYAAACx+XApAAAwE0lEQVR4Xu2di3NUx53v929Jyq4LNqx5mIBAEUgGhYcQAoGwEMgiEpYs8RAWEmNJyGLEIA8weIQkg3GZcthwAzE3iTdV16ns9aZcXq8T25V1vLsOVU6I44vtOIQ4Jn5gw/3dfpxnd5/RjITOzHC+U/Wx53T36dOnT8/3268j/uEb31xAAAAAoss/qAEAAACiBYwAAAAiDowAAAAiDowAAAAiDowAAAAiDowAAAAiDowAAAAiDowAAAAiDowAAAAiDowAAAAiDowAAACKlm/TvXOq6B8tZtylxmfHtBrB2OmLRlLD49TR2kUV80u1c6adxXFKsDK0LDbEFTIbRkTdVavhGSmhGaUdFB85T+lTVv2PnaPWhodozgw1LQCgmGg7+mNKnjCQfkZLOxF5MQIvq+eWaOdNKxEygo7kea2+HU6do4HWZu2c6aGBunpS9GC5Gp4H5nawshym6rmGOACKhhIp+qlTtHa2G759WJrBDC19ZqbfCI7GtXCbu0t6LFH6nhY3bUTBCBYPUIKPAE6M06aFJqMtpYWbRijJ0uhx08FuUfaeDWp4HmDPf+z094rv+YPIs+C739d7/9mwr1PLSyWvRsDpOSF7qEsnObeVMxEwgm0JWactpSYTcLm7PKwRAYwAgCmzJEYtnc8wcX+e+rufpI7OTDxDjzMT4Om2rVqh56WQdyP4xjcfotYRli7RS3PUuLtW0kDKnd9ODqVo28qVWh7iOr272bC/mbb1PmuNMs6LtYi71TwnNIJS6hr6nnPNdOppWuibTy+R+Y+laLXRvJbRpgEWPzxA873hMzaKuXpx7lPnKT542HCupINdP/WUvH5qeETecw5GIK5x+mktfGImundJy1EZz+tiTnlPhuez0SqLjn0f/FmMMWHmz65l4JyMT8VpiZ3HXcuodfBZSo1Z57K6W18SvLZU3ZoSbUakZW2gpWajaAM9hjLYLHTOl/dj1z1noCdO1RmuB0C4dDIj+D5tK+HfS2jGP/JFYlvoS8T3u6x0u5kRyHQTUwBGsIAqH+U/3HFa7xXWhT3Uww3C8MOdZboOM4KUvSDqZThOS71ilskIZjRQy7Ahj1PPUku5KwZJK7x38zI9jwUDFFfiZlUeprihbPHmB5XzS2lpq2VkCrOyNoKH5DnMWPW4DGR57xzbCCp2fk9Pf/q8J232RuCtn9RIklazuPm1KTnFpZ1/ngYaNmr3wOtZT8s4mszKCMz3I1HbHAD5wWsEUuz5cVBcURnBnIe4+PmH6/aU0YPLa5wtUUtqkkIwEq1+ARXXGWZ5HE3R+rLlIuzu2Q20vsf6YQ/2uOkzGEFTUl5zoLWV5t9TInqj81fzqYSLvnWMbbZgsl6/msfSdtmrdUYLpXFHzKpZ2cQI5Z4aqtg+TlzQejbI8nLmi3rgdSbvg6e176N38GmZh3I9jbvkNEz60VY9LgPZ3jvHNoI0I9HTZYWXOMa96R41/+CpIWkE58Q1uhoekte24uz62La6gWZZ4bw+ZJmepW0LPHnZ9XziaWqtaZBhM5bTAC/TqXE3XYapIX4/PO8lThlKqLr9adHB8I3uAMgbutjfMUZgT3s4QsF61VwcWo27TOTUTPyhKv91WHo97QJqfVL+uJ1V9EAjsHqvA7awuczYzEXbc85drbTHmqpQ00qRGneOhbiwY10cbUNxe9DZ3MeERiCEjpul3mMOJod7/6ZnRKBNjT1ILSmTCU1kBHo9ZmJ9nzxnrKfDCbNHaWpajUAjkHWQW70BEDa62N9hRnCe9qyWxzPqn/bPE5vy9YiAOE6Zr7N0p+yhV9phQUYwt1ek6603TPewXjafWvCaj93zr/aJYZUIS+9zhVCUrW+3nuc37SkxV7xE2hHz2sGSR+ToZlqMIMd7d9cI1Lyq5EI1X6/xhd9eI6jutYzAcx1xnM26SKARWHk8mdTCASgcdLG/Y4xgdQ//EY84Iuf80DOhioAmPhbWaMP54QcZgUhnFgjeWxTi57vGMlbO855F4RJavc97LM/Tym3Al3aC+5jQCCazRpDjvQcbgfXstHuYyAjM24eD1lYc1DaQRVvLZATfmO3ZbGCRHErSg+X6BgUA8oMu9neGEdjTLJ5dQ6IXz85zd3NkRlwnoNf9jVo5teFMzQQZQQVfaGQCUWrII2jKo5yfY01h3dNFvae42Hl71cs0wQqmKqv7mNgIcugd2+R472EZgT391rW9gypK3BFJ4IhgLKXloZHJCCxmzW2gyoY4dfTKdZmgewUgfHSxvyOMwPgegfix8oVUw1SFAfljzTy3rq4RtFaoaXObJ7cR55wadxaQjfETCI8/beb7yMYIsn2P4Buz7Z5ubvc+WSMwTVdlMgJZH7qh2QbhvQ7fqRVUJh/W1JnJlMzIqbHs0wMwnehiX/RGEPxm8XIZfmJEO4dTWdPs284nBeMiLdEWL609/94tjXN7hWjEt7s9TH8+3u2PEtusTDtHbFESi5Xe3SkWtoCPJQ31MGMjVVe7O6DsvILvIzsjmPjNYv4y2YDYUWMf53LvuRuBZTSGXVaZjCBlLJNbF97riHc3WNiD2p8sWU4VlV4D6hDpvOs4NqZ3JuztwPb6FQD5xSv2m6im40nq6IhZcZuoo3OQKmbKdIVlBBNQqf1wLTK8RzA2fJgqPH9fQ4T1Br1HMKAL6+qUJ82ztM3+uzM57KV3sIRiLEOvP9Ncd6rPs7WVidyS5qm+R+CS8W8NnfZu/VyQ073nbgTsHGt7qnPtZinOmYyAt4Fey4i8rOfX4N/V65TKRW+No/4FYNvcbLqqWfhdNfp5NqwOtLIBkBekEWyvdP/iqJkYPVroRpD1Xx+9axn1DJ9z33Q98T3xpqeaTuTLROHukg5qmejNYoueYeuN5VMp8fKSG5fd27UuNdTEBXSgK/MfeppR5XtLOj3yLFUGvLEq3qT1vFnM347NfrHYi+Gvjz51nlq3t3r2ynvJ7t4nYwT8LfHK7fIeOAPb5V7/jEbAYaOmpDVSSltvWZvWCGwqt5vfLFbzXN/pzv/vqZGjw7tLWmlbu5wKs+lp7TDWAQD5oYW0vyWUgRoxOpiYaTWCsAgShTAQO4XY9Zca4gAAoBiAEUwRe8pHDQcAgGIBRjAV7moV1062W3/SAAAAipA7wggAAABMHhgBAABEHBgBAABEHBgBAABEHBgBAABEHBgBAABEHBgBAABEHBgBAABEHBgBAABEnJyN4H/MLKWZ95YBAAC4A+CanpMRwAQAAODOIycjUE8GAABQ/MAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAAAg4sAIAABAYy2t2f19Sp74cWbS5w3nFh8wAgAAUFl3gg6roh9A58a1+vlFBowAAAAUljwsRwODj5+gXV1+bIPojD9vmcHzRW8GMAIAAFCwjaBzox53wDICebzWGRlsnKunLRZgBACAyLNgRT+1eHr9nUOytz+xEZTR+phM2/IdPW2xEBkjaD12kcbSSS3cS+r0RTrcscUfPq+RjoxeoDEWNzZ+lh6PHdTOm7l5VMZ7SCVHqam6xpdOTWMz897t1J6+SGvUfAU76dHxi7RQC+dl209jg/tpDvt+2FN2NX+VMk+ZtTwtxk6PUq0hfOa9tSzuDDWVquFlVNuvX2vs5AUa6vfW2Rb5LJR0j3ftp7I5ep6cxTvOKGUtN4R5WNBFY6NpWsfzm7OFajs8z2f8HNU+sFI/x8TsnSw9y2e2G8brWS27ipaPoIqGxmV8KpmmumUr3LgHEjR2JEHlnus41zt1UcR5w7Z1naYjVl7ifrx5qdSkRbt2jisS+j2wPLZ9x99Ws8bQ9gXHEqKdaeEOZ/W8Zsu27q3vcNilzfu78/9qWtcIVExpp5Mh+9rDJ7S4eRufkvEsbs0C/VyVaBmB9wehUSXivUYwf8Mx8UM8HD9GrU37aXf8LI2w41jjZv+57Mcw9Oh+qtti00uHT+rX4wK620njwuNWdJ6j9lVqmRirkuKH3FRiiGPX7d8qRc1rBL78d5ykFBNibxg3jkkbwXeS4rwju7drcdIIzviuZddZywPlVjppBE2+Mso8x0bYNQ2Nlpskj1/hC6+lpuGLrM7sfG2qWDkuUHetrJfYqDyXP7+6LQPU3n9alr97p3YdlTlbT4q0dh1z1inPzvRM1XzsMqWG06IcQyOsTKfOUffmKiu+3Gp7jf7zZjeydGep1ak7ZoCNrEynLog26b2fw12dhuu6deeEWUbglLcpQbutPFJDA0YzyojVjrz3L6htFO1MC2eIZ3LqpJaXqb7DodsS1KO0YNFGwcqO4KmhxiHdBILSThtzY75rq2LvmATjcOcu/XyF0I1g3uqjonAH2r5LswzxggXywQwdGNTjJokwglNBjWwl1Q/KH4xrBLzn6/0RuvTzXhobXaywfzTsxxDbrObJGnbjaYrVu+cHiqtgh8xTCW/nohFPM3qlgNvM7qIYK4cd5jUCH/yHbwqfjBFYPbZtu88Zz5VGMKqF8/odO32S6kR9SSMQoxIfO+S9Hvf3fqVIMpNsYmbR36XlLUS9c4dzLERm1CoDu/eUJ86b56w5+nP1UXqQhlje20S7MPReLYz1pMANi48svGG26DlhFQdFp8MRYjZK4MdOPfG6FwJ6WsufG83iMkO75nkMnKQjBiPQ0rJntC4mR756XAYmaEc6VRQ0ouT1PTY4IH93FXq8Q6lhVD4lLCNIDDthmdYIVHJJezvZf0wxI9b7X7DJGglYDPV00zzDuSqhGsF960/QUNotJDcDNQ03gV1H3DRL1PhJIozgWNootryXy38sPjHlPV9r2kXNa4UlhLHNlpgEGIH4IXpEeCLRMP0A+Gigv3Gl6EHVz/PEbUjTiOcHGIYROOJliaRaN8FG4L23ICMop7oBw/l8+it5kBZzY1br4F5LZJlRyGMuMu5ogN+j8d6zQD7jC1o9q5jqSaWfC5xqYvN6Rbg3rKz1rDMqaD3CRd81ILvuTSMxI2w0weu5nLdB73UCjYCxoJceZ3GL1fBMTNCONNjvaoTVhdp2OLy+H91QLuo7033yZ6OGTY3iNIKZFYOaGXhNgJONCXBCNQJTwX0jA2skMJkbmQhpBAkpHMc8vU7rh9HfWOUT03Wxi5ooO1g/4rHhAXlsNIIqJmwXfHnwXvG2klpa6MOdm+W9bS56bh7bnZGAiPOIiThmcfbxZI3AXxYXTeAssxzZv1MeM4FUf6yBRsDn7K0540AjsATLL5hy7cSeMxb3bFjnWdxyho7sT4rRwDqvUfA5fiYuj+82T5sEYYvu0I5amf+OMwEjyeyMQHYa1HBZD+uUtENitHlOtC2vILdwY3BGVRNgjS7ESEkVfvVYIXCKMohcjMC6tskEeJ176zsoT20kdVsoUiOwYbqq6ma2IwGbcI2AYyi0GBkoIwFxM13d+vmTxDYCuXh2wQnnc7f2NI9XTLmoBRrBvV0U46JlGwqfq2/yC2nrgBw1eBs9P9Zxe31ruvnQ/Ix7HfbD4aMBJ+6UK7K81zTUIn84nMkaQTB+gVu3n5eNiYSzM2K7tpAqjeCkrx7KNyUodvyi20u3BHCNz3i20JCY9jhLLd46V3rjTi9dvRcxjcevrccd4cLK4/hCfz9f67GMLANNSV4Wz+jDGZXoadV6MsGvrxuBrC/13PmNcr6+XpnzlWtcE1+LIzo7VpvWhF89VijrOGssayABHYr52sJ/udWG9Gck1ntYnXvrm0+/murbfjZq+NQociO4t0LT1PWGtbZMhG8EHMPIQCUXN8sGxwj4MTOD2GYuTOW+uX5tRPCAno/AMCLwLhY3dbEean8vLVZ6bxP+kK05eLlDSAqms1vIipNpd4hre3cSTdYItHALtaw8rdorFmslnhGMvlg8IBZF/YvrymJxEzMKdty+tkorg5wz9i6+yrUc0/yyPppQmFNFZWs6aZu9g+hI0DyztSahbAX0jYY8qPVkwmwEliEqaflUYGowLXY9rfG0n6xHBAt6KeVdCFeFXz1W4B2OyYwI1AXhlUv86fhIw576UfOwOxm+cD6FpNW3+dlMnWI1ggptTcCHYTdREPkxAk4GM7idIwEbnxHwHiTv4ZUeFFNCdhqvmC5uPev0xjWsnTwj9g/OMDXEfxyHW/0CPLFoyF6T6BlpP1gZJ4SDXd87GuBMrxFsFz/Aod40dcdcxO4Xzw/YNDVUH+c9OO9iq2FqaPYOscDrm9YRZWCiODzqu2b38DltSoozoRF4EPPvxp5pmez9n2TP3ntNhtgFZuiJTvxMA7Yl39tIrceVehDbXkfFzilhCDF3Sot3TIQIZhRpOR1ZX+rpnVfLKT3xfcEKQ7vyIndiGXeoBTFBO7JxNlgExbE69z3nGN8dpawJeZ6NmsfUKE4jMJmAqqnqbqIg8mcEHMM0ETeB2z0a4PiNgP/QLtCR9AVfr8snphMuFnt6NwYjENv2FOHIRjT4dAg3IDlPesYfx67zaI28vtornlYjYGWSUy9m7HNMRmCvLbj1aDACcT1lgVDM7+vXEihTUpxcjGBmffA8sz0/HYSaPptnmt1isdxiGrO2lIopS49ZZbdYbE1ZBsHLkMkIpnGxmKdRR5TeuCDsdQOO99moeUyNYjSCCs0E+LqA1sEumvcIPAWfjpGAjWoEM9cMsF7HgC+NKqbiZZ5RpRdY8ggJE6jxDHENRmALnrdHk41oiOGvNa/t/RGocep5atkdpmoE1nytyRA5YpHPGp0YjYDDyuCaqtkI5rDyuLtF5BSQukPIRvQgDVNjmthuUF7cspBbTA29Ssu0tHALbsDciL1h2TxT+96cMNbzF2VIuwvf4p7sba/2ebXsvIEumm8dz2f58JHCmhL/9MqajtNs5DSgXVegCr96bOfReVaK7FCvDJu9ko0iquRGjjlVYkRhpxVrAPPcTlCmdsThAq63ZQte5wHm5nS4eJ1P8GymRhEawWz/S3Bq59lrBoOPGHZnKuTfCDjf7qbe3bu0m7mdaEZgQBXT+WuTYheH+kJZd73yFqbRCKQAeBu56eUjjnqe7PWY91rbcWq4WnaHKRqB7IUFTKNweM/dWkgNNALxHoE9t2s2AueNYz6Ksran6vlI5Jyyv35MRrCwXt7jSPo0bbPWLMQLWKfOUvsqvXdq56uGO7ByqfPW2RiB+kKZnGbyvqPCF7s9214d5Itm7vSl4YUyPoVymr8MFrDmoQq/dey0v6AXyrh52/dmtRX7mfHvTpuaoB3Z7z+oIziJnO40tXOB1Q54nU/4bKZEsBEMxZ/W/uicSq+1ySXsPzHhdKD5SECNtzrY2e4eKgwjAACAvKEbAZ96KWt61tfrzsiTzxnyLR5gBACAiGMyAsk8609OuPTLtJ4/R7HgW6u084oNGAEAIOLYf2tINwKN2cGmUczACAAAESf4r48GYpqXL2JgBACAyLNk81HaFz9PQ0cmpmF1cf9rZCZgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFgBAAAEHFCMYKx0xf9nLxAQ/0JWldWrqU100Uxdp4eXmhU0dC4vMdUMk11y1YY0lhUJPR6EZylw1qYzsx7t1DrsYtUpubryf9wxxY9HAAAFEIygjO0e8t+qrNo7z9DqVNM0E6d1dKaKQYjqKLa/guUGk5Ta9N+Ghrh93fOkM6CCXWq/6BTJy6dtE4J2z180Vd/HBgBAOB2EZIRjFKtFr6S6uMXDeEmCt8ImphYj42nfWFztp6k/q0rtbSCHIS6tt9UTzACAMDtIY9GECRwJgrfCPr5lE1/lz98Xi+NxTq1tIIchNpcTzACAMDtISQjOEnbSmppoUXZml7qPsanTs44abio8bnv9h37qa5Jzp8fbrWFTDWCRpH+SOKkSN+dvGDNm3vyOn6GhkYvimmabR1pFn+BHq2x1yS2iPQjR05S3Y4k9YtrX5BxDxwUU1b9uweotf+sSDffylfO3Y/67s29x4sU26yGs+ucGqV1hvRcqI90PuLUicMCfV0hkxGsUc+3qU7CCAAAWRGSEeiLnWOjzBwq3GmTxRv2M1FzF4/b0yzNSNI6Vo1ApneOZ+8Q6VdYx7apHO5odNIIEbd67ItbztDh3dtplpPfClqxhcdJca3zlGN+PTOb71jfhchW+cphYzaC4NFQ4GKxOqq4N7MRaOd7gBEAALIhJCMwiOFs2auvn6ennzmvhtZ08t643fvWjcAL7wHz9PY1hEAeS/imTewwO6+FhnwWt/JrntN612PDA8b0XsxGsEWsG6wxpM9l6iaTEWBqCAAwVfJnBIw5jaepu1Z+n7VsP+1OyKkYl2Aj4OlH+M4jT/pcjEAtC6esQ72+hZKXidRpUw+8MfjcHIQaRgAAmE7yagQLW844RsAF9/Emd9plXSyDEWweFem9efH02RlBrdjhYxyJ1KRpJMAkJiJo11Bsc8C7EjkINYwAADCd5M8I5jxCu9OuIHMBPtK5w4k/LHr7thHspEfH3TUATbAfSIj02RmBFOhUf5ezCDzz3nJaXP0I+/92sdawcoG/rCtL5f8zrRHMYebkK9MCZl6jrMyz9bSCHIQaRgAAmE5CMgJlquXUBTqSSFNTdY2bbs4WqoudEfEj6ZPWNI1nh87sRmcqyE5vH7eurRLpszUCTtmWNA2NXhBlSSVHfWVp4i+8nZTl5HH2onKmXUOSFc6bxUcSxyb9ZrGaFkYAAJhOQjECAAAAhQuMAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIg6MAAAAIk4oRlB6/7cpsWkJ/XLfIlBA8Gcz9/6VdP/CNQCAPDDrvgpNL/NBKEbw8t5FdK6lRBMikF94I1QbJgAgXArBDKbdCDASKFzUBgkAyA+qbobNtBvBizsxEihU1MYIAMgPqm6GzbQbgSo+oHBQGyMAID+ouhk2MIIIozZGAEB+UHUzbGAEEUZtjACA/KDqZtjACCKM2hgBAPlB1c2wgRFEGLUxAgDyg6qbYQMjiDBqYwQA5AdVN8MGRhBh1MYIAMgPqm6GDYwgwqiNEQCQH1TdDBsYQYRRGyMAID+ouhk2MIIIozZGAEB+UHUzbGAEEUZtjACA/KDqZtjc2UbwwhtEdJk+VsMdRoh/Pn99Ef3+natEN96m97U0Fuf/jaW8Sn89b4jzwD833x3RwgsRtTECAPKDqpthAyOwjOCX+zaI73T1Z4Z0Z+j6l0SfvbLBEOcHRsBYsoHKKjZR2dK1epxCbc84JVJxT9hadjxOgwN9VFXTTHUtfZQ4dojql7rnJA7FqJrn72GhJ8/KtqPU19NDDQ82UeOeYTpwbJxKDdcuFedu0MKzoZOVsa+tXgufOmtFubz3E0h9XNSVfbxwfZ+417aWdqqtaaLqrXtFfNc29x4TqUPU4Ku7DVSyyJPn6h5KxOPU3NQm6r47MU71ywzXngyreqjPU17gouqml429z1PyxI9p/aLgP1dd1vycSNO+bq0Wlw0wAscIFtEt6QRauv945ZKICRwteIAR5IZuBGuoo26T7zimiG4i3kPLDXkJNh6gwdSoP2xps55uikyfEeSAYgT3l+6kts4dvjSNg+OivuxjXte1aj42i5qp44lxKvMaw8INVK6mmywwgkBU3XRpEAIvOPZUgBlUuGlOPE+71q8ypMlMURnB71/6V7p+7boQW/756y/2+uKvfnidbnE1//o6ff7mUXpbM4JGuvm1PPfmhz+jP6T9RvDOr6+IY1XwvxKhV+TxcAd9/ol1HZ7PJ5fo6v9yRwoizGME6rEp7MN3LrvlYvl507778qv0+d9vyEh2X39I+8s2FdTGmCuqqCRSR6l5Ff/e5hNKLvaVle3UduC4EK4Dj0lhWs567vzYIUDgd7FebqLLFbigdHbavoc3a+EmhAlZIsnLUruUjSB6ZJniBweprtJNW7ahh7oSo2x0MkqxrnbNCLp5HL8HFl9dYeefZsdH3Wuy3nZfwOhELZd9f6KOWbnivA6scol0TFR9dZfyXMfD+i5eJuscOz9DOiftwX1auIowl0SMVnnCSrYdYnkfF9/L1u5xytvdscM1FsUImuN+k5Ltwe0UVLXEKZaU+fA6X75EL8udgqqbLms9Ii9xzaDCGQk4pJ+jxgqTWWSmqIzA/ty6cYNuCeG8Tn97wYoflqJux/PPzQ8vk2sEG+i9dz+VCb6+IYX87zzeNYJfDj9Pn93Sp4DE58rz4vuH78u8RRms69DXl31pczICu9y33Pz+9lO/schoq8yfvkq/9+Q1FdTGmCuqqGQygr7Dx6mzbQ/VtQyK6QvRyyzdQA2P8R/6ITlNsaxGuwYnnuLTG25cIt5HDW2HRD5eY+FwoemsX8NE2xLOQb+ge1GNoO9gmmJ79lJtU4y6Wc848cQBJ+2gMKpBqt64hx7uS1OX5/74VBQ/r25js5yOeWKQ1pey8xZtFWK3yhLCh3mZPMIXhN8IZLnqHmxzylXN81tUQ2VNXHzHnSkeNR9OBxfSx3Y6x/yZNW0ZdAyk7jv29F29FOaeNmp+TBp2IpmkXVt0U5WiP0odG92wev4cB/fS/cv3UoyZYePWdlZXzeIZOYaZkxFsYAYm20wty6f78HhWJlWsqLrpZU3neb/YWyMDzQQYkzEBTlEZgcpNrpCfv8G+n6HrTEO//HWHL14sAFtGcOU9KbLvePM4/6oIc4zACbtC156Wx2JaiC8idwf8AzuvXxZ52Mf8k7URDL9An7PvHw178+RrFVfpr/+Tf39BlOWqL/72oTbGXMnFCLy9Rz6lIdOZp4Zc1tKq9qO0q85vEImDPVTpnb6ojjnXSqTSdCAhe6YCIUzm6QjVCOq5eNvxXtGq3EexZv90FTcGfs2y5iQTLH/5K9uZkPZ6xZcZR9ch6mo0i7WK3wgOaeXiRie+q1NDCgvX9tAgG0mVeMIST/ARhnvcxc2Uib/9zAa9dbdwMzUOKM/OorqTj44OufnydRxvOS184p6DEfD81VFf3f7gey12VN3U0UcGt2MkYFNcRpBO0JXXXqXPP7xCN+3eODeCp/+VvmRfpXh6+PnbZBvBtWsyuT/PMzILrxHs6xBhX72TEN+vXrW/u2k+eusN+oyNNj7/01VrZDJJI/jpG8LM7NGFd5Tx2ctuWW598ja9e6bRl8ftQG2MuZKLEfh+1FkaAe9pZxI6l62UGNhLZez7Ad6TPeTvdXMBUUWFoxqBb8rEK1p1g674Wtj3J6ZT+DVVPAJXt19OG000JWSjTQ1547M1AmsaymeYBnjdJJJ85MNGL4d42b1GwNjiPisfa2OiruVxI8Ufdafuyut6nKkhSa5GsJmaDhrqNOhe7wBU3TShjQxuw0jApoiMQE6h3PrTz+htK8wZEdxWI1gkpof4R44oiP7DjrN68F+9+zz94WyHDH/9si9f/snaCFj5+KXe85XJRCN99Oar9NmnzCT+/kYW6bNDbYy5oorUbTUCJmSDrKeanXjWix447/k+nBhXjKCG6nutqSiFrI0gw4ig/GEuXm7PWKdGrBM0b9V750FM1QiauYgqPf8gRB0cjonvqzr4lJDfCEoaD1FTwNQanyJqXL6G1j866owa5JqE+zzF6CjACITYe4xAjDKstDwf00jkTkXVzWCUkcEURwI2RWQEfJrEsyawTwrqbZ8aYrx/WableRLdcONekD147y6k996Vi9feMqlGQFfOefI/46axjGWidxNcuBmyOvixGj451MaYK4lUUgiBOF60dVJGIIVCEdLV+8R0jrk3W+MsxjpUx5hQy7nscj5Vk0p78greqZK1EbAeL0/nlmeDEGBxf3zqSc1/Cd86K7+Xsnu1y8bL1Vk/8fRQ1kbA7s3tlVvw58CNZ7WeL6fBWROQ8KmhwU5rV5U6jWatcZhMVMa30YHOPpGHHbZqZ9r3PIUxBxiBMA0xGpHHnWJh2Eq76QB1blHqqsJvxncSqm5mwhkZ3CYT4BSREdjbOz2Lwfw/wggWmReL/8R3AeWwWOwgp4T4x28uPA8p/PY0zpfXZEI7jSgTj//6krjuZ9bUkQgTNyDP1xaLeby9IHyLlXlskbX9VUQ493Trwxf8ZjYF1MaYK6Xr+U4a3gM8Tl1tTZMyAk65vXh5JElNq7n4+acDJEed9NUtg9R9yNqlk+TXVraHLtpEB47I8zLtNsneCOx7Dd411GWXh9HZ0ix2ytg9cyfPpaxenrAMLqA3b5crKyPgVLbL6x7jW2Zlvet1516ncmuMuga5WLPwI2lj3Yj7TFkL7YpxqHAj8k4LcXhdyfyPWtN7njpYLd9tsBd+3Wevp12+dZBiT1hlOTRMbVvzvF13GlF1M2yKygjeffkN+pJ3oZkwfnX5eb8R7Jv69lEvYpH41iVlIdefB926Tm+/fll8dcr46tv0FddsJuYf8Xy+/zxd/8QyD2Y8137WKL4HbR/lZb/yfXfX0N8+vOrGfX6VLinlnApqYwThws1HDQPRRNXNsCkqIwC3F7UxgnBZuCRzbxtEB1U3wwZGEGHUxggAyA+qboYNjCDCqI0RAJAfVN0MGxhBhFEbIwAgP6i6GTYwggijNkYAQH5QdTNsYAQRRm2MAID8oOpm2MAIIozaGAEA+UHVzbCBEUQYtTECAPKDqpthAyOIMGpjBADkB1U3wwZGEGHUxggAyA+qboYNjCDCqI0RAJAfVN0MGxhBhFEbIwAgP6i6GTbTbgQv7gz4l71A3lEbIwAgP6i6GTbTbgSJTUs0AQKFgdoYAQD5QdXNsJl2I+C8vHcRnWvByKDQmHVfhdYgAQDhwn+HqmaGTShGUHr/tzEyKED4s5l7/0qtYQIAwqEQTIATihEAAAAoXGAEAAAQcWAEAAAQcWAEAAAQcWAEAAAQcWAEAAAQcWAEAAAQcWAEAAAQcWAEAAAQcWAEAAAQcUIxgnvmVtJ9K79L9zf2gwKCPxv8iQkA8kdk/sQEN4H5dV2aCIH8AxMAIP/w36Gqm2Ez7UaAkUABY2iUAIDwUXUzbKbdCDTxAYWDoUECAMJH1c2wgRFEGUODBACEj6qbYQMjiDKGBgkACB9VN8MGRhBlDA0SABA+qm6GDYwgyhgaJAAgfFTdDBsYQZQxNEgAQPiouhk2MIIoY2iQAIDwUXUzbGAEUcbQIAEA4aPqZtjACKKMoUECAMJH1c2wgRFEGUODBACEj6qbYQMjiDKGBgkACB9VN8OmKI2g4ZnX6JUPviD78+kHv6Of/OCMlm6qiM9nv9PCMzF+6WtxWrUhruAwNEgAQPiouhk2RWkENywDuPHF1wL702ZIOxVE/n++pIVn4rc3ZVleTOpxBYehQd4W6uOUSI1ToqdNj8uCsrV7qO3AcZnHsVGqq/THi3CFWiWPzsFRER5PDFNbU6N2DQAKCVU3/aygeYs2GsK9VNB935ooTTBFZwTPvsuE/73X9B734y863y8LKf6CXj+nnx/Ek//NRhgfvKmF58aPxJWvfHCNXf6PNK7FFxiGBhk2tT1cyOO+sI66Tb7jGBP0vrZ65zgR76HlhrwEGw/QYGrUH7a0WU8HQAGh6qZLAyVP/Fhy7Clav8j07xdUuGlOPE+71q8ypMlM0RnBTz4g+vS/XdE3kTcjuPhHopsf0IXuF0UJfvvzlJ6mkDA0yLAxGYFK8yH/6CKTEdQ/xtIO7tXCAShkVN10+Fa/R+SlGfjTVFBZ83P+NF179XwmoOCMoPuN6/T/uIp+5Z32cUW97d+viZAbf/4j7XlcPf81eudzd6rIzuO3/6effvuVDPJOJ914/01K/vqaDONTOjdlHJ8OSjZaawS2OVjibudhf5xrJ9+iK+z4lWfksZwiuk4LPOXjJibOt87lhrag8U327Rpdft+9V14H9keUR5Rd1kH1z2Um//SQ977/RYTlbDyGBpkLXMC9UzKJ1FFqXsW/t1GnpxfPxb7v8HHqbNtDdS2DdODYOJXzc0o3UAMX7tQhKqvYRGXLarRrcOIsr65tblwi3kcNbYdEPnz658BjPU5cHzvurF9DXQkZFx8c1KaWACg0VN30sqbzvGYGfGSgGQCjscI0YpiYgjOC+5Nv0q8uuT3z5H9aovjeKzLMI8ji89UX9NI//4gaPHlcFhH+EcH4G38U6Zw0llDbx6YRgfhYYSL+q2v00nOW2D7+I/rJpd85aeNvyXLa6xT2orHJCD59/7/o2WftxW1uBPzzBcWHrbxZHbzO6uBJ+7gxJZOIOnhFmIxX9IU5TGYqytAgcyEXI+jcssFJt6rjOGuw8vuEI4JFWynxxAGqXuS9DjsnPkiNG7dSVdMg9TFDWF8q4+Kp4/Tw1h7a1dREyyvqqfsJlvaJDPkDUACouulnrdEMVBNIpp8znJsdhWcEHCayv3n/Y9ZLvmb1hsm4eyf5z2/SK5c+thKQI4SXxZE6NZSith+8xvJk+f7lCzkCILdHn9EIkv9F/5d9ff2soazetEyM3bAz9OJHRFf+3d3NZBuB/1xuBGpZ+0UdPPuLS6IOPrVHIHYdPHOJ+ChCLEhbI5FJLU4bGmQu5GIEvqmc+riVLrMRVLYdFaKvhuswsxjYS2Xs+wFuEofcEQKnbr9yfQAKDFU3TWhmcBtGAjYFZwRtL35Af5Oy5/8YjMCm798+FtMtv/lJv+iBXxYn+MX1pb94pow8Hzs+oxGc+50o008M15ZYPXZ7asmGm80nlyhupcvWCHgdfCqT+j9OHZwRh1d//UNq+5WcKtMWz7PB0CBzYbqNYJBP+3Tu0MJN2OsGfGFZ3a2kXR+AAkPVTTOGkcEURwI2BWcEl4WsfeEcV7/8sU8Eq59yp3ccul8T0yVcTH1G8AM3jfh4hP71z2SQfZz8T2YEH73lE1T3nBfpV39nwvuW4dqN1rSQaSeTnYcVl60RXBap/GHi4zHDtz7nAV9Lw/gkty2uDoYGmQuJVJIal1vHfApnEkZQ2c63iR7y5716H8WOjVOlZzrIpYaqrWklh+oYxZo3i+/lzUmWX9qTV49YN9DzAaBwUHUzE44ZMAOY6kjApuCMwBZoW1R/ax1LEUzRhfeY4P/8R9TW7Z5z4T35cpnd837lE3nKDSbAdhrx+eID69jqwZNHlF/kKn2dXrHXAOxzLPOI/5qJ/c3r9PrFcRnf/UO6INYI/oV+wy7/m4v6vXD+LDKR0zjZGoFdB1fe+KEMO/6KDPAYgb0GIdL9yp1+yglDg8wFLtaJQ4NUt3Uv7Yrzffu5G8H9a2NiOqdhYzNVN+0Q4t/J5/UTfXIB2cFaY1iyQ7xb0NfTQw1bm6mhLS4WjR3TYIbUfHBcLExXszz5+kHioH+qCIBCQ9XNzKylFQ8/TQ23yQQ4BWcEe9gI4EuubtaOnxt/viZ7vUIEf0ov/dkVQN8LZV997OTR9gs5VSTSfMV49xf0ujXXYu/CufIXeexe27Mr6OY1eimpjiLOuvGeXUP2Lp6ghdr//aFMx0cT2RoBrwPvS3P849aBle6ZS3RVxFhrBYZrT4ihQeZC6foeuTvn2HHqamuanBEwyrcMygXgI0lqWm1+YYznbaevbhmk7kPyhbFEkl9beU9g0SY6cESeF+tqp+VL9LIDUEiouhk2BWcEIEus6bCgkUhWGBokACB8VN0MGxhBkWK/T2FPh00KQ4MEAISPqpthAyMoUsT02U17zWOSGBokACB8VN0MGxhBlDE0SABA+Ki6GTYwgihjaJAAgPBRdTNsYARRxtAgAQDho+pm2MAIooyhQQIAwkfVzbCBEUQZQ4MEAISPqpthAyOIMoYGCQAIH1U3wwZGEGUMDRIAED6qboYNjCDKGBokACB8VN0MGxhBlDE0SABA+Ki6GTYwgihjaJAAgPBRdTNspt0I7lv5XV2AQGFgaJAAgPBRdTNspt0I7plbSfPrunQRAnln7v0rtQYJAAgX/jtUdTNspt0IONwMMDIoPPizgRkAkD9m3Xf7/nGZqRCKEQAAAChcYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBxYAQAABBx/j83oJMqRAGsPwAAAABJRU5ErkJggg==>
-
-[image10]: <data:image/png;base64,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>
-
-[image11]: <data:image/png;base64,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>
+For more on arrays, visit [https://www.geeksforgeeks.org/solidity-arrays/](https://www.geeksforgeeks.org/solidity-arrays/).
