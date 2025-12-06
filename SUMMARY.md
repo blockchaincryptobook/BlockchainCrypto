@@ -12,3 +12,4 @@
 * [Chapter 9](chapter-9.md)
 * [Chapter 10](chapter-10.md)
 * [Appendix A](appendix-a.md)
+* [11. Solidity variables and functions, Part 2 (Fall 2025)](11.-solidity-variables-and-functions-part-2-fall-2025.md)
