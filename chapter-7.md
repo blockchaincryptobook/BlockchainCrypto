@@ -48,9 +48,9 @@ uint sales; //sales in wei
 uint expenses; //expenses in wei  
  
 int profits; //profits in wei; it is in int because it can be negative  
-```
 
 }
+```
 
 You will see that the compilation is successful. Which means that our specification of the type for different variables is fine.
 
