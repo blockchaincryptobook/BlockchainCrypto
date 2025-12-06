@@ -1,52 +1,4 @@
-# Chapter 7
-
-**Solidity variables and functions, Part 1**\
-**Blockchain Technology & Applications**\
-**Class notes, Fall 2025**
-
-[Why should you care about learning Solidity? 1](chapter-7.md#why-should-you-care-about-learning-solidity?)
-
-[Variables in Solidity 2](chapter-7.md#variables-in-solidity)
-
-[Integers in Solidity 2](chapter-7.md#integers-in-solidity)
-
-[Assigning values to variables 5](chapter-7.md#assigning-values-to-variables)
-
-[Assigning value during declaration of type 5](chapter-7.md#assigning-value-during-declaration-of-type)
-
-[Assigning value via calculation when we declare the type 6](chapter-7.md#assigning-value-via-calculation-when-we-declare-the-type)
-
-[Creating a function for greater flexibility 8](chapter-7.md#creating-a-function-for-greater-flexibility)
-
-[State versus local variables 13](chapter-7.md#state-versus-local-variables)
-
-[Boolean variables 14](chapter-7.md#boolean-variables)
-
-[String variables 15](chapter-7.md#string-variables)
-
-[Arrays 18](chapter-7.md#arrays)
-
-[Defining an array in Solidity 19](chapter-7.md#defining-an-array-in-solidity)
-
-[We have so far set values of variables “inline”. This method sets values of variables when they are declared. But that is not the only method. We can also set values using a function. The following exercises illustrate that method. We first use that method to set values for variables that are integer, boolean, and string. We then use that method to set values for an array. 23](chapter-7.md#we-have-so-far-set-values-of-variables-“inline”.-this-method-sets-values-of-variables-when-they-are-declared.-but-that-is-not-the-only-method.-we-can-also-set-values-using-a-function.-the-following-exercises-illustrate-that-method.-we-first-use-that-method-to-set-values-for-variables-that-are-integer,-boolean,-and-string.-we-then-use-that-method-to-set-values-for-an-array.)
-
-[Use of arrays in a smart contract 26](chapter-7.md#use-of-arrays-in-a-smart-contract)
-
-[Specification of array values within the function 28](chapter-7.md#specification-of-array-values-within-the-function)
-
-[Passing an array via a function 30](chapter-7.md#passing-an-array-via-a-function)
-
-[Processing array values in a more sophisticated way 32](chapter-7.md#processing-array-values-in-a-more-sophisticated-way)
-
-[Making sense of the for loop 36](chapter-7.md#making-sense-of-the-for-loop)
-
-[Adding an element in an array 38](chapter-7.md#adding-an-element-in-an-array)
-
-[Finding the length of an array in Solidity 42](chapter-7.md#finding-the-length-of-an-array-in-solidity)
-
-[More on arrays 43](chapter-7.md#more-on-arrays)
-
-**ChatGPT assistant for these notes**: [https://chatgpt.com/g/g-691fd06086b48191bb6879485f0707b0-chatbot-for-solidity-variables-functions-part-1](https://chatgpt.com/g/g-691fd06086b48191bb6879485f0707b0-chatbot-for-solidity-variables-functions-part-1)
+# Solidity variables and functions, Part 1
 
 ### Why should you care about learning Solidity? <a href="#why-should-you-care-about-learning-solidity" id="why-should-you-care-about-learning-solidity"></a>
 
@@ -81,7 +33,7 @@ Typically, we tend to employ the following ways to declare integers.
 * By using 'uint' for integers that can be positive or zero.
 
 Type the following and compile.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -91,7 +43,6 @@ contract Types {
 
 //Integers
 
-```
 uint sales; //sales in wei  
  
 uint expenses; //expenses in wei  
@@ -142,7 +93,7 @@ There are various ways for assigning values to variables.
 One way to assign values to variables is to do so when declaring the type of variable.
 
 Type the following and compile.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -152,16 +103,14 @@ contract Types {
 
 //Integers
 
-```
 uint sales \= 12 \* 10\*\*18; //sales in wei  
  
 uint expenses \= 10 \* 10\*\*18; //expenses in wei  
  
 int profits; //profits in wei; it is in int because it can be negative  
- 
-```
 
 }
+```
 
 Compile and deploy the contract and view the contract via the interface.
 
@@ -174,7 +123,7 @@ Delete the deployed contract before proceeding.
 Profits are determined via a calculation: you deduct expenses from sales to get profits. We can specify this in the line where we specify the type for profits.
 
 Type the following and compile.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -184,16 +133,14 @@ contract Types {
 
 //Integers
 
-```
 uint sales \= 12 \* 10\*\*18; //sales in wei  
  
 uint expenses \= 10 \* 10\*\*18; //expenses in wei  
  
 int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
- 
-```
 
 }
+```
 
 This does not compile because there is an issue with the types of variables involved in computing profits. Profits are of the int type. Sales and expenses are of the uint type. By specifying profits as equal to sales - expenses we are implicitly asking Solidity to convert sales and expenses to int. It tells us that such a conversion can produce wrong results. You can also click on “RemixAI” for greater clarification. At this point, just accept that converting from int to uint or vice versa is fraught with unexpected results. It is best to keep it clean by using one type consistently. Since profits cannot be uint (when they are negative, they cannot be uint), we should make sales and expenses as int.
 
@@ -201,7 +148,7 @@ This does not compile because there is an issue with the types of variables invo
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 Type the following and compile.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -211,16 +158,14 @@ contract Types {
 
 //Integers
 
-```
 int sales \= 12 \* 10\*\*18; //sales in wei  
  
 int expenses \= 10 \* 10\*\*18; //expenses in wei  
  
 int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
- 
-```
 
 }
+```
 
 You will see that it compiles now.
 
@@ -231,7 +176,7 @@ We cannot see the profits. We know what the sales and expenses are but we are un
 Delete the deployed contract before proceeding.
 
 To address the problem of not being able to view profits, we make profits as public. In other words, we now say that the variable profits is accessible (i.e., usable and, therefore, viewable) from outside. What does outside mean? It means that it is accessible from addresses other than that of the contract.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -241,16 +186,14 @@ contract Types {
 
 //Integers
 
-```
 int sales \= 12 \* 10\*\*18; //sales in wei  
  
 int expenses \= 10 \* 10\*\*18; //expenses in wei  
  
-int public profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
- 
-```
+int public profits \= sales \- expenses; //profits in wei; it is in int because it can be negative
 
 }
+```
 
 Compile and deploy the contract. View it in the Remix interface. Click on profits to see the value.
 
@@ -266,6 +209,7 @@ We can address the above two issues by setting up a function to calculate profit
 
 We will first create a function that provides us with the flexibility to enter sales and expenses as arguments. We will worry about requiring sales and expenses as positive later. Note that we have removed the statements in which we were specifying the types for sales and expenses and also specifying their values.
 
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -273,7 +217,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
      
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -281,14 +224,14 @@ int public profits; //profits in wei; it is in int because it can be negative
 function determineProfits(int sales, int expenses) {  
     profits \= sales \- expenses;  
 }  
-```
 
 }
+```
 
 The above code gave us an error. That error pertained to the visibility of the function determineProfits. Essentially, the compiler wants to know if the function is private or public.
 
 Add the word ‘private’ in your code as shown below. You add it in the line where you declare the function.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -296,17 +239,16 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
      
 int public profits; //profits in wei; it is in int because it can be negative  
  
 function determineProfits(int sales, int expenses) private {  
     profits \= sales \- expenses;  
-}  
-```
+} 
 
 }
+```
 
 The program runs fine.
 
@@ -333,7 +275,7 @@ We can guard against that by using the following code. The ‘require’ stateme
 Delete the old deployed contract.
 
 Add the ‘require’ statement as below to your contract. Compile it.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -341,7 +283,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
      
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -349,10 +290,10 @@ int public profits; //profits in wei; it is in int because it can be negative
 function determineProfits(int sales, int expenses) public {  
     require(sales\>=0 && expenses\>=0);  
     profits \= sales \- expenses;  
-}  
-```
+} 
 
 }
+```
 
 We are able to compile the above code. Deploy it and interface with it via Remix.
 
@@ -373,7 +314,7 @@ Delete the deployed contract before proceeding.
 ### State versus local variables <a href="#state-versus-local-variables" id="state-versus-local-variables"></a>
 
 When you consider sales and expenses in the following code, you notice that they have utility inside the function statement. They don't exist outside the function. In other words, they are local to the function. Consequently, they are known as local variables. Profit exists outside the function. It exists outside the function within the contract. It is a state variable. It is going to exist in the state database.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -381,7 +322,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
      
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -389,10 +329,10 @@ int public profits; //profits in wei; it is in int because it can be negative
 function determineProfits(int sales, int expenses) public {  
     require(sales\>=0 && expenses\>=0);  
     profits \= sales \- expenses;  
-}  
-```
+} 
 
 }
+```
 
 Why should we be concerned about state versus local variables?
 
@@ -409,7 +349,7 @@ At this point, we can define state and local variables as follows:
 Boolean variables can take two values, true or false. Let us use this in our function. We will create a new variable called isProfitable which will indicate with true or false whether the company is profitable.
 
 Add the if statement as shown below. It specifies when isProfitable will be true or false.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -417,7 +357,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers & booleans  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -430,14 +369,14 @@ function determineProfits(int sales,int expenses) public {
      
     if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
 }  
-```
 
 }
+```
 
 Compile the code. It does not compile. Why? That is because we have not declared the type of isProfitable. Its type is bool, which is short for boolean. Let us also assume that isProfitable is to be visible to anyone outside the contract. Therefore, we will also need to make it public.
 
 Make changes as shown below.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -445,7 +384,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers & booleans  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -461,9 +399,9 @@ function determineProfits(int sales,int expenses) public {
      
     if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
 }  
-```
 
 }
+```
 
 Now compile the contract. Then deploy it and interface with it via Remix. Enter some values for sales and expenses and execute the determineProfits function (by clicking on it). Then view values for isProfitable and profits.
 
@@ -472,7 +410,7 @@ Delete the deployed contract.
 ### String variables <a href="#string-variables" id="string-variables"></a>
 
 What if we wish to communicate a message (e.g., Well done! or Got to do better next time) depending on whether or not we make profits? For that, we first define a string variable called message. We make it public so that it is accessible from outside the contract (for us that means that it is accessible via the Remix interface; if we don’t make it public, we will not be able to see it in our Remix interface). Then we use it in our function for determining profits. See below.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -480,7 +418,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers, booleans, & strings  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -503,9 +440,9 @@ function determineProfits(int sales,int expenses) public {
             isProfitable \= false;  
             message \= "Got to do better next time";}  
 }  
-```
 
 }
+```
 
 Compile the code. Deploy it and access it via the Remix interface. Enter some values for sales and expenses. Execute the determineProfits function and observe the results.
 
@@ -575,7 +512,7 @@ To illustrate the use of arrays, we will use arrays for sales and expenses in ou
 #### Specification of array values within the function <a href="#specification-of-array-values-within-the-function" id="specification-of-array-values-within-the-function"></a>
 
 There is another way in which one can specify values for the array. Since there is no use of the values of the elements of the array outside the function, you could specify the values within the function. Type the following and try to compile it.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -583,7 +520,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -617,9 +553,8 @@ function determineProfits() public {
             isProfitable \= false;  
             message \= "Got to do better next time";}  
 }  
-```
-
 }
+```
 
 The compilation fails. Why?
 
@@ -628,7 +563,7 @@ One of the reasons has to do with the fact that Solidity is not clear about wher
 Note that the arrays ‘quarterSales’ and ‘quarterExpenses’ are local variables. The arrays are useful only within the function to calculate profits. We are not interested in saving them (let us assume that for the time being) over the long term. We have dealt with local variables before when we included sales and expenses within a function. We are doing the same here but Solidity is facing an issue. The issue arises because arrays are a complex variable type and whenever we are dealing with complex variable types as local variables, we have to make it clear to Solidity that we will store them in a special way. That special way is referred to as memory. We use the keyword ‘memory’ to specify that special way.
 
 See the code below to understand where we include the keyword.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -636,7 +571,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -670,9 +604,8 @@ function determineProfits() public {
             isProfitable \= false;  
             message \= "Got to do better next time";}  
 }  
-```
-
 }
+```
 
 Try to compile it. The error goes away.
 
@@ -689,7 +622,7 @@ Delete the deployed contract before proceeding.
 We can also provide an array to a function from outside it by making it an input or an argument for the function. See below where we pass the arrays representing quarterSales and quarterExpenses via arguments of the function 'determineProfits'. You will notice that since we are passing arrays to a function and we are not referring to those arrays elsewhere within the contract (i.e., nowhere else except the single function within the contract), we store them in memory using the 'memory' keyword.
 
 Type the following and compile it.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -697,7 +630,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -726,9 +658,8 @@ function determineProfits(int\[4\] memory quarterSales, int\[4\] memory quarterE
             isProfitable \= false;  
             message \= "Got to do better next time";}  
 }  
-```
-
 }
+```
 
 Deploy it after compilation.
 
@@ -743,7 +674,7 @@ Delete the deployed contract before proceeding.
 #### Processing array values in a more sophisticated way <a href="#processing-array-values-in-a-more-sophisticated-way" id="processing-array-values-in-a-more-sophisticated-way"></a>
 
 Type the code in the following box.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -751,7 +682,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -789,11 +719,10 @@ function determineProfits(int\[4\] memory quarterSales, int\[4\]
         message \= "Well done\!";}  
         else {  
             isProfitable \= false;  
-            message \= "Got to do better next time";}  
-}  
-```
-
+            message \= "Got to do better next time";}
+    }  
 }
+```
 
 You will notice that we have done away with
 
@@ -807,7 +736,7 @@ Compile the contract. Deploy and carry out the same steps as for the previous co
 Delete the deployed contract before proceeding.
 
 We can make the above program more flexible by making changes in the for loop as shown below. Specifically, we use quarterSales.length instead of 4 when specifying i < 4 in the first for loop. Likewise, we use quarterExpenses.length instead of 4 when specifying i < 4 in the second for loop.. Adding .length at the end of quarterSales gives us the length of the array which is 4. Likewise quarterExpenses.length gives us 4.
-
+```
 // SPDX-License-Identifier: UNLICENSED\
 // Practicing types of variables
 
@@ -815,7 +744,6 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-```
 //Integers  
  
 int public profits; //profits in wei; it is in int because it can be negative  
@@ -855,9 +783,8 @@ function determineProfits(int\[4\] memory quarterSales, int\[4\]
             isProfitable \= false;  
             message \= "Got to do better next time";}  
 }  
-```
-
 }
+```
 
 Compile the contract. Deploy and carry out the same steps as for the previous contract (e.g., enter inputs for quarterSales and quarterExpenses). Observe the results.
 
