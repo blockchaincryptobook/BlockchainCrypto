@@ -505,34 +505,147 @@ But we often have situations in which it is not possible to specify the length o
 
 
 
-| Exercise: Declaring arrays Type the following into Remix. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[3,5,7]; string\[2] public aStringArray; bool\[4] public aBooleanArray; } Try to compile the code. It will give you a compilation error. That is because 3, 5, 7 for aNumericArray can be both int and uint. That is confusing the compiler, even though you define the array as consisting of int values. We have to take one more explicit step as shown below. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[int(3),int(5),int(7)]; string\[2] public aStringArray; bool\[4] public aBooleanArray; } We have to be explicit when specifying the elements even though we have declared the array as int\[3] because the Solidity compiler builds the array literal \[3, 5, 7] first, and only then tries to match it to int\[3]. At the moment it constructs \[3, 5, 7], it does not yet know that you intend those numbers to be signed integers — each literal 3, 5, and 7 is “typeless” for it. And, therefore, we have to specify its type explicitly. We can also do the following for greater efficiency. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[int(3),5,7]; string\[2] public aStringArray; bool\[4] public aBooleanArray; } Compile, deploy, and access via the Remix interface. Then do the following: Click on the > sign to the left of the newly deployed contract in the contract panel. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why do you see what you see? Hint: when you are entering a value, you are entering an index and Ethereum shows you the element at that index position. If nothing has been entered into an array, you see default values. For boolean arrays, the default is false. For string arrays, the default is blank. For numeric arrays, the default is 0 Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience. Delete the deployed contract before proceeding. |
+| Exercise: Declaring arrays Type the following into Remix. 
+```
+// SPDX-License-Identifier: 
+UNLICENSED pragma solidity >=0.8.2 <0.9.0;
+contract arrayDetour {
+    int\[3] public aNumericArray = \[3,5,7];
+    string\[2] public aStringArray;
+    bool\[4] public aBooleanArray; 
+}
+```
+Try to compile the code. It will give you a compilation error. That is because 3, 5, 7 for aNumericArray can be both int and uint. That is confusing the compiler, even though you define the array as consisting of int values. We have to take one more explicit step as shown below.
+```
+// SPDX-License-Identifier:
+UNLICENSED pragma solidity >=0.8.2 <0.9.0;
+contract arrayDetour {
+    int\[3] public aNumericArray = \[int(3),int(5),int(7)];
+    string\[2] public aStringArray;
+    bool\[4] public aBooleanArray;
+}
+```
+We have to be explicit when specifying the elements even though we have declared the array as int\[3] because the Solidity compiler builds the array literal \[3, 5, 7] first, and only then tries to match it to int\[3]. At the moment it constructs \[3, 5, 7], it does not yet know that you intend those numbers to be signed integers — each literal 3, 5, and 7 is “typeless” for it. And, therefore, we have to specify its type explicitly. We can also do the following for greater efficiency. 
+```
+// SPDX-License-Identifier:
+UNLICENSED pragma solidity >=0.8.2 <0.9.0;
+contract arrayDetour {
+    int\[3] public aNumericArray = \[int(3),5,7];
+    string\[2] public aStringArray;
+    bool\[4] public aBooleanArray;
+}
+```
+Compile, deploy, and access via the Remix interface. Then do the following: <br> Click on the > sign to the left of the newly deployed contract in the contract panel. <br> Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? <br> Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? <br> Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? <br> Why do you see what you see? Hint: when you are entering a value, you are entering an index and Ethereum shows you the element at that index position. If nothing has been entered into an array, you see default values. For boolean arrays, the default is false. For string arrays, the default is blank. For numeric arrays, the default is 0 <br> Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience. <br> Delete the deployed contract before proceeding. |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 
 
-| Exercise: Entering values into arrays when declaring them One way to add values for the arrays (as in the case of booleans, strings, and integers) is when we declare them. When we do this, we say that the values are provided “inline.” The following code illustrates this possibility. Type it into Remix. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray = \[int(3),5,7]; string\[2] public aStringArray = \['I am', 'I do']; bool\[4] public aBooleanArray = \[true, false, true, false]; } Compile, deploy, and access via the Remix interface. Then do the following: Click on the > sign to the left of the newly deployed contract in the contract panel. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 3 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Enter 4 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Look at the feedback for the transaction in the terminal at the bottom right. You will see that there was an error. That is because you are using an undefined index for aBooleanArray which has elements whose indexes are 0, 1, 2, and 3. There are no additional elements and, therefore, the element at index = 4 is undefined. Why do you see what you see? Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience. Delete the deployed contract before proceeding. |
+| Exercise: Entering values into arrays when declaring them One way to add values for the arrays (as in the case of booleans, strings, and integers) is when we declare them. When we do this, we say that the values are provided “inline.” The following code illustrates this possibility. Type it into Remix. |
+|---|
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity >=0.8.2 <0.9.0;
+contract arrayDetour {
+int\[3] public aNumericArray = \[int(3),5,7];
+string\[2] public aStringArray = \['I am', 'I do'];
+bool\[4] public aBooleanArray = \[true, false, true, false];
+}
+```
+Compile, deploy, and access via the Remix interface. Then do the following: <br> Click on the > sign to the left of the newly deployed contract in the contract panel. <br> Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? <br> Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? <br> Enter 2 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? <br> Enter 3 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? <br> Enter 4 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Look at the feedback for the transaction in the terminal at the bottom right. You will see that there was an error. That is because you are using an undefined index for aBooleanArray which has elements whose indexes are 0, 1, 2, and 3. There are no additional elements and, therefore, the element at index = 4 is undefined. <br> Why do you see what you see? <br> Repeat the process for the other two arrays and make sense of your experience. Be ready to share your experience. <br> Delete the deployed contract before proceeding. |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 **We have so far set values of variables “inline”. This method sets values of variables when they are declared. But that is not the only method. We can also set values using a function. The following exercises illustrate that method. We first use that method to set values for variables that are integer, boolean, and string. We then use that method to set values for an array.**
 
 
 
-| Exercise: Entering using a function (part 1) The following code illustrates setting values of integers, strings, and booleans using a function. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract assignValues { int public anInteger; string public aString; bool public aBoolean; function setValues() public { anInteger=3; aString='I am'; aBoolean=true; } } Compile, deploy, and access via the Remix interface. Check the values of the variables by clicking on the buttons representing them. What do you observe for anInteger? What do you observe for aString? What do you observe for aBoolean? Be sure to explain your answers. Click on setValues. Check the values that have been assigned to the variables. How does this method of setting values compare to the “inline”method in terms of the usage of gas? Who pays for the execution of the setValues function? If using a function to enter values is more expensive, why use it? The answer is implied in the exercise after the next one below (answer: it gives you the flexibility to keep the values variable – in other words, you can write a function to accept values from a user and set or change them to whatever a user wants) Delete the deployed contract before proceeding. |
+| Exercise: Entering using a function (part 1) The following code illustrates setting values of integers, strings, and booleans using a function. |
+|---|
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity >=0.8.2 <0.9.0;
+contract assignValues {
+    int public anInteger; 
+    string public aString;
+    bool public aBoolean;
+    function setValues() public {
+        anInteger=3;
+        aString='I am';
+        aBoolean=true;
+    }
+}
+```
+Compile, deploy, and access via the Remix interface. <br> Check the values of the variables by clicking on the buttons representing them. What do you observe for anInteger? What do you observe for aString? What do you observe for aBoolean? <br> Be sure to explain your answers. <br> Click on setValues. <br> Check the values that have been assigned to the variables. <br> How does this method of setting values compare to the “inline”method in terms of the usage of gas? Who pays for the execution of the setValues function? <br> If using a function to enter values is more expensive, why use it? The answer is implied in the exercise after the next one below (answer: it gives you the flexibility to keep the values variable – in other words, you can write a function to accept values from a user and set or change them to whatever a user wants) <br> Delete the deployed contract before proceeding. |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
-| Exercise: Entering values into arrays using a function We will now see how to add values for arrays using a function. Copy the following code into Remix. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray; string\[2] public aStringArray; bool\[4] public aBooleanArray; function setValues() public { aNumericArray=\[int(3),5,7]; aStringArray=\['I am', 'I do']; aBooleanArray = \[true, false, true, false]; } } Compile, deploy, and access it via the Remix interface. Then do the following: Click on the > sign to the left of the newly deployed contract in the contract panel. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aStringArray and press the aStringArray button. What do you see? Why? Click on setValues. Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? Repeat the process to check if the remaining elements of aBooleanArray and the elements of aNumericArray and aStringArray have been set properly. Delete the deployed contract before proceeding. |
+| Exercise: Entering values into arrays using a function We will now see how to add values for arrays using a function. Copy the following code into Remix. |
+|---|
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity >=0.8.2 <0.9.0;
+contract arrayDetour {
+    int\[3] public aNumericArray;
+    string\[2] public aStringArray;
+    bool\[4] public aBooleanArray;
+    function setValues() public {
+        aNumericArray=\[int(3),5,7];
+        aStringArray=\['I am', 'I do'];
+        aBooleanArray = \[true, false, true, false];
+    }
+}
+```
+Compile, deploy, and access it via the Remix interface. Then do the following: <br> Click on the > sign to the left of the newly deployed contract in the contract panel. <br> Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? <br> Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? <br> Enter 1 in the space to the right of the button aStringArray and press the aStringArray button. What do you see? Why? <br> Click on setValues. <br> Enter 0 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? <br> Enter 1 in the space to the right of the button aBooleanArray and press the aBooleanArray button. What do you see? Why? <br> Repeat the process to check if the remaining elements of aBooleanArray and the elements of aNumericArray and aStringArray have been set properly. <br> Delete the deployed contract before proceeding. |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 
 
-| Exercise What does the following contract accomplish? Try to understand its logic and compare its method of entering values into an array with the previous two methods you have learned so far. Compile, deploy, and access it via the Remix interface to learn more about it. // SPDX-License-Identifier: UNLICENSED pragma solidity >=0.8.2 <0.9.0; contract arrayDetour { int\[3] public aNumericArray; function setValues(int x, int y, int z) public { aNumericArray=\[x,y,z]; } } Delete the deployed contract before proceeding. |
+| Exercise What does the following contract accomplish? Try to understand its logic and compare its method of entering values into an array with the previous two methods you have learned so far. Compile, deploy, and access it via the Remix interface to learn more about it. |
+|---|
+
+```
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity >=0.8.2 <0.9.0;
+contract arrayDetour {
+    int\[3] public aNumericArray;
+    function setValues(int x, int y, int z) public {
+    aNumericArray=\[x,y,z];
+    }
+}
+```
+Delete the deployed contract before proceeding. |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 #### Use of arrays in a smart contract <a href="#use-of-arrays-in-a-smart-contract" id="use-of-arrays-in-a-smart-contract"></a>
 
 To illustrate the use of arrays, we will use arrays for sales and expenses in our contract.
 
-| Exercise Type the following contract into Remix. // SPDX-License-Identifier: UNLICENSED // Practicing types of variables pragma solidity >=0.8.2 <0.9.0; contract Types { //Integers int public profits; //profits in wei; it is in int because it can be negative bool public isProfitable; // boolean variable that is true when profits > 0 // and false otherwise string public message; //message about performance int\[4] quarterSales = \[int(4),3,2,5]; int\[4] quarterExpenses = \[int(2),3,3,4]; //in the following sales and expenses are in weis function determineProfits() public { int sales = quarterSales\[0] + quarterSales\[1] + quarterSales\[2] + quarterSales\[3]; int expenses = quarterExpenses\[0] + quarterExpenses\[1] + quarterExpenses\[2] + quarterExpenses\[3]; require(sales>=0 && expenses>=0); profits = sales - expenses; if (profits > 0) { isProfitable = true; message = "Well done!";} else { isProfitable = false; message = "Got to do better next time";} } } A few things to note. Since any of the arrays is to contain integers and its length is 4, we declared it as int\[4]. The values of the elements of the array have been entered inline, i.e., along with the declaration of the array. We can also set the values by asking the user to provide input for a function. We will see that method later. There is no real need to declare the two arrays (i.e., quarterSales and quarterExpenses) as public. Their use is for computing the total sales and expenses. We will achieve nothing by making them public. We are able to achieve our purpose (i.e., computing the total sales and expenses) without having to make them public. The function no longer has inputs or arguments. That is because it makes use of array elements that are defined in the state database by the current contract. We are not calling this function from another contract. Were we to call it from another contract, we would have had to include inputs or arguments to pass from the other contract. Compile and deploy. Then interface with it via Remix. Click on determineProfits and see the results. Delete the deployed contract before proceeding. |
+| Exercise Type the following contract into Remix. |
+|---|
+```
+// SPDX-License-Identifier: UNLICENSED
+// Practicing types of variables pragma solidity >=0.8.2 <0.9.0;
+contract Types{
+     //Integers
+     int public profits;
+     //profits in wei; it is in int because it can be negative
+     bool public isProfitable; // boolean variable that is true when profits > 0 and false otherwise
+     string public message; //message about performance
+     int\[4] quarterSales = \[int(4),3,2,5];
+     int\[4] quarterExpenses = \[int(2),3,3,4];
+     //in the following sales and expenses are in weis
+     function determineProfits() public {
+          int sales = quarterSales\[0] + quarterSales\[1] + quarterSales\[2] + quarterSales\[3];
+          int expenses = quarterExpenses\[0] + quarterExpenses\[1] + quarterExpenses\[2] + quarterExpenses\[3]; require(sales>=0 && expenses>=0);
+          profits = sales - expenses;
+          if (profits > 0) {
+          isProfitable = true;
+          message = "Well done!";
+          } else { isProfitable = false;
+          message = "Got to do better next time";
+          }
+     }
+}
+```
+| A few things to note. Since any of the arrays is to contain integers and its length is 4, we declared it as int\[4]. The values of the elements of the array have been entered inline, i.e., along with the declaration of the array. We can also set the values by asking the user to provide input for a function. We will see that method later. There is no real need to declare the two arrays (i.e., quarterSales and quarterExpenses) as public. Their use is for computing the total sales and expenses. We will achieve nothing by making them public. We are able to achieve our purpose (i.e., computing the total sales and expenses) without having to make them public. The function no longer has inputs or arguments. That is because it makes use of array elements that are defined in the state database by the current contract. We are not calling this function from another contract. Were we to call it from another contract, we would have had to include inputs or arguments to pass from the other contract. Compile and deploy. Then interface with it via Remix. Click on determineProfits and see the results. Delete the deployed contract before proceeding. |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 #### Specification of array values within the function <a href="#specification-of-array-values-within-the-function" id="specification-of-array-values-within-the-function"></a>
