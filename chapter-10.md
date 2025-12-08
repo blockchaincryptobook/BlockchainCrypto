@@ -101,7 +101,7 @@ For our smart contract, we will borrow the code from [https://medium.com/geekcul
 This code is based on open source code that allows us to create our own tokens. 
 
 Copy the following into Remix.
-
+```
 // SPDX-License-Identifier: MIT  
 pragma solidity \>=0.8.2 \<0.9.0;  
    
@@ -121,7 +121,7 @@ contract newNFT is NFTokenMetadata, Ownable {
   }  
    
 }
-
+```
 You will notice that we are importing code into our contract. Instead of writing it ourselves, we leverage the code written by someone else and vetted by the community.
 
 Instead of the nftName and nftSymbol provided in the contract, we can use our own (e.g., “Synth Kahai” and “SK” or “Cryptokitties” and “CK”). nftSymbol is a shorthand for the name. 
@@ -198,8 +198,6 @@ Instead of the nftName and nftSymbol provided in the contract, we can use our ow
 
     The following is a brief paragraph about IPFS from ChatGPT:
 
-    
-
     IPFS (InterPlanetary File System) is a decentralized, peer-to-peer network for storing and sharing files using content-addressing, where files are identified by cryptographic hashes instead of locations. This ensures data integrity and enables efficient retrieval from multiple peers, much like BitTorrent. IPFS is resilient, decentralized, and immutable, making it ideal for hosting websites, archiving data, and integrating with blockchain systems. By distributing data across the network, it reduces reliance on central servers, enhances speed, and ensures censorship resistance, paving the way for a faster, safer, and more open web.
 
     With content stored on IPFS, it cannot be changed\!  In other words, we have immutable storage and the creator cannot play any tricks. 
@@ -253,8 +251,24 @@ In this exercise, “USD deposits” and “USD withdrawals” will be simulated
 
 Copy the following into Remix:
 
-| `// SPDX-License-Identifier: MIT pragma solidity ^0.8.0; import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/token/ERC20/ERC20.sol"; import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/access/Ownable.sol"; contract USDStablecoin is ERC20, Ownable {     constructor() ERC20("Simulated US Dollar Coin", "sUSDC") {}     // Issuer mints tokens after verifying real USD deposits off-chain     function mintForUSDDeposit(address to, uint amountInUSD) external onlyOwner {         // 1 token per 1 USD         _mint(to, amountInUSD * 1e18);     }     // Issuer burns tokens after receiving USD back off-chain     function burnForUSDWithdrawal(uint amountInTokens) external {         _burn(msg.sender, amountInTokens);     } }`  |
-| :---- |
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/token/ERC20/ERC20.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.9.0/contracts/access/Ownable.sol";
+contract USDStablecoin is ERC20, Ownable {
+            constructor() ERC20("Simulated US Dollar Coin", "sUSDC") {}
+            // Issuer mints tokens after verifying real USD deposits off-chain
+            function mintForUSDDeposit(address to, uint amountInUSD) external onlyOwner {         
+                        // 1 token per 1 USD         
+                        _mint(to, amountInUSD * 1e18);     
+            }     
+            // Issuer burns tokens after receiving USD back off-chain     
+            function burnForUSDWithdrawal(uint amountInTokens) external {         
+                        _burn(msg.sender, amountInTokens);     
+            }
+}
+```
 
 This contract models a fiat-backed stablecoin like USDC:
 
