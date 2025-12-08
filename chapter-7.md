@@ -505,7 +505,8 @@ But we often have situations in which it is not possible to specify the length o
 
 
 
-| Exercise: Declaring arrays Type the following into Remix. 
+| Exercise: Declaring arrays Type the following into Remix. |
+|---|
 ```
 // SPDX-License-Identifier: 
 UNLICENSED pragma solidity >=0.8.2 <0.9.0;
@@ -515,7 +516,8 @@ contract arrayDetour {
     bool\[4] public aBooleanArray; 
 }
 ```
-Try to compile the code. It will give you a compilation error. That is because 3, 5, 7 for aNumericArray can be both int and uint. That is confusing the compiler, even though you define the array as consisting of int values. We have to take one more explicit step as shown below.
+| Try to compile the code. It will give you a compilation error. That is because 3, 5, 7 for aNumericArray can be both int and uint. That is confusing the compiler, even though you define the array as consisting of int values. We have to take one more explicit step as shown below. |
+|---|
 ```
 // SPDX-License-Identifier:
 UNLICENSED pragma solidity >=0.8.2 <0.9.0;
@@ -525,7 +527,8 @@ contract arrayDetour {
     bool\[4] public aBooleanArray;
 }
 ```
-We have to be explicit when specifying the elements even though we have declared the array as int\[3] because the Solidity compiler builds the array literal \[3, 5, 7] first, and only then tries to match it to int\[3]. At the moment it constructs \[3, 5, 7], it does not yet know that you intend those numbers to be signed integers — each literal 3, 5, and 7 is “typeless” for it. And, therefore, we have to specify its type explicitly. We can also do the following for greater efficiency. 
+| We have to be explicit when specifying the elements even though we have declared the array as int\[3] because the Solidity compiler builds the array literal \[3, 5, 7] first, and only then tries to match it to int\[3]. At the moment it constructs \[3, 5, 7], it does not yet know that you intend those numbers to be signed integers — each literal 3, 5, and 7 is “typeless” for it. And, therefore, we have to specify its type explicitly. We can also do the following for greater efficiency. 
+|---|
 ```
 // SPDX-License-Identifier:
 UNLICENSED pragma solidity >=0.8.2 <0.9.0;
