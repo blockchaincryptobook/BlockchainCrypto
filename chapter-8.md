@@ -168,7 +168,8 @@ contract test {
 
 Getting the values of all of the fields was already covered in Exercise 1. But that assumed that aBook was public. What if it is not? How do we do it? The next exercise covers that.
 
-\| Exercise 3 In this exercise, we will write the code to be able to retrieve information about the book whose record we save. We are assuming that the variable aBook is not public. Since it is not public, then only the code within the contract can view it. We will write a function that is public in accessibility that is able to retrieve the book record. We will make this function public. Type the following contract:
+| Exercise 3 In this exercise, we will write the code to be able to retrieve information about the book whose record we save. We are assuming that the variable aBook is not public. Since it is not public, then only the code within the contract can view it. We will write a function that is public in accessibility that is able to retrieve the book record. We will make this function public. Type the following contract:|
+|---|
 
 ```
 //SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;   
