@@ -1,4 +1,4 @@
-# Chapter 3
+# Preventing Double Spending on the Bitcoin Platform, Part 1
 
 ## Introduction <a href="#introduction" id="introduction"></a>
 
@@ -28,8 +28,8 @@ Whenever someone attempts to spend bitcoins, the system must first verify that t
 
 While checking every past transaction would theoretically allow us to determine whether an output remains unspent, doing so repeatedly would be inefficient. To speed up verification, each node also maintains a separate database of UTXOs. Whenever someone receives bitcoins in a transaction, the output is added to the UTXO database. When that output is later spent, it is removed from the database. Just like the blockchain, this UTXO database exists independently on every node. A transaction proceeds only if each of its inputs matches an entry in the UTXO set; otherwise, it is rejected.
 
-| Exercise 1 Visit the following [https://www.blockchain.com/btc/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2]\(https://www.blockchain.com/btc/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2) This is the transaction in which Alice pays Bob 0.015 BTC and keeps the remainder as change while also paying a small fee. Click on Alice’s address under “Overview” (the one beginning with “1Cdid”). That page lists all transactions involving Alice. Identify all of Alice’s UTXOs and answer the following questions: How many UTXOs does Alice have? How many outputs has Alice spent? Look at Total Received, Total Sent, and Bitcoin Balance. Where do you think these values are stored on the Bitcoin network? |
-| :---- |
+| <p>Exercise 1 </p><p>Visit the following https://www.blockchain.com/btc/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2 </p><p>This is the transaction in which Alice pays Bob 0.015 BTC and keeps the remainder as change while also paying a small fee. Click on Alice’s address under “Overview” (the one beginning with “1Cdid”). That page lists all transactions involving Alice. Identify all of Alice’s UTXOs and answer the following questions: </p><ol><li>How many UTXOs does Alice have? </li><li>How many outputs has Alice spent? </li><li>Look at Total Received, Total Sent, and Bitcoin Balance. Where do you think these values are stored on the Bitcoin network?</li></ol> |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ### Absence of totals <a href="#absence-of-totals" id="absence-of-totals"></a>
 
