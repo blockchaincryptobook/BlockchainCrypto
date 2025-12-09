@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Chapter 1](chapter-1.md)
+* [Bitcoin as Money and its History](chapter-1.md)
 * [Bitcoin Ownership & Use](chapter-2.md)
 * [Preventing Double Spending on the Bitcoin Platform, Part 1](chapter-3.md)
 * [Preventing Double Spending on the Bitcoin Platform, Part 2](chapter-4.md)
