@@ -31,7 +31,7 @@ Example of usage
 
 * The following figure depicts the structure of data enabled by the struct studentRecord.
 
-<figure><img src=".gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * With an additional step (described later), it will allow you to store a record with the following three fields: the student name, the student age, and student gender.
 * Take another example. You may wish to store records of the books that you have ([source](https://www.tutorialspoint.com/solidity/solidity_structs.htm)).
@@ -52,7 +52,7 @@ Example of usage
 
 * The following figure depicts the structure of data enabled by the struct bookRecord .
 
-<figure><img src=".gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (12) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * With an additional step (described later), it will allow you to store a record with the following three fields: the title of the book, the author, and the bookID.
 
@@ -194,7 +194,7 @@ contract test {
 
 Often, we are working with multiple records, such as a collection of multiple books. We may want to store records of all the books we have. We can use the struct bookRecord to create a database consisting of multiple records. This can be conceptualized as shown in the figure below (and in this [slide presentation](https://docs.google.com/presentation/d/1CqrB4Vv0MDFNuFDlLMj52LLFYbBQdJKb7_cf0IXcDh0/edit?usp=sharing)).
 
-<figure><img src=".gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In Solidity, we create an array type that is based on the bookRecord struct as follows:
 
@@ -732,7 +732,7 @@ Let us go through the do-while loop. Assume that the length of the profitDatabas
 
 Mapping is another way to store information of interest in the form of key-value pairs. The following slide illustrates the basic idea behind mapping.
 
-<figure><img src=".gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (14) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 For instance, we may want to store the gender of different individuals so that when we ask for the gender of a specific person, we can get to it quickly.
 
