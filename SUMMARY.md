@@ -10,5 +10,5 @@
 * [Chapter 7](chapter-7.md)
 * [Solidity variables and functions, Part 2](chapter-8.md)
 * [Solidity variables and functions, Part 3](chapter-9.md)
-* [Chapter 10](chapter-10.md)
+* [Minting and Managing Tokens for Fungible & Non-fungible Assets](chapter-10.md)
 * [Appendix A](appendix-a.md)
