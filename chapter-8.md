@@ -31,7 +31,7 @@ Example of usage
 
 * The following figure depicts the structure of data enabled by the struct studentRecord.
 
-<figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 * With an additional step (described later), it will allow you to store a record with the following three fields: the student name, the student age, and student gender.
 * Take another example. You may wish to store records of the books that you have ([source](https://www.tutorialspoint.com/solidity/solidity_structs.htm)).
@@ -52,7 +52,7 @@ Example of usage
 
 * The following figure depicts the structure of data enabled by the struct bookRecord .
 
-<figure><img src=".gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 * With an additional step (described later), it will allow you to store a record with the following three fields: the title of the book, the author, and the bookID.
 
@@ -194,7 +194,7 @@ contract test {
 
 Often, we are working with multiple records, such as a collection of multiple books. We may want to store records of all the books we have. We can use the struct bookRecord to create a database consisting of multiple records. This can be conceptualized as shown in the figure below (and in this [slide presentation](https://docs.google.com/presentation/d/1CqrB4Vv0MDFNuFDlLMj52LLFYbBQdJKb7_cf0IXcDh0/edit?usp=sharing)).
 
-<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 
 In Solidity, we create an array type that is based on the bookRecord struct as follows:
 
@@ -732,7 +732,7 @@ Let us go through the do-while loop. Assume that the length of the profitDatabas
 
 Mapping is another way to store information of interest in the form of key-value pairs. The following slide illustrates the basic idea behind mapping.
 
-<figure><img src=".gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 For instance, we may want to store the gender of different individuals so that when we ask for the gender of a specific person, we can get to it quickly.
 
@@ -744,7 +744,7 @@ For instance, we may want to store the gender of different individuals so that w
 
 We can extend this to other possibilities for keys and values. For instance, we could map a person to that person’s address. The following figure illustrates mapping of a person to the address of that person.
 
-<figure><img src=".gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
 
 In Solidity, a mapping is created in the following way:
 
@@ -762,7 +762,7 @@ A mapping is typically stored as a state variable. ‘Typically’ does not mean
 
 The following figure maps countries to their capitals. The country is the key and the capital is the value.
 
-<figure><img src=".gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
 
 \
 This can be implemented using Solidity code as in the following exercise.
@@ -789,19 +789,19 @@ We can see the use of mapping in Exercise 10 as helping us create a database –
 * Mapping is like the index at the back of a book. If we know the topic that we are interested in, the index tells us the page number and we can directly go to that page and, hence, the topic, without having to mess with other pages and topics. We would not have to start with the first page and see if it has the topic we are looking for and continue our search sequentially until we find the topic that we are looking for.
 * We could have also stored the association between a country and its capital using struct-based records as shown below.
 
-<figure><img src=".gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 To search for the capital of any country -- say, the UK, we would have to start with the first country and check if it is the UK. If not, we go to the next record. We check that. If it is not the UK, we go to the next one and check that. We would continue that process until we found the UK. At that point, we would extract the capital from that record.
 
 But with mapping, we simply provide the key and we find the value immediately. In our example, we would simply provide the UK as our key and the mapping would immediately give us back its capital. It will not mess with other countries in the database.
 
-<figure><img src=".gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### **Using mapping and struct to create a books database** <a href="#using-mapping-and-struct-to-create-a-books-database" id="using-mapping-and-struct-to-create-a-books-database"></a>
 
 One can use the notions of mapping and structs to create a books database.
 
-<figure><img src=".gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (21) (1).png" alt=""><figcaption></figcaption></figure>
 
 A question that arises is: what should the key be?
 
