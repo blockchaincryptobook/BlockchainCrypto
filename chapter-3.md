@@ -75,47 +75,11 @@ The process of validating transactions and earning rewards is known as mining, a
 
 Although the puzzles differ, their overall structure is the same across all miners, meaning that the time required to find a solution follows a predictable probability distribution. The network continuously monitors how long solutions take and adjusts the puzzle’s difficulty every 2016 blocks—approximately every two weeks—so that a new block is added roughly every ten minutes on average.
 
-\| Exercise 2\
-Carry out the steps indicated below and answer the questions that follow.
-
-Visit https://bitnodes.io/ to see an estimate of how many Bitcoin nodes are operating at this moment. Nodes are computers running the Bitcoin software (called Bitcoin Core) and are capable of mining. Spend a few minutes exploring the site. Then answer the following question.
-
-Where are bitcoin nodes mostly located today?
-
-Visit https://cbeci.org/mining\_map. This site tracked the distribution of hashrate in different countries for every month until December 2021. Darker areas represent greater hashing power. Hashrate indicates mining strength; more hashrate means faster puzzle-solving and, therefore, a greater share of mined bitcoins. If your hashrate is 10% of the global total, you can expect to solve the puzzle—and receive the block reward—about 10% of the time.
-
-Before proceeding, answer the following question about the relationship between the number of nodes in a country and its hashrate: Will the country with the highest number of nodes also have the highest hashrate? Why or why not?
-
-Next, change the month selector from January 2021 through December 2021 to observe how hashrate distribution shifted throughout the year. Then answer the following questions:
-
-Where was the hashrate mostly located at the start of 2021? In July 2021? In August 2021? In December 2021?
-
-Which countries showed major increases in their % share of hashrate during 2021? Which countries showed major declines?
-
-What was China’s hashrate share during July/August? Can you explain your observation?
-
-Review the current hashrate distribution at https://chainbulletin.com/bitcoin-mining-map/ and answer: Where does China rank in hashrate today? How does this compare to January 2021? How does it compare to July/August 2021? What explains the changes?
-
-To answer these questions, you may find the following links useful:\
-https://cointelegraph.com/news/china-returns-as-2nd-top-bitcoin-mining-hub-despite-the-crypto-ban\
-https://www.statista.com/chart/25969/bitcoin-mining-hashrate-share-of-computer-energy-by-country/\
-https://www.bloomberg.com/news/articles/2021-09-16/china-said-to-intensify-hunt-for-cryptocurrency-miners-in-hiding (or https://archive.ph/97Zzb)
-
-For the latest information using Google, click _Tools_ below the search bar, then choose _Past Year_.
-
-If interested, read later: https://www.cnbc.com/2021/12/18/chinas-underground-bitcoin-miners-.html
-
-| It provides a fascinating look at the cat-and-mouse dynamic between underground miners and Chinese authorities. |
+| Exercise 2 Carry out the steps indicated below and answer the questions that follow. Visit https://bitnodes.io/ to see an estimate of how many Bitcoin nodes are operating at this moment. Nodes are computers running the Bitcoin software (called Bitcoin Core) and are capable of mining. Spend a few minutes exploring the site. Then answer the following question. Where are bitcoin nodes mostly located today? Visit https://cbeci.org/mining\_map. This site tracked the distribution of hashrate in different countries for every month until December 2021. Darker areas represent greater hashing power. Hashrate indicates mining strength; more hashrate means faster puzzle-solving and, therefore, a greater share of mined bitcoins. If your hashrate is 10% of the global total, you can expect to solve the puzzle—and receive the block reward—about 10% of the time. Before proceeding, answer the following question about the relationship between the number of nodes in a country and its hashrate: Will the country with the highest number of nodes also have the highest hashrate? Why or why not? Next, change the month selector from January 2021 through December 2021 to observe how hashrate distribution shifted throughout the year. Then answer the following questions: Where was the hashrate mostly located at the start of 2021? In July 2021? In August 2021? In December 2021? Which countries showed major increases in their % share of hashrate during 2021? Which countries showed major declines? What was China’s hashrate share during July/August? Can you explain your observation? Review the current hashrate distribution at https://chainbulletin.com/bitcoin-mining-map/ and answer: Where does China rank in hashrate today? How does this compare to January 2021? How does it compare to July/August 2021? What explains the changes? To answer these questions, you may find the following links useful: https://cointelegraph.com/news/china-returns-as-2nd-top-bitcoin-mining-hub-despite-the-crypto-ban, https://www.statista.com/chart/25969/bitcoin-mining-hashrate-share-of-computer-energy-by-country/, https://www.bloomberg.com/news/articles/2021-09-16/china-said-to-intensify-hunt-for-cryptocurrency-miners-in-hiding (or https://archive.ph/97Zzb) For the latest information using Google, click _Tools_ below the search bar, then choose _Past Year_. If interested, read later: https://www.cnbc.com/2021/12/18/chinas-underground-bitcoin-miners-.html It provides a fascinating look at the cat-and-mouse dynamic between underground miners and Chinese authorities. |
 | --------------------------------------------------------------------------------------------------------------- |
 
-\| Exercise 3 Visit https://explorer.cloverpool.com/btc/blocks, which shows recently verified blocks. Copy and paste the table of block data into a Google Spreadsheet. Create a new column that calculates the time interval between successive block validations (subtract each block’s time from the time of the block above it). Leave the last row blank. Since the time interval will be in days, multiply by 24 × 60 to convert it to minutes. Then answer the following: | | • What are the maximum and minimum time intervals in minutes?\
-\| • What is the average time interval?\
-\| • Assuming this average reflects the past two weeks, how will mining difficulty be adjusted?\
-\| • If difficulty is adjusted often enough to maintain an average block time of ten minutes, how long will it take to mine 210,000 blocks? Convert this duration to years.\
-\| • What is the significance of 210,000 blocks?
-
-| • Based on this, how long does the mining reward remain at one level before halving? |
-| ------------------------------------------------------------------------------------ |
+| Exercise 3 Visit https://explorer.cloverpool.com/btc/blocks, which shows recently verified blocks. Copy and paste the table of block data into a Google Spreadsheet. Create a new column that calculates the time interval between successive block validations (subtract each block’s time from the time of the block above it). Leave the last row blank. Since the time interval will be in days, multiply by 24 × 60 to convert it to minutes. Then answer the following: What are the maximum and minimum time intervals in minutes?• What is the average time interval?Assuming this average reflects the past two weeks, how will mining difficulty be adjusted? If difficulty is adjusted often enough to maintain an average block time of ten minutes, how long will it take to mine 210,000 blocks? Convert this duration to years. What is the significance of 210,000 blocks? Based on this, how long does the mining reward remain at one level before halving? |
+|----|
 
 | Exercise 4 Visit https://www.blockchain.com/charts. Click on _Network Activity_, then select _Confirmed Transactions Per Day_. Use the peak and lowest values to estimate a rough range, then compute the midpoint as an estimate for average daily transactions. Convert this to transactions per second. How does this compare to Visa’s throughput? For Visa data, see: https://usa.visa.com/dam/VCOM/global/about-visa/documents/aboutvisafactsheet.pdf Next, compare the Bitcoin network’s throughput to global digital payment volumes, which include cards, online banking, mobile wallets, and apps. According to https://www.capgemini.com/insights/research-library/world-payments-report, total global non-cash transactions in 2024 were approximately 1684.6 billion. Based on the constraints you have learned, what could increase Bitcoin’s transactions per second? Look back at the charts and consider why throughput is low. Then, from the same Blockchain.com charts page, open _Estimated Transaction Value_ in USD. Determine the maximum, minimum, and average transaction value per day. Finally, compare this to Visa’s daily transaction volume using the same Visa factsheet. |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
