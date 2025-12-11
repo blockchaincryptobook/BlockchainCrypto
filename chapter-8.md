@@ -31,7 +31,7 @@ Example of usage
 
 * The following figure depicts the structure of data enabled by the struct studentRecord.
 
-<figure><img src=".gitbook/assets/image (11) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * With an additional step (described later), it will allow you to store a record with the following three fields: the student name, the student age, and student gender.
 * Take another example. You may wish to store records of the books that you have ([source](https://www.tutorialspoint.com/solidity/solidity_structs.htm)).
@@ -52,7 +52,7 @@ Example of usage
 
 * The following figure depicts the structure of data enabled by the struct bookRecord .
 
-<figure><img src=".gitbook/assets/image (12) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (12) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * With an additional step (described later), it will allow you to store a record with the following three fields: the title of the book, the author, and the bookID.
 
