@@ -150,4 +150,4 @@ This structure demonstrates a new balance between regulatory oversight at the po
 
 Because bitcoins exist only as digital information—essentially sequences of 0s and 1s—there is nothing physically preventing someone like Alice from duplicating that information and attempting to spend the same bitcoins more than once. This is known as double spending, and the system must prevent it for Bitcoin to function as a viable currency. The next section will explore how Bitcoin addresses this second fundamental requirement for digital money.
 
-## References
+##
