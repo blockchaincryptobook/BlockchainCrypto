@@ -1,4 +1,4 @@
-# 01. Bitcoin as money and its history
+# Bitcoin as Money and its History
 
 ## Bitcoin: What is it? <a href="#bitcoin-what-is-it" id="bitcoin-what-is-it"></a>
 
@@ -30,7 +30,7 @@ Money has taken various forms throughout human history, evolving to meet the nee
 
 **Commodity money**
 
-Commodity money refers to a form of payment in which the item used has intrinsic value and is widely valued by many. In such cases, the terms of payment essentially amount to offering something that is inherently useful and desirable. Examples include cattle, grain, precious metals such as gold and silver, and even Rai stones—large stone discs, some human-sized or larger, used on the Micronesian island of Yap.[3](https://www.bbc.com/travel/article/20180502-the-tiny-island-with-human-sized-money)&#x20;
+Commodity money refers to a form of payment in which the item used has intrinsic value and is widely valued by many. In such cases, the terms of payment essentially amount to offering something that is inherently useful and desirable. Examples include cattle, grain, precious metals such as gold and silver, and even Rai stones—large stone discs, some human-sized or larger, used on the Micronesian island of Yap.[3](https://www.bbc.com/travel/article/20180502-the-tiny-island-with-human-sized-money)
 
 <figure><img src=".gitbook/assets/Rai_stone.jpg" alt="" width="188"><figcaption></figcaption></figure>
 
@@ -183,4 +183,4 @@ Blockchain technology removes the need for intermediaries. These intermediaries�
 
 In short, blockchain technology threatens a large number of stakeholders. If you were an intermediary—or someone whose job depended on processes that blockchain renders obsolete—would you be pleased with Satoshi Nakamoto? It is not hard to imagine intermediaries or displaced individuals attempting to retaliate or even push for criminal charges. People can be deeply vindictive when their livelihoods are threatened. Because blockchain technology disrupts entire industries and traditional roles, Satoshi Nakamoto would have had strong motivation to remain hidden to avoid retaliation by those who stand to lose money or influence as a result of Bitcoin’s creation.
 
-## References
+##
