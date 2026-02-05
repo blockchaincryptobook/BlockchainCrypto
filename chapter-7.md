@@ -483,20 +483,20 @@ Delete the deployed contract before proceeding.
 pragma solidity >=0.8.2 <0.9.0; 
 contract BudgetEvaluator { 
     // Step 1: Declare variables 
-    \_\_\_\_\_ \_\_\_\_\_ savings; // can be positive or negative 
-    \_\_\_\_\_ \_\_\_\_\_ isUnderBudget; // true if project cost <= budget 
-    \_\_\_\_\_ \_\_\_\_\_ message; // conveys result message 
+    ______ ______ savings; // can be positive or negative 
+    ______ ______ isUnderBudget; // true if project cost <= budget 
+    ______ ______ message; // conveys result message 
     // Step 2: Create the function 
-    function evaluateProject(\_\_\_\_\_ budget, \_\_\_\_\_ actualCost) \_\_\_\_\_ { 
+    function evaluateProject(______ budget, ______ actualCost) ______ { 
         // Step 3: Statement to guard against negative inputs 
-        require(\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_, "Inputs must be non-negative"); 
-        // Step 4: Compute savings savings = \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_; 
+        require(______________, "Inputs must be non-negative"); 
+        // Step 4: Compute savings savings = ______________; 
         // Step 5: Determine message and boolean result if (savings >= 0) { 
-             isUnderBudget = \_\_\_\_\_; 
-             message = "\_\_\_\_\_"; 
+             isUnderBudget = ______ ; 
+             message = "______"; 
          } else { 
-             isUnderBudget = \_\_\_\_\_; 
-             message = "\_\_\_\_\_"; 
+             isUnderBudget = ______ ; 
+             message = "______"; 
          } 
      } 
 }
