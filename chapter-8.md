@@ -79,7 +79,8 @@ The following Solidity exercise, which is adapted from [https://www.tutorialspoi
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;
 contract name {    
           string public studentName \= 'Anthony Morello'; 
 }
@@ -105,7 +106,8 @@ contract test {
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;
 contract test {
         struct bookRecord {
                 string title;       
@@ -116,15 +118,16 @@ contract test {
         function getBookInfo() public view returns (uint) {         
                   uint infoWeNeed \= aBook.bookID;         
                   return infoWeNeed;        
-                  }
         }
+}
 ```
 
 | <ul><li>To refer to any of the fields, we use the following: aBook.fieldName.<br>For instance, to refer to bookID, we say aBook.bookID.<br>To refer to the title, we say aBook.title.</li><li>Since aBook is no longer public, we write a function to access it and use information from it. A function within the contract is able to access it. Our EOA is unable to access it, unlike in the previous exercise. To be sure, it is more cumbersome to access aBook using a function instead of making the variable public but there is value in learning about this method.</li><li>When we declare the function, notice that we use the keyword – view. This is telling the Ethereum virtual machine that our function is one that is not making any changes to any state variable and it is only viewing information in it. By doing so, we are saving gas money because a transaction is not required for a view function.<br>The keywords ‘view’ and ‘pure’ indicate the nature of the function from the viewpoint of state mutability or the mutability of state variables. When any of these is used in the definition of a function, it means that no state variable is going to be mutated or changed. View means that one or more state variables are going to be viewed by the function (but not changed). Pure means that NO STATE VARIABLE IS INVOLVED ANYWHERE WITHIN THE FUNCTION.</li><li>You will also notice the keyword ‘returns’ in the function. This is saying that this function will return something as a result of execution. In the portion in parentheses () that follow ‘returns’, the function is specifying what it will return. It says that it will return a value of type uint.</li><li>Within the function, you see the process that will be followed by it. The process is to return the value of aBook.</li><li>Compile and deploy.</li><li>Run the getBookInfo function to see the result.</li><li>Note that creating the function is a cumbersome way to get information about the bookID. In Exercise 1 we saw that we can see the whole of aBook. But there is a reason for doing what we did. Now we know how to refer to a particular field in a struct type variable.</li><li>The above contract can also be substituted with the following:</li></ul> |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;
 contract test {
         struct bookRecord {       
                 string title;       
@@ -145,7 +148,8 @@ contract test {
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 ```
-// SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;
+// SPDX-License-Identifier: UNLICENSED  
+pragma solidity \>=0.8.2 \<0.9.0;
 contract test {
         struct bookRecord {       
                 string title;       
@@ -168,7 +172,8 @@ Getting the values of all of the fields was already covered in Exercise 1. But t
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 ```
-//SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;   
+//SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;   
 contract test {    
         struct bookRecord {       
                 string title;       
@@ -340,7 +345,8 @@ But before we use a struct to create a database for store profits, we will do a 
 
 ```
 // SPDX-License-Identifier: UNLICENSED  
-//Practicing types of variables   pragma solidity \>=0.8.2 \<0.9.0;   
+//Practicing types of variables   
+pragma solidity \>=0.8.2 \<0.9.0;   
 contract Types {
         //Unsigned or positive integers         
         int public profits; //profits in wei; it is in int because it can be negative       
@@ -771,7 +777,8 @@ This can be implemented using Solidity code as in the following exercise.
 | ------------------------------------------------------------------------ |
 
 ```
-// SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   
+// SPDX-License-Identifier: UNLICENSED  
+pragma solidity \>=0.8.2 \<0.9.0;   
 contract Types {         
         mapping(string\=\>string) public capitalOf;         
         function enterkeyValue (string memory inputCountry, string memory inputCapital) public     {         
@@ -819,7 +826,8 @@ Let us see how we would implement this in Solidity.
 | ------------------------------------------------------------------------ |
 
 ```
-// SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;  
+// SPDX-License-Identifier: UNLICENSED  
+pragma solidity \>=0.8.2 \<0.9.0;  
 contract BooksMapping {   
         struct bookRecord {       
                 string title;       
@@ -840,7 +848,8 @@ contract BooksMapping {
 | ---------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   
+// SPDX-License-Identifier: UNLICENSED  
+pragma solidity \>=0.8.2 \<0.9.0;   
 contract BooksMapping {   
         struct bookRecord {       
                 string title;       
@@ -971,7 +980,8 @@ What if we want only the creator of the books database contract to be able to st
 | -------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   
+// SPDX-License-Identifier: UNLICENSED  
+pragma solidity \>=0.8.2 \<0.9.0;   
 contract BooksMapping {   
         struct bookRecord {       
                 string title;       
@@ -1019,7 +1029,8 @@ The contract in the following exercise illustrates a more efficient way to restr
 | -------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED  pragma solidity \>=0.8.2 \<0.9.0;   
+// SPDX-License-Identifier: UNLICENSED  
+pragma solidity \>=0.8.2 \<0.9.0;   
 contract BooksMapping {   
         struct bookRecord {       
                 string title;       
