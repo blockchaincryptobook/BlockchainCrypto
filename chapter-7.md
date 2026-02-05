@@ -108,9 +108,9 @@ contract Types {
 
    //Integers
    
-   uint sales \= 12 \* 10\*\*18; //sales in wei  
+   uint sales = 12 * 10**18; //sales in wei  
     
-   uint expenses \= 10 \* 10\*\*18; //expenses in wei  
+   uint expenses = 10 * 10**18; //expenses in wei  
     
    int profits; //profits in wei; it is in int because it can be negative  
 
@@ -139,13 +139,13 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
 
-  //Integers
+    //Integers
 
-  uint sales \= 12 \* 10\*\*18; //sales in wei  
- 
-  uint expenses \= 10 \* 10\*\*18; //expenses in wei  
- 
-  int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
+    uuint sales = 12 * 10**18; //sales in wei
+   
+    uint expenses = 10 * 10**18; //expenses in wei
+   
+    int profits = sales - expenses; //profits in wei; it is in int because it can be negative  
 
 }
 ```
@@ -164,15 +164,15 @@ Type the following and compile.
 pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
-
+       
    //Integers
    
-   int sales \= 12 \* 10\*\*18; //sales in wei  
-    
-   int expenses \= 10 \* 10\*\*18; //expenses in wei  
-    
-   int profits \= sales \- expenses; //profits in wei; it is in int because it can be negative  
-
+    int sales = 12 * 10**18; //sales in wei
+   
+    int expenses = 10 * 10**18; //expenses in wei
+   
+    int profits = sales - expenses; //profits in wei; it is in int because it can be negative
+   
 }
 ```
 
@@ -195,15 +195,15 @@ To address the problem of not being able to view profits, we make profits as pub
 pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
-
+       
    //Integers
    
-   int sales \= 12 \* 10\*\*18; //sales in wei  
-    
-   int expenses \= 10 \* 10\*\*18; //expenses in wei  
-    
-   int public profits \= sales \- expenses; //profits in wei; it is in int because it can be negative
-
+    int sales = 12 * 10**18; //sales in wei
+   
+    int expenses = 10 * 10**18; //expenses in wei
+   
+    int public profits = sales - expenses; //profits in wei; it is in int because it can be negative
+   
 }
 ```
 
@@ -234,7 +234,7 @@ contract Types {
      int public profits; //profits in wei; it is in int because it can be negative  
       
      function determineProfits(int sales, int expenses) {  
-         profits \= sales \- expenses;  
+         profits = sales - expenses;  
      }  
 
 }
@@ -257,7 +257,7 @@ contract Types {
      int public profits; //profits in wei; it is in int because it can be negative  
       
      function determineProfits(int sales, int expenses) private {  
-         profits \= sales \- expenses;  
+         profits = sales - expenses;  
      } 
 
 }
@@ -308,8 +308,8 @@ contract Types {
     int public profits; //profits in wei; it is in int because it can be negative  
      
     function determineProfits(int sales, int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
+        require(sales>=0 && expenses>=0);  
+        profits = sales - expenses;  
     } 
 
 }
@@ -350,8 +350,8 @@ contract Types {
     int public profits; //profits in wei; it is in int because it can be negative  
      
     function determineProfits(int sales, int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
+        require(sales>=0 && expenses>=0);  
+        profits = sales - expenses;  
     } 
 
 }
@@ -388,10 +388,10 @@ contract Types {
     //in the following sales and expenses are in weis  
     
     function determineProfits(int sales,int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
+        require(sales>=0 && expenses>=0);  
+        profits = sales - expenses;  
          
-        if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
+        if (profits > 0) {isProfitable = true;} else {isProfitable = false;}  
     }  
 
 }
@@ -419,10 +419,10 @@ contract Types {
     //in the following sales and expenses are in weis  
     
     function determineProfits(int sales,int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
+        require(sales>=0 && expenses>=0);  
+        profits = sales - expenses;  
          
-        if (profits \> 0) {isProfitable \= true;} else {isProfitable \= false;}  
+        if (profits > 0) {isProfitable = true;} else {isProfitable = false;}  
     }  
 
 }
@@ -443,30 +443,29 @@ What if we wish to communicate a message (e.g., Well done! or Got to do better n
 pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
-
-    //Integers, booleans, & strings  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-    
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-     
-    string public message; //message about performance  
-     
-    //in the following sales and expenses are in weis  
-    
-    function determineProfits(int sales,int expenses) public {  
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
-
+   
+    //Integers, booleans, & strings
+   
+    int public profits; //profits in wei; it is in int because it can be negative
+ 
+    bool public isProfitable; // boolean variable that is true when profits > 0
+                              // and false otherwise
+   
+    string public message; //message about performance
+   
+    //in the following sales and expenses are in weis
+ 
+    function determineProfits(int sales,int expenses) public {
+        require(sales>=0 && expenses>=0);
+        profits = sales - expenses;
+       
+        if (profits > 0) {
+            isProfitable = true;
+            message = "Well done!";}
+            else {
+                isProfitable = false;
+                message = "Got to do better next time";}
+    }
 }
 ```
 
