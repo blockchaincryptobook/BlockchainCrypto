@@ -20,7 +20,8 @@ Until now, we have built several contracts that worked with different kinds of d
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;
 contract Types {        
         receive() external payable  {}
 }
@@ -42,7 +43,8 @@ We will now make our contract that receives donations a little more sophisticate
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 ```
-// SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;
 contract Types {
         address public giverAddress;    
         uint public donationAmount;     
@@ -68,7 +70,8 @@ We will now modify the first contract above (the one which enabled us to accept 
 | ------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;
 contract Types {
         receive() external payable  {}
         function findBalance() public view returns(uint, string memory)   {       
@@ -92,17 +95,24 @@ The following exercise demonstrates a faucet in which we make use of msg.value a
 | ------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: UNLICENSED pragma solidity \>=0.8.2 \<0.9.0;  
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity \>=0.8.2 \<0.9.0;  
+
 //Our contract both receives and sends ethers to whoever asks. But it will give ethers only if someone has donated to it in the past.  
+
 contract CheckGiverFaucet { 
+
 //The following mapping allows us to keep track of givers (by way of //their address) and the total amount they have given 
 mapping (address \=\> uint) public givers;  
+
 //The following allows the contract to receive funds and, after receiving 
 //funds, it increments givers\[msg.sender\], which represents the total 
-//amount this sender has donated so far, by msg.value (their current //donation).  
+//amount this sender has donated so far, by msg.value (their current //donation). 
+ 
 receive() external payable  {     
         if (msg.value \> 0) {givers\[msg.sender\] \+= msg.value;}
 }   
+
 //This function allows a sender to withdraw ether, but only if they 
 //have donated ether in the past. The require statement checks whether 
 //givers\[msg.sender\] is greater than zero. If the check passes, the 
@@ -110,6 +120,7 @@ receive() external payable  {
 //payable(msg.sender).transfer(withdraw\_amt). This follows the standard 
 //form for sending funds:  
 //payable(addressToSendFundsTo).transfer(amountToSend). 
+
 function withdraw(uint withdraw\_amt) public  {     
         require(givers\[msg.sender\] \> 0, "Sorry, you have not given any ether in the past");
         payable(msg.sender).transfer(withdraw\_amt); 
@@ -135,11 +146,14 @@ Understanding this distinction is critical because it helps us follow what is ac
 // SPDX-License-Identifier: UNLICENSED 
 pragma solidity \>=0.8.2 \<0.9.0;  
 //Our contract both receives and sends ethers to whoever asks. But it will give ethers only if someone has donated to it in the past.
+
 contract CheckGiverFaucet {
 //The following will keep track of givers 
+
 mapping (address \=\> uint) public givers;
 //The following variable will store the price per
 //unit of gas consumed by the most recent transaction  
+
 uint public transactionGas;
 //The following will store the address of the EOA
 //from where the transaction originated  
