@@ -537,12 +537,12 @@ But we often have situations in which it is not possible to specify the length o
 | ---------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier: 
-UNLICENSED pragma solidity >=0.8.2 <0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity >=0.8.2 <0.9.0;
 contract arrayDetour {
-    int\[3] public aNumericArray = \[3,5,7];
-    string\[2] public aStringArray;
-    bool\[4] public aBooleanArray; 
+    int[3] public aNumericArray = [3,5,7];
+    string[2] public aStringArray;
+    bool[4] public aBooleanArray; 
 }
 ```
 
@@ -550,12 +550,12 @@ contract arrayDetour {
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier:
-UNLICENSED pragma solidity >=0.8.2 <0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity >=0.8.2 <0.9.0;
 contract arrayDetour {
-    int\[3] public aNumericArray = \[int(3),int(5),int(7)];
-    string\[2] public aStringArray;
-    bool\[4] public aBooleanArray;
+    int[3] public aNumericArray = [int(3),int(5),int(7)];
+    string[2] public aStringArray;
+    bool[4] public aBooleanArray;
 }
 ```
 
@@ -563,12 +563,12 @@ contract arrayDetour {
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
-// SPDX-License-Identifier:
-UNLICENSED pragma solidity >=0.8.2 <0.9.0;
+// SPDX-License-Identifier: UNLICENSED 
+pragma solidity >=0.8.2 <0.9.0;
 contract arrayDetour {
-    int\[3] public aNumericArray = \[int(3),5,7];
-    string\[2] public aStringArray;
-    bool\[4] public aBooleanArray;
+    int[3] public aNumericArray = [int(3),5,7];
+    string[2] public aStringArray;
+    bool[4] public aBooleanArray;
 }
 ```
 
@@ -582,9 +582,9 @@ contract arrayDetour {
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.8.2 <0.9.0;
 contract arrayDetour {
-    int\[3] public aNumericArray = \[int(3),5,7];
-    string\[2] public aStringArray = \['I am', 'I do'];
-    bool\[4] public aBooleanArray = \[true, false, true, false];
+    int[3] public aNumericArray = [int(3),5,7];
+    string[2] public aStringArray = ['I am', 'I do'];
+    bool[4] public aBooleanArray = [true, false, true, false];
 }
 ```
 
@@ -621,12 +621,12 @@ contract assignValues {
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.8.2 <0.9.0;
 contract arrayDetour {
-    int\[3] public aNumericArray;
-    string\[2] public aStringArray;
-    bool\[4] public aBooleanArray;
+    int[3] public aNumericArray;
+    string[2] public aStringArray;
+    bool[4] public aBooleanArray;
     function setValues() public {
-        aNumericArray=\[int(3),5,7];
-        aStringArray=\['I am', 'I do'];
+        aNumericArray=[int(3),5,7];
+        aStringArray=['I am', 'I do'];
         aBooleanArray = \[true, false, true, false];
     }
 }
@@ -642,9 +642,9 @@ contract arrayDetour {
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.8.2 <0.9.0;
 contract arrayDetour {
-    int\[3] public aNumericArray;
+    int[3] public aNumericArray;
     function setValues(int x, int y, int z) public {
-    aNumericArray=\[x,y,z];
+    aNumericArray= [x,y,z];
     }
 }
 ```
@@ -668,18 +668,21 @@ contract Types{
      //profits in wei; it is in int because it can be negative
      bool public isProfitable; // boolean variable that is true when profits > 0 and false otherwise
      string public message; //message about performance
-     int\[4] quarterSales = \[int(4),3,2,5];
-     int\[4] quarterExpenses = \[int(2),3,3,4];
+     int[4] quarterSales = [int(4),3,2,5];
+     int[4] quarterExpenses = [int(2),3,3,4];
      //in the following sales and expenses are in weis
      function determineProfits() public {
-          int sales = quarterSales\[0] + quarterSales\[1] + quarterSales\[2] + quarterSales\[3];
-          int expenses = quarterExpenses\[0] + quarterExpenses\[1] + quarterExpenses\[2] + quarterExpenses\[3]; require(sales>=0 && expenses>=0);
+          int sales = quarterSales[0] + quarterSales[1] + quarterSales[2] + quarterSales[3];
+          int expenses = quarterExpenses[0] + quarterExpenses[1] + quarterExpenses[2] + quarterExpenses[3]; 
+          require(sales>=0 && expenses>=0);
           profits = sales - expenses;
           if (profits > 0) {
-          isProfitable = true;
-          message = "Well done!";
-          } else { isProfitable = false;
-          message = "Got to do better next time";
+               isProfitable = true;
+               message = "Well done!";
+          } 
+          else { 
+               isProfitable = false;
+               message = "Got to do better next time";
           }
      }
 }
@@ -712,26 +715,25 @@ contract Types {
 
       function determineProfits() public {  
            
-          int\[4\] quarterSales \= \[int(4),3,2,5\];  
+          int[4] quarterSales = [int(4),3,2,5];  
       
-          int\[4\] quarterExpenses \= \[int(2),3,3,4\];  
+          int[4] quarterExpenses = [int(2),3,3,4];  
            
            
-          int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
-                      quarterSales\[3\];  
+          int sales = quarterSales[0] + quarterSales[1] + quarterSales[2] + quarterSales[3];  
       
-          int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
-                         quarterExpenses\[2\] \+ quarterExpenses\[3\];  
+          int expenses = quarterExpenses[0] + quarterExpenses[1] +  
+                         quarterExpenses[2] + quarterExpenses[3];  
            
-          require(sales\>=0 && expenses\>=0);  
-          profits \= sales \- expenses;  
+          require(sales>=0 && expenses>=0);  
+          profits = sales - expenses;  
            
-          if (profits \> 0) {  
-              isProfitable \= true;  
-              message \= "Well done\!";}  
+          if (profits > 0) {  
+              isProfitable = true;  
+              message = "Well done\!";}  
               else {  
-                  isProfitable \= false;  
-                  message \= "Got to do better next time";}  
+                  isProfitable = false;  
+                  message = "Got to do better next time";}  
       }  
 }
 ```
@@ -745,7 +747,7 @@ Note that the arrays ‘quarterSales’ and ‘quarterExpenses’ are local vari
 See the code below to understand where we include the keyword.
 
 ```
-// SPDX-License-Identifier: UNLICENSED\
+// SPDX-License-Identifier: UNLICENSED
 // Practicing types of variables
 
 pragma solidity >=0.8.2 <0.9.0;
@@ -764,27 +766,26 @@ string public message; //message about performance
 
 function determineProfits() public {  
      
-    int\[4\] memory quarterSales \= \[int(4),3,2,5\];  
+    int[4] memory quarterSales = [int(4),3,2,5];  
 
-    int\[4\] memory quarterExpenses \= \[int(2),3,3,4\];  
+    int[4] memory quarterExpenses = [int(2),3,3,4];  
      
      
-    int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
-                quarterSales\[3\];  
+    int sales = quarterSales[0] + quarterSales[1] + quarterSales[2] + quarterSales[3];  
 
-    int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
-                   quarterExpenses\[2\] \+ quarterExpenses\[3\];  
+    int expenses = quarterExpenses[0] + quarterExpenses[1] +
+                   quarterExpenses[2] + quarterExpenses[3];  
      
-    require(sales\>=0 && expenses\>=0);  
-    profits \= sales \- expenses;  
-     
-    if (profits \> 0) {  
-        isProfitable \= true;  
-        message \= "Well done\!";}  
-        else {  
-            isProfitable \= false;  
-            message \= "Got to do better next time";}  
-}  
+    require(sales>=0 && expenses>=0);
+        profits = sales - expenses;
+       
+        if (profits > 0) {
+            isProfitable = true;
+            message = "Well done!";}
+            else {
+                isProfitable = false;
+                message = "Got to do better next time";}
+    }
 }
 ```
 
@@ -811,35 +812,35 @@ Type the following and compile it.
 pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
-
-    //Integers  
-     
-    int public profits; //profits in wei; it is in int because it can be negative  
-    
-    bool public isProfitable; // boolean variable that is true when profits \> 0  
-                              // and false otherwise  
-    string public message; //message about performance  
-    
-    //in the following sales and expenses are in weis  
-    
-    function determineProfits(int\[4\] memory quarterSales, int\[4\] memory quarterExpenses) public {  
-         
-        int sales \= quarterSales\[0\] \+ quarterSales\[1\] \+ quarterSales\[2\] \+  
-                    quarterSales\[3\];  
-    
-        int expenses \= quarterExpenses\[0\] \+ quarterExpenses\[1\] \+  
-                       quarterExpenses\[2\] \+ quarterExpenses\[3\];  
-         
-        require(sales\>=0 && expenses\>=0);  
-        profits \= sales \- expenses;  
-         
-        if (profits \> 0) {  
-            isProfitable \= true;  
-            message \= "Well done\!";}  
-            else {  
-                isProfitable \= false;  
-                message \= "Got to do better next time";}  
-    }  
+   
+    //Integers
+   
+    int public profits; //profits in wei; it is in int because it can be negative
+ 
+    bool public isProfitable; // boolean variable that is true when profits > 0
+                              // and false otherwise
+    string public message; //message about performance
+ 
+    //in the following sales and expenses are in weis
+ 
+    function determineProfits(int[4] memory quarterSales, int[4] memory quarterExpenses) public {
+       
+        int sales = quarterSales[0] + quarterSales[1] + quarterSales[2] +
+                    quarterSales[3];
+ 
+        int expenses = quarterExpenses[0] + quarterExpenses[1] +
+                       quarterExpenses[2] + quarterExpenses[3];
+       
+        require(sales>=0 && expenses>=0);
+        profits = sales - expenses;
+       
+        if (profits > 0) {
+            isProfitable = true;
+            message = "Well done!";}
+            else {
+                isProfitable = false;
+                message = "Got to do better next time";}
+    }
 }
 ```
 
@@ -866,46 +867,46 @@ Type the code in the following box.
 pragma solidity >=0.8.2 <0.9.0;
 
 contract Types {
-
-//Integers  
+   
+    //Integers
+   
+    int public profits; //profits in wei; it is in int because it can be negative
  
-int public profits; //profits in wei; it is in int because it can be negative  
-
-bool public isProfitable; // boolean variable that is true when profits \> 0  
-                          // and false otherwise  
-string public message; //message about performance  
-
-//in the following sales and expenses are in weis  
-
-function determineProfits(int\[4\] memory quarterSales, int\[4\]  
-    memory quarterExpenses) public {  
-     
-    int sales; //this is the same as int sales \= 0;  
-     
-    for (uint i \= 0; i \< 4; i\++)  
-    {  
-        sales \+= quarterSales\[i\]; // this is the same as sales \=  
-                                  // sales \+ quarterSales\[i\];  
-    }  
-     
-    int expenses; //this is the same as int expenses=0;  
-     
-    for (uint i \= 0; i \< 4; i\++)  
-    {  
-        expenses \+= quarterExpenses\[i\]; // this is the same as expenses \=  
-                                        // expenses \+ quarterExpenses\[i\];  
-    }  
-     
-    require(sales\>=0 && expenses\>=0);  
-    profits \= sales \- expenses;  
-     
-    if (profits \> 0) {  
-        isProfitable \= true;  
-        message \= "Well done\!";}  
-        else {  
-            isProfitable \= false;  
-            message \= "Got to do better next time";}
-    }  
+    bool public isProfitable; // boolean variable that is true when profits > 0
+                              // and false otherwise
+    string public message; //message about performance
+ 
+    //in the following sales and expenses are in weis
+ 
+    function determineProfits(int[4] memory quarterSales, int[4]
+        memory quarterExpenses) public {
+       
+        int sales; //this is the same as int sales = 0;
+       
+        for (uint i = 0; i < 4; i++)
+        {
+            sales += quarterSales[i]; // this is the same as sales =
+                                      // sales + quarterSales[i];
+        }
+       
+        int expenses; //this is the same as int expenses=0;
+       
+        for (uint i = 0; i < 4; i++)
+        {
+            expenses += quarterExpenses[i]; // this is the same as expenses =
+                                            // expenses + quarterExpenses[i];
+        }
+       
+        require(sales>=0 && expenses>=0);
+        profits = sales - expenses;
+       
+        if (profits > 0) {
+            isProfitable = true;
+            message = "Well done!";}
+            else {
+                isProfitable = false;
+                message = "Got to do better next time";}
+    }
 }
 ```
 
@@ -940,35 +941,35 @@ string public message; //message about performance
 
 //in the following sales and expenses are in weis  
 
-function determineProfits(int\[4\] memory quarterSales, int\[4\]  
-    memory quarterExpenses) public {  
-     
-    int sales; //this is the same as int sales \= 0;  
-     
-    for (uint i \= 0; i \< quarterSales.length; i\++)  
-    {  
-        sales \+= quarterSales\[i\]; // this is the same as sales \=  
-                                  // sales \+ quarterSales\[i\];  
-    }  
-     
-    int expenses; //this is the same as int expenses=0;  
-     
-    for (uint i \= 0; i \< quarterExpenses.length; i\++)  
-    {  
-        expenses \+= quarterExpenses\[i\]; // this is the same as expenses \=  
-                                        // expenses \+ quarterExpenses\[i\];  
-    }  
-     
-    require(sales\>=0 && expenses\>=0);  
-    profits \= sales \- expenses;  
-     
-    if (profits \> 0) {  
-        isProfitable \= true;  
-        message \= "Well done\!";}  
-        else {  
-            isProfitable \= false;  
-            message \= "Got to do better next time";}  
-}  
+function determineProfits(int[4] memory quarterSales, int[4]
+        memory quarterExpenses) public {
+       
+        int sales; //this is the same as int sales = 0;
+       
+        for (uint i = 0; i < quarterSales.length; i++)
+        {
+            sales += quarterSales[i]; // this is the same as sales =
+                                      // sales + quarterSales[i];
+        }
+       
+        int expenses; //this is the same as int expenses=0;
+       
+        for (uint i = 0; i < quarterExpenses.length; i++)
+        {
+            expenses += quarterExpenses[i]; // this is the same as expenses =
+                                            // expenses + quarterExpenses[i];
+        }
+       
+        require(sales>=0 && expenses>=0);
+        profits = sales - expenses;
+       
+        if (profits > 0) {
+            isProfitable = true;
+            message = "Well done!";}
+            else {
+                isProfitable = false;
+                message = "Got to do better next time";}
+    }
 }
 ```
 
@@ -1001,17 +1002,19 @@ One can understand the 'for loop' for calculating total expenses in the same way
 
 How does one add a new element to an array? See the following exercises which illustrate how to add an element in static and dynamic arrays. Try out the exercises on your own.
 
-| <p>Exercise: Adding elements in static arrays </p><p>The following code helps you to fill the elements of a static array of length 4 and consisting of integers without having to hardwire it. You can also use this process of filling an element in a particular position to change the value at that position. We make the array public so that we can see values in it at any time. </p><p>// SPDX-License-Identifier: UNLICENSED </p><p>// Practicing a few things about arrays </p><p>pragma solidity >=0.8.2 &#x3C;0.9.0; </p><p>contract moreWithArrays { </p><p>int[4] public aStaticArray; </p><p>function addValues(uint index, int value) public { aStaticArray[index] = value; </p><p>} </p><p>} </p><p>Compile the contract and deploy it. Interact with the above code via Remix. </p><div><figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure></div><p>Type 3,5 to the right of addValues and click on addValues. Type 0 to the right of aStaticArray. Click on aStaticArray. What do you observe? Type 1 where you had typed 0 and follow the same process. What do you observe? Type 2 where you had typed 1 and follow the same process. What do you observe? Type 3 where you had typed 1 and follow the same process. What do you observe? Do you know how you will fill the other values in the array? </p><p></p><p>What if you wish to change the value in any index position? Let us say that we wish to change the value for index = 3 to 10. Do the following: </p><p></p><p>Type 3,10 to the right of addValues and click on addValues. Then type 3 to the right of aStaticArray and click on aStaticArray. You will see that the new value for index = 3 is 10. </p><p></p><p>Delete the deployed contract before proceeding.</p> |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p>Exercise: Adding elements in static arrays </p><p>The following code helps you to fill the elements of a static array of length 4 and consisting of integers without having to hardwire it. You can also use this process of filling an element in a particular position to change the value at that position. We make the array public so that we can see values in it at any time. </p><p>// SPDX-License-Identifier: UNLICENSED </p><p>// Practicing a few things about arrays </p><p>pragma solidity >=0.8.2 &#x3C;0.9.0; </p><p>contract moreWithArrays { </p><p>        int[4] public aStaticArray; </p><p>        function addValues(uint index, int value) public { </p><p>                  aStaticArray[index] = value; </p><p>        } </p><p>} </p><p>Compile the contract and deploy it. Interact with the above code via Remix. </p><div><figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure></div><p>Type 3,5 to the right of addValues and click on addValues. Type 0 to the right of aStaticArray. Click on aStaticArray. What do you observe? Type 1 where you had typed 0 and follow the same process. What do you observe? Type 2 where you had typed 1 and follow the same process. What do you observe? Type 3 where you had typed 1 and follow the same process. What do you observe? Do you know how you will fill the other values in the array? </p><p></p><p>What if you wish to change the value in any index position? Let us say that we wish to change the value for index = 3 to 10. Do the following: </p><p></p><p>Type 3,10 to the right of addValues and click on addValues. Then type 3 to the right of aStaticArray and click on aStaticArray. You will see that the new value for index = 3 is 10. </p><p></p><p>Delete the deployed contract before proceeding.</p> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 | <p>Exercise: Adding elements in a dynamic array </p><p>The following code helps you add a new book to the dynamic array allBooks (which may be the collection of your books).</p> |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ```
 // SPDX-License-Identifier: UNLICENSED 
-// Practicing a few things about arrays pragma solidity >=0.8.2 <0.9.0;
+// Practicing a few things about arrays 
+pragma solidity >=0.8.2 <0.9.0;
 contract moreWithArrays {
-     string\[] public allBooks; 
+     string[] public allBooks; 
      function addValues(string memory value) public { 
           allBooks.push(value); 
      }
@@ -1023,14 +1026,15 @@ contract moreWithArrays {
 
 ```
 // SPDX-License-Identifier: UNLICENSED 
-// Practicing a few things about arrays pragma solidity >=0.8.2 <0.9.0; 
+// Practicing a few things about arrays 
+pragma solidity >=0.8.2 <0.9.0; 
 contract moreWithArrays { 
-     string\[] public allBooks; 
+     string[] public allBooks; 
      function addValues(string memory value) public { 
           allBooks.push(value);
      }
      function changeValues(uint index, string memory newValue) public { 
-          allBooks\[index] = newValue; 
+          allBooks[index] = newValue; 
      } 
 }
 ```
@@ -1049,9 +1053,10 @@ But when you have a dynamic array, its length changes with the addition of new e
 
 ```
 // SPDX-License-Identifier: UNLICENSED
-// Practicing a few things about arrays pragma solidity >=0.8.2 <0.9.0;
+// Practicing a few things about arrays 
+pragma solidity >=0.8.2 <0.9.0;
 contract moreWithArrays {
-    string\[] public allBooks;
+    string[] public allBooks;
     uint public numBooks; 
     function addValues(string memory value) public { 
          allBooks.push(value); 
